@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import persistUserLogin from "../functions/persistUserLogin";
 
 const COLOR_PRIMARY = "#727272";
 const COLOR_SECONDARY = "lightblue";
@@ -70,6 +71,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.data) {
+          persistUserLogin(data.data);
           setUserState(data.data);
           setLoginFormData({ ...initialLoginFormData });
           formElements.forEach((elem) => {

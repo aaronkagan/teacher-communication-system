@@ -27,12 +27,12 @@ const login = async (req, res) => {
     bcrypt.compare(password, hash, function (err, passwordMatch) {
       if (passwordMatch) {
         const response = {
-          [result.firstName]: result.firstName,
-          [result.lastName]: result.lastName,
-          [result.email]: result.email,
-          [result.username]: result.username,
-          [result.role]: result.role,
-          [result.userId]: result.userId
+          firstName: result.firstName,
+          lastName: result.lastName,
+          email: result.email,
+          username: result.username,
+          role: result.role,
+          userId: result.userId
         };
         return res.status(200).json({ data: response, message: "Login successful" });
       } else {
