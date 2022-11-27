@@ -3,6 +3,8 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const port = 8000;
 
+const { modifyTaskBoard, getWeeklyTasks } = require("./handlers/taskBoardHandlers");
+
 express()
   // This line will allow our server to auto-parse the body, which arrives as as a JSON string, to an object that we can use. (The same as JSON.parse())
   // The upload limit is set to fix errors I was getting with file uploads
@@ -20,6 +22,18 @@ express()
     res.status(200).json({ status: 200, message: "Hello World!" });
   })
 
+  // --------
+  // ENDPOINTS
+  // --------
+  // Task board endpoints
+  // Get all the tasks for that week
+  .get("/api/tasks", getWeeklyTasks)
+  // Create, Update, Delete any of the board tasks
+  .patch("/api/tasks", modifyTaskBoard)
+
+  //-------------------
+
+  // Must be below all the endpoints
   .listen(port, () => {
     console.log(`Example app listening on port ${port}`);
   });
