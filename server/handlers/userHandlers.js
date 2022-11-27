@@ -1,4 +1,12 @@
 // USER HANDLERS
+const bcrypt = require("bcrypt");
+
+// Helper function
+const generateHashedPassword = (password) => {
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+  return hashedPassword;
+};
 
 // Setup for connecting to mongoDb
 const { MongoClient } = require("mongodb");
