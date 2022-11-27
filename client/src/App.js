@@ -19,7 +19,6 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
-
           <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
           <Route path="/users" element={getUserRole() === "admin" ? <UserAccounts /> : <NotAuthorized />} />
         </Routes>
