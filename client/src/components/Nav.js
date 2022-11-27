@@ -4,15 +4,16 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import isUserLoggedIn from "../functions/isUserLoggedIn";
 import handleLogout from "../functions/handleLogout";
+import getUserRole from "../functions/getUserRole";
 const Nav = () => {
   const { userState, setUserState } = useContext(UserContext);
 
   return (
     <Navbar>
       <StyledLink to="/">Home</StyledLink>
-      {userState.role === "admin" || userState.role === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
-      {userState.role === "admin" || userState.role === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
-      <StyledLink to="/users">Users</StyledLink>
+      {/* {userState.role === "admin" || userState.role === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
+      {userState.role === "admin" || userState.role === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null} */}
+      {getUserRole() === "admin" && <StyledLink to="/users">Users</StyledLink>}
       {isUserLoggedIn() ? (
         <StyledLink to="/login" onClick={() => handleLogout(setUserState)}>
           Logout

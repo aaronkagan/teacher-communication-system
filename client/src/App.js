@@ -5,13 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 // import MultiColumnBoard from "./components/MultiColumnBoard";
 // import StudentBoard from "./components/StudentBoard";
-import AddUser from "./modals/AddUser";
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
-
 import NotAuthorized from "./pages/NotAuthorized";
 import Home from "./pages/Home";
 import UserAccounts from "./pages/UserAccounts";
+import getUserRole from "./functions/getUserRole";
 
 const App = () => {
   // const { userState } = useContext(UserContext);
@@ -29,9 +28,7 @@ const App = () => {
 
           {/* <Route path="/board/student" element={userState.role === "student" || userState.role === "admin" ? <StudentBoard /> : <NotAuthorized />} /> */}
           {/* <Route path="/board/student" element={<StudentBoard />} /> */}
-
-          {/* <Route path="/users" element={userState.role === "admin" ? <UserAccounts /> : <NotAuthorized />} /> */}
-          <Route path="/users" element={<UserAccounts />} />
+          <Route path="/users" element={getUserRole() === "admin" ? <UserAccounts /> : <NotAuthorized />} />
         </Routes>
       </Wrapper>
     </Router>
