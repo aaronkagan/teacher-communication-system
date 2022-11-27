@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-
+import isUserLoggedIn from "../functions/isUserLoggedIn";
+import removePersistedLogin from "../functions/removePersistedLogin";
 const Nav = () => {
   const { userState, setUserState } = useContext(UserContext);
 
   const handleLogout = () => {
     setUserState({});
+    removePersistedLogin();
   };
 
   return (
@@ -16,12 +18,13 @@ const Nav = () => {
       {userState.role === "admin" || userState.role === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
       {userState.role === "admin" || userState.role === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
       <StyledLink to="/users">Users</StyledLink>
-      {userState.role && (
+      {isUserLoggedIn() ? (
         <StyledLink to="/login" onClick={handleLogout}>
           Logout
         </StyledLink>
+      ) : (
+        <StyledLink to="/login">Login</StyledLink>
       )}
-      {!userState.role && <StyledLink to="/login">Login</StyledLink>}
     </Navbar>
   );
 };
