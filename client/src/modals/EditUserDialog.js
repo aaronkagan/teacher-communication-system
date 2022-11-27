@@ -47,7 +47,6 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
   return (
     <>
       <StyledDialog open={isOpen}>
-        {console.log(formData)}
         <Form onSubmit={handleSubmitChanges}>
           <h2>Edit User Details</h2>
           <Label htmlFor="firstName">First Name</Label>

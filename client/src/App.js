@@ -5,17 +5,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 // import MultiColumnBoard from "./components/MultiColumnBoard";
 // import StudentBoard from "./components/StudentBoard";
-import { useContext } from "react";
-import { UserContext } from "./contexts/UserContext";
+
 import NotAuthorized from "./pages/NotAuthorized";
 import Home from "./pages/Home";
 import UserAccounts from "./pages/UserAccounts";
 import getUserRole from "./functions/getUserRole";
 
 const App = () => {
-  // const { userState } = useContext(UserContext);
-  console.log(useContext(UserContext));
-
   return (
     <Router>
       <Nav />
