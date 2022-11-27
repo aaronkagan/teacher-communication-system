@@ -1,3 +1,3 @@
 # read-me
 
-[Instalation instructions](Instalation.md)
+[Installation instructions](Installation.md)
