@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const port = 8000;
 
 const { modifyTaskBoard, getWeeklyTasks } = require("./handlers/taskBoardHandlers");
+const { login } = require("./handlers/loginHandlers");
 
 express()
   // This line will allow our server to auto-parse the body, which arrives as as a JSON string, to an object that we can use. (The same as JSON.parse())
@@ -30,6 +31,9 @@ express()
   .get("/api/tasks", getWeeklyTasks)
   // Create, Update, Delete any of the board tasks
   .patch("/api/tasks", modifyTaskBoard)
+
+  //Login endpoints
+  .post("/api/login", login)
 
   //-------------------
 
