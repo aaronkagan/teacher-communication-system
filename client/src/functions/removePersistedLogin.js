@@ -1,5 +1,5 @@
 const removePersistedLogin = () => {
-  window.localStorage.setItem("isLoggedIn", false);
+  window.localStorage.removeItem("isLoggedIn");
   window.localStorage.removeItem("role");
   window.localStorage.removeItem("userId");
 };

@@ -3,14 +3,9 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import isUserLoggedIn from "../functions/isUserLoggedIn";
-import removePersistedLogin from "../functions/removePersistedLogin";
+import handleLogout from "../functions/handleLogout";
 const Nav = () => {
   const { userState, setUserState } = useContext(UserContext);
-
-  const handleLogout = () => {
-    setUserState({});
-    removePersistedLogin();
-  };
 
   return (
     <Navbar>
@@ -19,7 +14,7 @@ const Nav = () => {
       {userState.role === "admin" || userState.role === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
       <StyledLink to="/users">Users</StyledLink>
       {isUserLoggedIn() ? (
-        <StyledLink to="/login" onClick={handleLogout}>
+        <StyledLink to="/login" onClick={() => handleLogout(setUserState)}>
           Logout
         </StyledLink>
       ) : (
