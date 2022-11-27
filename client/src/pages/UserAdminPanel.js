@@ -4,7 +4,7 @@ import styled from "styled-components";
 import UserDetailsRow from "../components/UserDetailsRow";
 import AddUser from "../modals/AddUser";
 
-const UserAccounts = () => {
+const UserAdminPanel = () => {
   const [userAccounts, setUserAccounts] = useState();
   const [forceRefresh, setForceRefresh] = useState(true);
 
@@ -72,4 +72,4 @@ const Th = styled.th`
   padding: 10px;
 `;
 
-export default UserAccounts;
+export default UserAdminPanel;

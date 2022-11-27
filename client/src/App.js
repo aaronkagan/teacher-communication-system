@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
+
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import TeacherBoard from "./pages/TeacherBoard";
 import StudentBoard from "./pages/StudentBoard";
 import NotAuthorized from "./pages/NotAuthorized";
-import UserAccounts from "./pages/UserAccounts";
+import UserAdminPanel from "./pages/UserAdminPanel";
 import Login from "./pages/Login";
-
 import getUserRole from "./functions/getUserRole";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
           <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
-          <Route path="/users" element={getUserRole() === "admin" ? <UserAccounts /> : <NotAuthorized />} />
+          <Route path="/users" element={getUserRole() === "admin" ? <UserAdminPanel /> : <NotAuthorized />} />
         </Routes>
       </Wrapper>
     </Router>
