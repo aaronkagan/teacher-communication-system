@@ -40,6 +40,7 @@ express()
   // User endpoints
   // Get all users
   .get("/api/users", getUsers)
+
   // Get user based on userId
   .get("/api/user/:userId", getUser)
   // Add a new user

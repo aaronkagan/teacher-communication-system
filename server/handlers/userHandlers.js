@@ -10,7 +10,7 @@ const options = {
 };
 
 // Get all users
-const getUsers = async (res, req) => {
+const getUsers = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
 
   try {
