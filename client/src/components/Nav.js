@@ -10,7 +10,7 @@ const Nav = () => {
 
   return (
     <Navbar>
-      <StyledLink to="/">Home</StyledLink>
+      <StyledLink to={isUserLoggedIn() ? "/dashboard" : "/"}>Home</StyledLink>
       {getUserRole() === "admin" || getUserRole() === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
       {getUserRole() === "admin" || getUserRole() === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
       {getUserRole() === "admin" && <StyledLink to="/users">Users</StyledLink>}

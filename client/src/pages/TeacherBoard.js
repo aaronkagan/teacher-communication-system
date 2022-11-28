@@ -135,7 +135,7 @@ const TeacherBoard = () => {
               // To get the task objects I'm iterating over the taskIds array for this column and returning the task objects with that id to get all the task object for the column
               const columnTasks = boardState.columns[columnName].taskIds.map((taskId) => boardState.tasks[taskId]);
               // Rendering the columns
-              return <TeacherBoardColumn key={columnName} columnName={columnName} columnTasks={columnTasks} />;
+              return <TeacherBoardColumn key={columnName} column={boardState.column[columnName]} columnTasks={columnTasks} />;
             })}
         </Container>
       </DragDropContext>
