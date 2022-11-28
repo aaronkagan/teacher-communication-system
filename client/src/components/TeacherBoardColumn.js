@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import capitalize from "../functions/capitalize";
 import TeacherBoardTask from "./TeacherBoardTask";
+import AddTaskModal from "../modals/AddTaskModal";
+import { useState } from "react";
 
 const TeacherBoardColumn = ({ columnName, columnTasks }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Wrapper>
-      <h3>{capitalize(columnName)}</h3>
+      <h4>{capitalize(columnName)}</h4>
       {/* Most of this below is the boilerplate from the react-beautiful-dnd documentation except for the mapping of the individual tasks */}
       <DroppableContainer>
         <Droppable droppableId={columnName}>
@@ -20,13 +24,15 @@ const TeacherBoardColumn = ({ columnName, columnTasks }) => {
           )}
         </Droppable>
       </DroppableContainer>
-      <AddNoteButton>Add Note +</AddNoteButton>
+      <AddNoteButton onClick={() => setIsModalOpen(true)}>Add Task +</AddNoteButton>
+      <AddTaskModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   width: 10vw;
+  text-align: center;
 `;
 
 const DroppableContainer = styled.div`
