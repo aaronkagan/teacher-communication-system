@@ -75,6 +75,7 @@ const TeacherBoard = () => {
         }
       };
       setBoardState(newBoardState);
+
       return;
     }
 
@@ -101,6 +102,22 @@ const TeacherBoard = () => {
       }
     };
     setBoardState(newBoardState);
+
+    // Updating the DB every time a task is moved
+    fetch("/api/tasks", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ ...newBoardState })
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        if (data.status === 400 || data.status === 500) {
+          window.alert(data.error);
+          window.location.reload();
+        }
+      });
   };
 
   return (

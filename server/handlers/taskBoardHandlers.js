@@ -17,9 +17,15 @@ const modifyTaskBoard = async (req, res) => {
     console.log("connected");
     const db = client.db("TaskBoard");
     const result = await db.collection("weeks").updateOne({ weekId: "1" }, { $set: req.body });
-    res.json({ message: "Server has received the message", data: result });
+
+    if (result.modifiedCount > 0) {
+      return res.status(200).json({ status: 200, message: "The board has been updated" });
+    } else {
+      return res.status(400).json({ status: 400, error: "An unknown error has occurred" });
+    }
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ status: 500, error: err });
   } finally {
     await client.close();
     console.log("disconnected");
