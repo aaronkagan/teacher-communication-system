@@ -20,6 +20,7 @@ const TeacherBoardColumn = ({ columnName, columnTasks }) => {
           )}
         </Droppable>
       </DroppableContainer>
+      <AddNoteButton>Add Note +</AddNoteButton>
     </Wrapper>
   );
 };
@@ -30,7 +31,7 @@ const Wrapper = styled.div`
 
 const DroppableContainer = styled.div`
   background: lightgray;
-  min-height: 70vh;
+  min-height: 50vh;
   height: 100%;
   margin-bottom: 20px;
 `;
@@ -38,6 +39,21 @@ const DroppableContainer = styled.div`
 const TaskList = styled.div`
   background-color: ${(props) => (props.isDraggingOver ? " skyblue" : "transparent")};
   height: 100%;
+`;
+
+const AddNoteButton = styled.button`
+  background: lightblue;
+  color: white;
+  border: 0;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 `;
 
 export default TeacherBoardColumn;
