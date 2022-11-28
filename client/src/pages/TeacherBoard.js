@@ -122,7 +122,7 @@ const TeacherBoard = () => {
 
   return (
     <Wrapper>
-      {/* {console.log(boardState)} */}
+      {console.log(boardState)}
       <h1>Welcome {userState.firstName}</h1>
       {/* <DragDropContext onDragEnd={onDragEnd}> */}
       <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
@@ -130,12 +130,8 @@ const TeacherBoard = () => {
           {/* Creating the columns */}
           {boardState &&
             boardState.columnOrder.map((columnName) => {
-              // Getting an array of task objects that are associated to the taskIds array for each column (ie getting an array of task objects for that column). These task object will be passed down to the column component to render the tasks for the columns.
-
-              // To get the task objects I'm iterating over the taskIds array for this column and returning the task objects with that id to get all the task object for the column
-              const columnTasks = boardState.columns[columnName].taskIds.map((taskId) => boardState.tasks[taskId]);
               // Rendering the columns
-              return <TeacherBoardColumn key={columnName} column={boardState.column[columnName]} columnTasks={columnTasks} />;
+              return <TeacherBoardColumn key={columnName} columnName={columnName} boardState={boardState} setBoardState={setBoardState} />;
             })}
         </Container>
       </DragDropContext>
