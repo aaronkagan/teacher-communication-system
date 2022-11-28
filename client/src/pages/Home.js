@@ -13,20 +13,11 @@ const Home = () => {
   // }, []);
 
   return (
-    <>
-      {userState.role ? (
-        <Wrapper>
-          <h1>Welcome {userState.firstName}</h1>
-          <h3>Role: {userState.role}</h3>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <h1>Welcome to ReadMe</h1>
-          <h3>Please login to access your profile</h3>
-          <h4>For support please contact support@test.com</h4>
-        </Wrapper>
-      )}
-    </>
+    <Wrapper>
+      <h1>Welcome to ReadMe</h1>
+      <h3>Please login to access your profile</h3>
+      <h4>For support please contact support@test.com</h4>
+    </Wrapper>
   );
 };
 

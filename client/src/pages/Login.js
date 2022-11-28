@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import persistUserLogin from "../functions/persistUserLogin";
+import getUserRole from "../functions/getUserRole";
 
 const COLOR_PRIMARY = "#727272";
 const COLOR_SECONDARY = "lightblue";
@@ -34,18 +35,18 @@ const Login = () => {
 
   // For now everyone goes to homepage
   // might use the commented our version above if i need it for a feature
-  const navigateTo = (role) => {
-    switch (role) {
-      case "teacher":
-        return "/";
-      case "student":
-        return "/";
-      case "admin":
-        return "/";
-      default:
-        break;
-    }
-  };
+  // const navigateTo = (role) => {
+  //   switch (role) {
+  //     case "teacher":
+  //       return "/";
+  //     case "student":
+  //       return "/";
+  //     case "admin":
+  //       return "/";
+  //     default:
+  //       break;
+  //   }
+  // };
 
   const handleChange = (event) => {
     setLoginFormData({ ...loginFormData, [event.target.id]: event.target.value });
@@ -78,7 +79,7 @@ const Login = () => {
             elem.removeAttribute("disabled");
           });
           alert(data.message);
-          navigate(navigateTo(data.data.role));
+          navigate("/dashboard");
         } else {
           alert(data.error);
           formElements.forEach((elem) => {

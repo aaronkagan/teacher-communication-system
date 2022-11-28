@@ -9,6 +9,7 @@ import NotAuthorized from "./pages/NotAuthorized";
 import UserAdminPanel from "./pages/UserAdminPanel";
 import Login from "./pages/Login";
 import getUserRole from "./functions/getUserRole";
+import DashBoard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Wrapper>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
           <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
