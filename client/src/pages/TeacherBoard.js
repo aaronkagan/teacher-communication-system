@@ -130,6 +130,7 @@ const Wrapper = styled.div``;
 
 const Container = styled.div`
   display: flex;
+  gap: 2px;
 `;
 
 export default TeacherBoard;
