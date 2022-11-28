@@ -1,10 +1,17 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../contexts/UserContext";
-// import { useNavigate } from "react-router-dom";
+
+import isUserLoggedIn from "../functions/isUserLoggedIn";
 
 const Home = () => {
   const { userState } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isUserLoggedIn()) navigate("/dashboard");
+  }, []);
 
   // Might use later
   // const navigate = useNavigate();
