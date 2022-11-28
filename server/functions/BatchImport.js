@@ -17,44 +17,44 @@ const initialData = {
     // "task-5": { id: "task-5", content: "Do homework" }
   },
   columns: {
-    "column-1": {
-      id: "column-1",
+    sunday: {
+      id: "sunday",
       title: "Sunday",
       // taskIds: ["task-1", "task-2", "task-3", "task-4", "task-5"]
       taskIds: []
     },
-    "column-2": {
-      id: "column-2",
+    monday: {
+      id: "monday",
       title: "Monday",
       taskIds: []
     },
-    "column-3": {
-      id: "column-3",
+    tuesday: {
+      id: "tuesday",
       title: "Tuesday",
       taskIds: []
     },
-    "column-4": {
-      id: "column-4",
+    wednesday: {
+      id: "wednesday",
       title: "Wednesday",
       taskIds: []
     },
-    "column-5": {
-      id: "column-5",
+    thursday: {
+      id: "thursday",
       title: "Thursday",
       taskIds: []
     },
-    "column-6": {
-      id: "column-6",
+    friday: {
+      id: "friday",
       title: "Friday",
       taskIds: []
     },
-    "column-7": {
-      id: "column-7",
+    saturday: {
+      id: "saturday",
       title: "Saturday",
       taskIds: []
     }
   },
-  columnOrder: ["column-1", "column-2", "column-3", "column-4", "column-5", "column-6", "column-7"]
+  columnOrder: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 };
 
 const addInitialDataToMongo = async () => {
