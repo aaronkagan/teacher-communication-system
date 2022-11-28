@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import UserDetailsRow from "../components/UserDetailsRow";
 import AddUser from "../modals/AddUser";
@@ -46,7 +46,7 @@ const UserAdminPanel = () => {
   );
 };
 
-const Row = styled.div``;
+// const Row = styled.div``;
 
 const Wrapper = styled.div`
   display: flex;
