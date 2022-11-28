@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import capitalize from "../functions/capitalize";
-import TeacherBoardTask from "./TeacherBoardTasks";
+import TeacherBoardTask from "./TeacherBoardTask";
 
 const TeacherBoardColumn = ({ columnName, columnTasks }) => {
   return (
