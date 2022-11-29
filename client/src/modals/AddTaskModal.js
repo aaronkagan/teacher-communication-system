@@ -22,9 +22,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const uniqueTaskId = uuidv4();
-    const uniqueTaskId = "task-6";
-
+    const uniqueTaskId = uuidv4();
     const todaysDate = moment().format("ll");
 
     // Enriching the form data
