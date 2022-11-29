@@ -11,7 +11,7 @@ const TeacherBoardTask = ({ task, index }) => {
       {(provided, snapshot) => (
         <Container {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           <TaskCard {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
-            <p>{task.message}</p>
+            <p>{task.title}</p>
           </TaskCard>
           <TeacherBoardTaskModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} task={task} />
         </Container>
