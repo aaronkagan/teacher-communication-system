@@ -10,7 +10,10 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
   const [comment, setComment] = useState("");
   const userFullName = useUserFullName();
 
-  const handleAddComment = () => {
+  const handleAddComment = (event) => {
+    event.preventDefault();
+    if (comment === "") return;
+
     // Adding the comment to the comments array for this task in the boardState
     task.comments.push({ comment: comment, createdByID: getUserId(), createdBy: userFullName });
     // Pushing the new boardState with the comment to the server
@@ -34,8 +37,8 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
         // Reloading window on failed PATCH to fetch the latest data
         window.location.reload();
       });
-    setIsModalOpen(false);
-    window.alert("Comment successfully added");
+
+    setComment("");
   };
 
   return (
@@ -60,11 +63,19 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
               </CommentContainer>
             );
           })}
-          <input type="text" placeholder="What's on your mind?" onChange={(event) => setComment(event.target.value)} />
         </CommentsContainer>
-
-        <button onClick={handleAddComment}>Add Comment</button>
-        <button type="button" onClick={() => setIsModalOpen(false)}>
+        <form onSubmit={handleAddComment}>
+          <input type="text" placeholder="What's on your mind?" value={comment} onChange={(event) => setComment(event.target.value)} />
+          <button type="submit">Add Comment</button>
+        </form>
+        <button
+          type="button"
+          onClick={(event) => {
+            // This is needed because both the modal and the task card that opens the modal have opposite setting of the modal's open state
+            event.stopPropagation();
+            setIsModalOpen(false);
+          }}
+        >
           Close
         </button>
       </Wrapper>

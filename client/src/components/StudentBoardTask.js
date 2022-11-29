@@ -7,8 +7,9 @@ const StudentBoardTask = ({ task, boardState, setBoardState }) => {
   return (
     <>
       {task && (
-        <div>
-          <h3 onClick={() => setIsModalOpen(true)}>{task.title}</h3>
+        <div onClick={() => setIsModalOpen(true)}>
+          <h3>{task.title}</h3>
+          {task.comments.length > 0 && <span>Comments...</span>}
           <StudentBoardTaskModal task={task} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} />
         </div>
       )}

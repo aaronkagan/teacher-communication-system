@@ -1,5 +1,6 @@
 import { Dialog } from "@mui/material";
 import styled from "styled-components";
+const { v4: uuidv4 } = require("uuid");
 
 const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task }) => {
   return (
@@ -13,7 +14,7 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task }) => {
           {task.comments.map((comment) => {
             console.log(comment);
             return (
-              <CommentContainer>
+              <CommentContainer key={uuidv4()}>
                 <h3>{comment.createdBy}</h3>
                 <p>{comment.comment}</p>
               </CommentContainer>
