@@ -41,21 +41,29 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
-        {console.log(comment)}
-        {console.log(boardState)}
-        <h3>{task.title}</h3>
-        <p>{task.message}</p>
-        <h5>{task.dueDate}</h5>
-        <span>Comments:</span>
-        {task.comments.map((comment) => {
-          return (
-            <span key={uuidv4()}>
-              Comment: {comment.comment} CreatedBy: {comment.createdBy}
-            </span>
-          );
-        })}
-        <input type="text" placeholder="Add Comment" onChange={(event) => setComment(event.target.value)} />
-        <button onClick={handleAddComment}>Submit</button>
+        <TaskContent>
+          {console.log(comment)}
+          {console.log(boardState)}
+          <Title>{task.title}</Title>
+          <Message>{task.message}</Message>
+          <DueDate>Due: {task.dueDate}</DueDate>
+        </TaskContent>
+
+        <CommentsContainer>
+          <span>Comments</span>
+          {task.comments.map((comment) => {
+            // TODO CREATE COMPONENT FOR THE TASK COMMENTS
+            return (
+              <CommentContainer key={uuidv4()}>
+                <span>{comment.createdBy}</span>
+                <p>{comment.comment}</p>
+              </CommentContainer>
+            );
+          })}
+          <input type="text" placeholder="What's on your mind?" onChange={(event) => setComment(event.target.value)} />
+        </CommentsContainer>
+
+        <button onClick={handleAddComment}>Add Comment</button>
         <button type="button" onClick={() => setIsModalOpen(false)}>
           Close
         </button>
@@ -66,5 +74,33 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
 
 const Wrapper = styled.div`
   padding: 20px;
+`;
+
+const TaskContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;
+
+const Title = styled.h3``;
+
+const Message = styled.p``;
+
+const DueDate = styled.p``;
+
+const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CommentContainer = styled.div`
+  border: 1px solid lightgray;
+  span {
+    color: lightblue;
+  }
+  p {
+    font-size: 20px;
+    font-weight: bold;
+  }
 `;
 export default StudentBoardTaskModal;
