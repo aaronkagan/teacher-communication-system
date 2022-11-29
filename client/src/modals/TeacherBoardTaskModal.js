@@ -49,7 +49,6 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
         <CommentsContainer>
           {/* TODO : create separate comment component to render here instead on rendering inline */}
           {task.comments.map((comment) => {
-            console.log(comment);
             return (
               <CommentContainer key={uuidv4()}>
                 <h3>{comment.createdBy}</h3>

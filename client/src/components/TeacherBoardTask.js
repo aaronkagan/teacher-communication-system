@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import TeacherBoardTaskModal from "../modals/TeacherBoardTaskModal";
+import ConfirmTaskDeleteModal from "../modals/ConfirmTaskDeleteModal";
 import { useState } from "react";
 import { spacing } from "@mui/system";
+import { Dialog } from "@mui/material";
 
-const TeacherBoardTask = ({ task, index, boardState }) => {
+const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTaskDeleteModalOpen, setIsTaskDeleteModalOpen] = useState(false);
 
   return (
     <Draggable draggableId={task.id} index={index}>
@@ -15,6 +18,16 @@ const TeacherBoardTask = ({ task, index, boardState }) => {
             <p>{task.title}</p>
             {task.comments.length > 0 && <span>Comments...</span>}
           </TaskCard>
+
+          <p onClick={() => setIsTaskDeleteModalOpen(true)}>Delete</p>
+          <ConfirmTaskDeleteModal
+            isTaskDeleteModalOpen={isTaskDeleteModalOpen}
+            setIsTaskDeleteModalOpen={setIsTaskDeleteModalOpen}
+            boardState={boardState}
+            task={task}
+            forceRefreshTeacherBoard={forceRefreshTeacherBoard}
+            setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
+          />
           <TeacherBoardTaskModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} task={task} boardState={boardState} />
         </Container>
       )}

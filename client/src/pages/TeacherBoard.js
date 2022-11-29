@@ -12,12 +12,14 @@ const TeacherBoard = () => {
   // const [tasksState, setTasksState] = useState();
   const [boardState, setBoardState] = useState();
 
+  const [forceRefreshTeacherBoard, setForceRefreshTeacherBoard] = useState(false);
+
   useEffect(() => {
     fetch("/api/tasks")
       .then((res) => res.json())
       .then((data) => setBoardState(data.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [forceRefreshTeacherBoard]);
 
   // Defines what happens when you begin dragging
   const onDragStart = () => {
@@ -131,7 +133,16 @@ const TeacherBoard = () => {
           {boardState &&
             boardState.columnOrder.map((columnName) => {
               // Rendering the columns
-              return <TeacherBoardColumn key={columnName} columnName={columnName} boardState={boardState} setBoardState={setBoardState} />;
+              return (
+                <TeacherBoardColumn
+                  key={columnName}
+                  columnName={columnName}
+                  boardState={boardState}
+                  setBoardState={setBoardState}
+                  forceRefreshTeacherBoard={forceRefreshTeacherBoard}
+                  setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
+                />
+              );
             })}
         </Container>
       </DragDropContext>
