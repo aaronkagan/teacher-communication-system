@@ -50,7 +50,8 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           {console.log(boardState)}
           <Title>{task.title}</Title>
           <Message>{task.message}</Message>
-          <DueDate>Due: {task.dueDate}</DueDate>
+          {/* Showing only if due date was added to the task */}
+          {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
           {/* Showing name of attached file if exists */}
           {task.file.fileName && (
             <div>

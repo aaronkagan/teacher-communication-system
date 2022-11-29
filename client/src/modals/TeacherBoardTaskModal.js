@@ -45,7 +45,8 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
       <Wrapper>
         <h3>{task.title}</h3>
         <p>{task.message}</p>
-        <h5>Due: {task.dueDate}</h5>
+        {/* Showing only if due date was added to the task */}
+        {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
         {/* Showing name of attached file if exists */}
         {task.file.filename && <p>Attached File: {task.file.fileName}</p>}
         <CommentsContainer>
@@ -81,6 +82,8 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
 const Wrapper = styled.div`
   padding: 20px;
 `;
+
+const DueDate = styled.p``;
 
 const CommentsContainer = styled.div`
   box-shadow: 0 0 10px gray;
