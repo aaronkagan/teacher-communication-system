@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
   const [userState, setUserState] = useState({});
 
   useEffect(() => {
-    console.log("Current user state: ", userState);
+    // console.log("Current user state: ", userState);
   }, [userState]);
 
   useEffect(() => {

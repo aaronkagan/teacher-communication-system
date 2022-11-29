@@ -1,10 +1,17 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { UserContext } from "../contexts/UserContext";
-// import { useNavigate } from "react-router-dom";
+
+import isUserLoggedIn from "../functions/isUserLoggedIn";
 
 const Home = () => {
   const { userState } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isUserLoggedIn()) navigate("/dashboard");
+  }, []);
 
   // Might use later
   // const navigate = useNavigate();
@@ -13,20 +20,11 @@ const Home = () => {
   // }, []);
 
   return (
-    <>
-      {userState.role ? (
-        <Wrapper>
-          <h1>Welcome {userState.firstName}</h1>
-          <h3>Role: {userState.role}</h3>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <h1>Welcome to ReadMe</h1>
-          <h3>Please login to access your profile</h3>
-          <h4>For support please contact support@test.com</h4>
-        </Wrapper>
-      )}
-    </>
+    <Wrapper>
+      <h1>Welcome to ReadMe</h1>
+      <h3>Please login to access your profile</h3>
+      <h4>For support please contact support@test.com</h4>
+    </Wrapper>
   );
 };
 

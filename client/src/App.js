@@ -1,14 +1,15 @@
-import styled from "styled-components";
-import Login from "./pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Board from "./components/Board";
+import styled from "styled-components";
+
 import Nav from "./components/Nav";
-// import MultiColumnBoard from "./components/MultiColumnBoard";
+import Home from "./pages/Home";
+import TeacherBoard from "./pages/TeacherBoard";
 import StudentBoard from "./pages/StudentBoard";
 import NotAuthorized from "./pages/NotAuthorized";
-import Home from "./pages/Home";
-import UserAccounts from "./pages/UserAccounts";
+import UserAdminPanel from "./pages/UserAdminPanel";
+import Login from "./pages/Login";
 import getUserRole from "./functions/getUserRole";
+import DashBoard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -17,13 +18,11 @@ const App = () => {
       <Wrapper>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/board/teacher" element={userState.role === "teacher" || userState.role === "admin" ? <MultiColumnBoard /> : <NotAuthorized />} /> */}
-          {/* <Route path="/board/teacher" element={<MultiColumnBoard />} /> */}
-
+          <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
           <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
-          {/* <Route path="/board/student" element={<StudentBoard />} /> */}
-          <Route path="/users" element={getUserRole() === "admin" ? <UserAccounts /> : <NotAuthorized />} />
+          <Route path="/users" element={getUserRole() === "admin" ? <UserAdminPanel /> : <NotAuthorized />} />
         </Routes>
       </Wrapper>
     </Router>
