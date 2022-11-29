@@ -12,7 +12,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     message: "",
     dueDate: "",
     comments: [],
-    file: ""
+    file: { fileName: "", fileString: "" }
   };
 
   const [formData, setFormData] = useState({ ...emptyFormState });
@@ -30,6 +30,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     enrichedFormData.id = uniqueTaskId;
     enrichedFormData.created = todaysDate;
     enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
+    enrichedFormData.file.fileName = fileName;
+    enrichedFormData.file.fileString = fileString;
 
     // Adding a new task
     // 1. Add the enriched task to the task list
@@ -56,33 +58,35 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     setIsModalOpen(false);
   };
 
-  // // File upload
-  // // we will store the file added to the note in this boardState
-  // const [file, setFile] = useState(null);
+  // File upload
+  // we will store the file added to the note in this boardState
+  const [fileString, setFileString] = useState(null);
+  const [fileName, setFileName] = useState();
 
-  // const handleAddFile = (event) => {
-  //   event.preventDefault();
-  //   // console.log(event.target.files[0]);
-  //   // we will transform the file into a base64 string
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.onloadend = () => {
-  //     // console.log("RESULT", reader.result);
-  //     setFile(reader.result);
-  //   };
-  //   reader.readAsDataURL(file);
-  // };
+  const handleAddFile = (event) => {
+    event.preventDefault();
+    // console.log(event.target.files[0]);
+    // we will transform the file into a base64 string
+    const file = event.target.files[0];
+    setFileName(file.name);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // console.log("RESULT", reader.result);
+      setFileString(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Add New Task</h2>
-          <input type="text" id="title" placeholder="Title" onChange={handleChange} />
-          <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} />
+          <input type="text" id="title" placeholder="Title" onChange={handleChange} required />
+          <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} required />
           <label htmlFor="due">Due:</label>
           <input type="date" id="dueDate" placeholder="due" onChange={handleChange} />
-          {/* <input type="file" id="file" onChange={handleChange} /> */}
+          <input type="file" id="file" onChange={handleAddFile} />
           <ButtonsContainer>
             <SubmitButton type="submit">Submit</SubmitButton>
             <CancelButton type="button" onClick={() => setIsModalOpen(false)}>
