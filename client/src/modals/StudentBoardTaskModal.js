@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Dialog } from "@mui/material";
 import styled from "styled-components";
 import getUserId from "../functions/getUserId";
@@ -49,7 +50,19 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           {console.log(boardState)}
           <Title>{task.title}</Title>
           <Message>{task.message}</Message>
-          <DueDate>Due: {task.dueDate}</DueDate>
+          {/* Showing only if due date was added to the task */}
+          {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
+          {/* Showing name of attached file if exists */}
+          {task.file.fileName && (
+            <div>
+              <p>
+                Attached File:{" "}
+                <a href={task.file.fileString} download={task.file.fileName}>
+                  {task.file.fileName}
+                </a>
+              </p>
+            </div>
+          )}
         </TaskContent>
 
         <CommentsContainer>
