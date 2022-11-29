@@ -10,9 +10,9 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
   const emptyFormState = {
     title: "",
     message: "",
-    dueDate: ""
-    // comments: [],
-    // file: ""
+    dueDate: "",
+    comments: [],
+    file: ""
   };
 
   const [formData, setFormData] = useState({ ...emptyFormState });
@@ -52,6 +52,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
         }
       })
       .catch((err) => console.log(err));
+
+    setIsModalOpen(false);
   };
 
   // // File upload
