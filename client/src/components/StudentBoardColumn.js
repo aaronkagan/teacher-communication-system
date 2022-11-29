@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StudentBoardTask from "./StudentBoardTask";
 
 const StudentBoardColumn = ({ column, tasks }) => {
   return (
@@ -6,7 +7,7 @@ const StudentBoardColumn = ({ column, tasks }) => {
       <h3>{column.id}</h3>
       <ColumnWrapper>
         {column.taskIds.map((taskId) => {
-          return <h4 key={taskId}>{tasks[taskId].message}</h4>;
+          return <StudentBoardTask key={taskId} task={tasks[taskId]} />;
         })}
       </ColumnWrapper>
     </Wrapper>
