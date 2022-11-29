@@ -76,12 +76,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
-        {/* <Form onSubmit={handleAddNote}> */}
         <Form onSubmit={handleSubmit}>
-          {/* {console.log(formData)} */}
-          {/* {console.log(file)} */}
-          {/* {console.log(boardState)} */}
-          {/* {console.log(column)} */}
           <h2>Add New Task</h2>
           <input type="text" id="title" placeholder="Title" onChange={handleChange} />
           <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} />
