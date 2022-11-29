@@ -5,7 +5,6 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task }) => {
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
-        {console.log(task)}
         <h3>{task.title}</h3>
         <p>{task.message}</p>
         <h5>Due: {task.dueDate}</h5>
