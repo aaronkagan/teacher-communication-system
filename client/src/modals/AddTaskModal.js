@@ -12,7 +12,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     message: "",
     dueDate: "",
     comments: [],
-    file: ""
+    file: { fileName: "", fileString: "" }
   };
 
   const [formData, setFormData] = useState({ ...emptyFormState });
@@ -30,7 +30,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     enrichedFormData.id = uniqueTaskId;
     enrichedFormData.created = todaysDate;
     enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
-    enrichedFormData.file = file;
+    enrichedFormData.file.fileName = fileName;
+    enrichedFormData.file.fileString = fileString;
 
     // Adding a new task
     // 1. Add the enriched task to the task list
@@ -59,17 +60,19 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
 
   // File upload
   // we will store the file added to the note in this boardState
-  const [file, setFile] = useState(null);
+  const [fileString, setFileString] = useState(null);
+  const [fileName, setFileName] = useState();
 
   const handleAddFile = (event) => {
     event.preventDefault();
     // console.log(event.target.files[0]);
     // we will transform the file into a base64 string
     const file = event.target.files[0];
+    setFileName(file.name);
     const reader = new FileReader();
     reader.onloadend = () => {
       // console.log("RESULT", reader.result);
-      setFile(reader.result);
+      setFileString(reader.result);
     };
     reader.readAsDataURL(file);
   };
