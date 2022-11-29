@@ -12,7 +12,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     message: "",
     dueDate: "",
     comments: [],
-    file: { fileName: "", fileString: "" }
+    file: { fileName: null, fileString: null }
   };
 
   const [formData, setFormData] = useState({ ...emptyFormState });
@@ -30,8 +30,12 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     enrichedFormData.id = uniqueTaskId;
     enrichedFormData.created = todaysDate;
     if (formData.dueDate !== "") enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
-    enrichedFormData.file.fileName = fileName;
-    enrichedFormData.file.fileString = fileString;
+
+    // Adding the file object to the task only if there is a file uploaded
+    if (fileName && fileString) {
+      enrichedFormData.file.fileName = fileName;
+      enrichedFormData.file.fileString = fileString;
+    }
 
     // Adding a new task
     // 1. Add the enriched task to the task list
@@ -58,10 +62,9 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     setIsModalOpen(false);
   };
 
-  // File upload
-  // we will store the file added to the note in this boardState
+  // For file upload to the task
   const [fileString, setFileString] = useState(null);
-  const [fileName, setFileName] = useState();
+  const [fileName, setFileName] = useState(null);
 
   const handleAddFile = (event) => {
     event.preventDefault();

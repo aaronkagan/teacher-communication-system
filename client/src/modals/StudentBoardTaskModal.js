@@ -46,14 +46,13 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
     <Dialog open={isModalOpen}>
       <Wrapper>
         <TaskContent>
-          {console.log(comment)}
-          {console.log(boardState)}
+          {console.log(task)}
           <Title>{task.title}</Title>
           <Message>{task.message}</Message>
           {/* Showing only if due date was added to the task */}
           {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
           {/* Showing name of attached file if exists */}
-          {task.file.fileName && (
+          {task.file.fileName !== null ? (
             <div>
               <p>
                 Attached File:{" "}
@@ -62,7 +61,7 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
                 </a>
               </p>
             </div>
-          )}
+          ) : null}
         </TaskContent>
 
         <CommentsContainer>
