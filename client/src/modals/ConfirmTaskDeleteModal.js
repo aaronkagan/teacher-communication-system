@@ -1,8 +1,14 @@
 import { Dialog } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 
-const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpen, boardState, task }) => {
+const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpen, boardState, task, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   const handleDeleteTask = () => {
+    // Disabling the buttons while processing delete
+    setIsButtonDisabled(true);
+
     // 1. Delete the taskID from the current column's taskIds array
     Object.values(boardState.columns).forEach((column) => {
       if (column.taskIds.includes(task.id)) {
@@ -24,15 +30,17 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
       .then((data) => {
         if (data.status === 400 || data.status === 500) {
           alert("An unknown error has occurred");
+          setIsButtonDisabled(false);
           // Reloading the window in case of bad PATCH to get the latest data
           window.location.reload();
         } else {
           alert("Task has been deleted");
+          setIsTaskDeleteModalOpen(false);
+          setForceRefreshTeacherBoard(!forceRefreshTeacherBoard);
+          setIsButtonDisabled(false);
         }
-        // window.location.reload();
       })
       .catch((err) => console.log(err));
-    setIsTaskDeleteModalOpen(false);
   };
 
   return (
@@ -40,8 +48,12 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
       <Wrapper>
         <ButtonsContainer>
           <h3>Are you sure you want to delete?</h3>
-          <ConfirmButton onClick={handleDeleteTask}>Confirm</ConfirmButton>
-          <CancelButton onClick={() => setIsTaskDeleteModalOpen(false)}>Cancel</CancelButton>
+          <ConfirmButton disabled={isButtonDisabled} onClick={handleDeleteTask}>
+            {isButtonDisabled ? "Processing..." : "Confirm"}
+          </ConfirmButton>
+          <CancelButton disabled={isButtonDisabled} onClick={() => setIsTaskDeleteModalOpen(false)}>
+            Cancel
+          </CancelButton>
         </ButtonsContainer>
       </Wrapper>
     </Dialog>
@@ -55,8 +67,13 @@ const ButtonsContainer = styled.div`
   gap: 20px;
 `;
 
-const ConfirmButton = styled.button``;
+const ConfirmButton = styled.button`
+  background: white;
+  &:disabled {
+    background: lightgray;
+  }
+`;
 
-const CancelButton = styled.button``;
+const CancelButton = styled(ConfirmButton)``;
 
 export default ConfirmTaskDeleteModal;
