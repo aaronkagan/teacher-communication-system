@@ -16,7 +16,7 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
     if (comment === "") return;
 
     // Adding the comment to the comments array for this task in the boardState
-    task.comments.push({ comment: comment, createdByID: getUserId(), createdBy: userFullName });
+    task.comments.push({ comment: comment, createdByID: getUserId(), createdBy: userFullName, commentId: uuidv4() });
     // Pushing the new boardState with the comment to the server
     fetch("/api/tasks", {
       method: "PATCH",
