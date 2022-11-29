@@ -24,7 +24,7 @@ const StudentBoard = () => {
       <BoardContainer>
         {/* Creating the columns from the board state */}
         {Object.values(boardState.columns).map((column) => {
-          return <StudentBoardColumn key={column.id} column={column} tasks={boardState.tasks} />;
+          return <StudentBoardColumn key={column.id} column={column} tasks={boardState.tasks} boardState={boardState} setBoardState={setBoardState} />;
         })}
       </BoardContainer>
     </Wrapper>

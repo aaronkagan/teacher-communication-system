@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           setUserState(data.data);
-          // console.log(data.data);
+          console.log(data.data);
         });
   }, []);
 
