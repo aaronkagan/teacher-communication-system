@@ -29,7 +29,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     const enrichedFormData = { ...formData };
     enrichedFormData.id = uniqueTaskId;
     enrichedFormData.created = todaysDate;
-    enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
+    if (formData.dueDate !== "") enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
     enrichedFormData.file.fileName = fileName;
     enrichedFormData.file.fileString = fileString;
 
@@ -79,6 +79,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
 
   return (
     <Dialog open={isModalOpen}>
+      {console.log()}
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Add New Task</h2>
