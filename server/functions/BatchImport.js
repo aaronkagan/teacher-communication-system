@@ -10,11 +10,11 @@ const options = {
 const initialData = {
   weekId: "1",
   tasks: {
-    "task-1": { id: "task-1", title: "Title", dueDate: "Dec 5, 2022", content: "Take out the garbage" },
-    "task-2": { id: "task-2", title: "Title", dueDate: "Dec 5, 2022", content: "Buy food" },
-    "task-3": { id: "task-3", title: "Title", dueDate: "Dec 5, 2022", content: "Mow the lawn" },
-    "task-4": { id: "task-4", title: "Title", dueDate: "Dec 5, 2022", content: "Wash the car" },
-    "task-5": { id: "task-5", title: "Title", dueDate: "Dec 5, 2022", content: "Do homework" }
+    "task-1": { id: "task-1", title: "Title", dueDate: "Dec 5, 2022", message: "Take out the garbage" },
+    "task-2": { id: "task-2", title: "Title", dueDate: "Dec 5, 2022", message: "Buy food" },
+    "task-3": { id: "task-3", title: "Title", dueDate: "Dec 5, 2022", message: "Mow the lawn" },
+    "task-4": { id: "task-4", title: "Title", dueDate: "Dec 5, 2022", message: "Wash the car" },
+    "task-5": { id: "task-5", title: "Title", dueDate: "Dec 5, 2022", message: "Do homework" }
   },
   columns: {
     sunday: {

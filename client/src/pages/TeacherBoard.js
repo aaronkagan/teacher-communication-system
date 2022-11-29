@@ -122,7 +122,7 @@ const TeacherBoard = () => {
 
   return (
     <Wrapper>
-      {console.log(boardState)}
+      {/* {console.log(boardState)} */}
       <h1>Welcome {userState.firstName}</h1>
       {/* <DragDropContext onDragEnd={onDragEnd}> */}
       <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>

@@ -7,7 +7,7 @@ const TeacherBoardTask = ({ task, index }) => {
       {(provided, snapshot) => (
         <Container {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           <TaskCard {...provided.dragHandleProps}>
-            <p>{task.content}</p>
+            <p>{task.message}</p>
           </TaskCard>
         </Container>
       )}

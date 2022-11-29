@@ -12,6 +12,7 @@ const options = {
 // Add, remove, or update any of the task cards
 const modifyTaskBoard = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
+  console.log(req.body);
   try {
     await client.connect();
     console.log("connected");

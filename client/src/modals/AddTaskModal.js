@@ -1,19 +1,95 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Dialog } from "@mui/material";
+const moment = require("moment");
+const { v4: uuidv4 } = require("uuid");
 
-const AddTaskModal = ({ isModalOpen, setIsModalOpen }) => {
+// import addNewTaskToBoard from "../functions/addNewTaskToBoard";
+
+const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, column }) => {
+  const emptyFormState = {
+    title: "",
+    message: "",
+    dueDate: ""
+    // comments: [],
+    // file: ""
+  };
+
+  const [formData, setFormData] = useState({ ...emptyFormState });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // const uniqueTaskId = uuidv4();
+    const uniqueTaskId = "task-6";
+
+    const todaysDate = moment().format("ll");
+
+    // Enriching the form data
+    const enrichedFormData = { ...formData };
+    enrichedFormData.id = uniqueTaskId;
+    enrichedFormData.created = todaysDate;
+    enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
+
+    // Adding a new task
+    // 1. Add the enriched task to the task list
+    boardState.tasks[uniqueTaskId] = { ...enrichedFormData };
+    // 2. Add the task id to the tasks array for that day
+    boardState.columns[column.id].taskIds.push(uniqueTaskId);
+
+    fetch("/api/tasks", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(boardState)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 400) {
+          window.alert(data.error);
+          window.location.reload();
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // // File upload
+  // // we will store the file added to the note in this boardState
+  // const [file, setFile] = useState(null);
+
+  // const handleAddFile = (event) => {
+  //   event.preventDefault();
+  //   // console.log(event.target.files[0]);
+  //   // we will transform the file into a base64 string
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     // console.log("RESULT", reader.result);
+  //     setFile(reader.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
+
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
-        <Form>
+        {/* <Form onSubmit={handleAddNote}> */}
+        <Form onSubmit={handleSubmit}>
+          {/* {console.log(formData)} */}
+          {/* {console.log(file)} */}
+          {/* {console.log(boardState)} */}
+          {/* {console.log(column)} */}
           <h2>Add New Task</h2>
-          <input type="text" id="title" placeholder="Title" />
-          <textarea name="content" id="content" cols="30" rows="4" placeholder="Message" />
+          <input type="text" id="title" placeholder="Title" onChange={handleChange} />
+          <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} />
           <label htmlFor="due">Due:</label>
-          <input type="date" placeholder="due" />
-          <input type="file" />
+          <input type="date" id="dueDate" placeholder="due" onChange={handleChange} />
+          {/* <input type="file" id="file" onChange={handleChange} /> */}
           <ButtonsContainer>
-            <SubmitButton type="button">Submit</SubmitButton>
+            <SubmitButton type="submit">Submit</SubmitButton>
             <CancelButton type="button" onClick={() => setIsModalOpen(false)}>
               Cancel
             </CancelButton>
