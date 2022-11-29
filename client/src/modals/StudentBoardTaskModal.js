@@ -52,7 +52,7 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           <Message>{task.message}</Message>
           <DueDate>Due: {task.dueDate}</DueDate>
           {/* Showing name of attached file if exists */}
-          {task.file.filename !== "" && (
+          {task.file.fileName && (
             <div>
               <p>
                 Attached File:{" "}
