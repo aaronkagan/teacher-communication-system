@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog } from "@mui/material";
 import styled from "styled-components";
 import useUserFullName from "../hooks/useUserFullName";
@@ -7,15 +7,17 @@ import getUserId from "../functions/getUserId";
 const { v4: uuidv4 } = require("uuid");
 
 const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }) => {
+  // This is the comment state for the new comment being added
   const [comment, setComment] = useState("");
   const userFullName = useUserFullName();
+  const [forceRefreshTeacherTaskModal, setForceRefreshTeacherTaskModal] = useState(false);
 
   const handleAddComment = (event) => {
     event.preventDefault();
     if (comment === "") return;
 
     // Adding the comment to the comments array for this task in the boardState
-    task.comments.push({ comment: comment, createdByID: getUserId(), createdBy: userFullName });
+    task.comments.push({ comment: comment, createdByID: getUserId(), createdBy: userFullName, commentId: uuidv4() });
     // Pushing the new boardState with the comment to the server
     fetch("/api/tasks", {
       method: "PATCH",
@@ -40,6 +42,43 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
 
     setComment("");
   };
+
+  const handleDeleteComment = (comment) => {
+    // Removing comment from the comments array for this task
+    // console.log(boardState.tasks);
+    console.log(task.comments);
+    task.comments.forEach((elem) => {
+      if (elem.commentId === comment.commentId) {
+        task.comments.splice(task.comments.indexOf(comment), 1);
+      }
+    });
+
+    // Pushing the new boardState with the comment to the server
+    fetch("/api/tasks", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(boardState)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 400 || data.status === 500) {
+          window.alert(data.error);
+          // Reloading window on failed PATCH to fetch the latest data
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        // Reloading window on failed PATCH to fetch the latest data
+        window.location.reload();
+      });
+
+    // Use to refresh this component when a comment is deleted
+    setForceRefreshTeacherTaskModal(!forceRefreshTeacherTaskModal);
+  };
+
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
@@ -54,8 +93,10 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
           {task.comments.map((comment) => {
             return (
               <CommentContainer key={uuidv4()}>
+                {console.log(comment)}
                 <h3>{comment.createdBy}</h3>
                 <p>{comment.comment}</p>
+                <span onClick={() => handleDeleteComment(comment)}>Delete</span>
               </CommentContainer>
             );
           })}
