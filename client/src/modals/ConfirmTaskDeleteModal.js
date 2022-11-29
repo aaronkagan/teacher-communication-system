@@ -46,21 +46,27 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
   return (
     <Dialog open={isTaskDeleteModalOpen}>
       <Wrapper>
-        <ButtonsContainer>
-          <h3>Are you sure you want to delete?</h3>
-          <ConfirmButton disabled={isButtonDisabled} onClick={handleDeleteTask}>
-            {isButtonDisabled ? "Processing..." : "Confirm"}
-          </ConfirmButton>
-          <CancelButton disabled={isButtonDisabled} onClick={() => setIsTaskDeleteModalOpen(false)}>
-            Cancel
-          </CancelButton>
-        </ButtonsContainer>
+        {isButtonDisabled ? (
+          "Processing Deletion"
+        ) : (
+          <ButtonsContainer>
+            <h3>Are you sure you want to delete?</h3>
+            <ConfirmButton disabled={isButtonDisabled} onClick={handleDeleteTask}>
+              Confirm
+            </ConfirmButton>
+            <CancelButton disabled={isButtonDisabled} onClick={() => setIsTaskDeleteModalOpen(false)}>
+              Cancel
+            </CancelButton>
+          </ButtonsContainer>
+        )}
       </Wrapper>
     </Dialog>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding: 20px;
+`;
 
 const ButtonsContainer = styled.div`
   display: flex;
