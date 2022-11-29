@@ -23,9 +23,7 @@ const TeacherBoardColumn = ({ columnName, boardState, setBoardState }) => {
         <Droppable droppableId={columnName}>
           {(provided, snapshot) => (
             <TaskList ref={provided.innerRef} {...provided.droppableProps} isDraggingOver={snapshot.isDraggingOver}>
-              {columnTasks.map((task, index) => (
-                <TeacherBoardTask key={task.id} task={task} index={index} />
-              ))}
+              {columnTasks.length > 0 && columnTasks[0] !== undefined && columnTasks.map((task, index) => <TeacherBoardTask key={task.id} task={task} index={index} />)}
               {provided.placeholder}
             </TaskList>
           )}
