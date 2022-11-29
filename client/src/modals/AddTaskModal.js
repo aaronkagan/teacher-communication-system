@@ -82,10 +82,9 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
 
   return (
     <Dialog open={isModalOpen}>
-      {console.log()}
       <Wrapper>
         <Form onSubmit={handleSubmit}>
-          <h2>Add New Task</h2>
+          <h2>Add New Task For {column.title}</h2>
           <input type="text" id="title" placeholder="Title" onChange={handleChange} required />
           <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} required />
           <label htmlFor="due">Due:</label>
