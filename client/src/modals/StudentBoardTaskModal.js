@@ -55,7 +55,8 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           {task.file.fileName !== null ? (
             <div>
               <p>
-                Attached File:{" "}
+                Attached File:
+                {/* Link to download attached file */}
                 <a href={task.file.fileString} download={task.file.fileName}>
                   {task.file.fileName}
                 </a>

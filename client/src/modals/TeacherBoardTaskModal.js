@@ -87,7 +87,17 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
         {/* Showing only if due date was added to the task */}
         {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
         {/* Showing name of attached file if exists */}
-        {task.file.fileName !== null ? <p>Attached File: {task.file.fileName}</p> : null}
+        {task.file.fileName !== null ? (
+          <div>
+            <p>
+              Attached File:
+              {/* Link to download attached file */}
+              <a href={task.file.fileString} download={task.file.fileName}>
+                {task.file.fileName}
+              </a>
+            </p>
+          </div>
+        ) : null}
         <CommentsContainer>
           {/* TODO : create separate comment component to render here instead on rendering inline */}
           {task.comments.map((comment) => {
