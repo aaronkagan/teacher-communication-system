@@ -1,6 +1,7 @@
 // ANNOUNCEMENT HANDLERS
 
 // Setup for connecting to mongoDb
+const { read } = require("fs");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -44,6 +45,8 @@ const getUserAnnouncements = async (req, res) => {};
 const addAnnouncement = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const announcement = req.body;
+
+  if (req.body.createById === null) return res.status(400).json({ status: 400, error: "Please log in to be able to create an announcement" });
 
   try {
     await client.connect();
