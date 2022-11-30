@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
-
+import GlobalStyles from "./style/GlobalStyles";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import TeacherBoard from "./pages/TeacherBoard";
@@ -16,6 +16,7 @@ import AnnouncementReaderBoard from "./pages/AnnouncementReaderBoard";
 const App = () => {
   return (
     <Router>
+      <GlobalStyles />
       <Nav />
       <Wrapper>
         <Routes>
