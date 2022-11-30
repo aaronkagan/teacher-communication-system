@@ -46,6 +46,7 @@ const addAnnouncement = async (req, res) => {
   const client = new MongoClient(MONGO_URI, options);
   const announcement = req.body;
 
+  // This might be unnecessary once the page is protected but i like it ;-)
   if (req.body.createdById === null) return res.status(400).json({ status: 400, error: "Please log in to be able to create an announcement" });
 
   try {
