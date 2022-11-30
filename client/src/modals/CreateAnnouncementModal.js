@@ -40,7 +40,12 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("An unknown error has occurred");
+        // TODO replace with parent component refresh not not page reload
+        window.location.reload();
+      });
 
     setFormData(initialFormState);
     setIsModalOpen(false);
