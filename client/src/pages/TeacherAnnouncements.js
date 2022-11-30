@@ -35,7 +35,7 @@ const TeacherAnnouncements = () => {
       .then((data) => console.log(data))
       .catch((err) => {
         console.log(err);
-        alert("An unknown error has occured");
+        alert("An unknown error has occurred");
         window.location.reload(0);
       });
   };
