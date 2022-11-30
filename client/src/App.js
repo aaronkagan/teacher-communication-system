@@ -10,6 +10,8 @@ import UserAdminPanel from "./pages/UserAdminPanel";
 import Login from "./pages/Login";
 import getUserRole from "./functions/getUserRole";
 import DashBoard from "./pages/Dashboard";
+import TeacherAnnouncements from "./pages/TeacherAnnouncements";
+import AnnouncementReaderBoard from "./pages/AnnouncementReaderBoard";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
           <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
           <Route path="/users" element={getUserRole() === "admin" ? <UserAdminPanel /> : <NotAuthorized />} />
+          <Route path="/announcements/teacher" element={<TeacherAnnouncements />} />
+          <Route path="/announcements/reader" element={<AnnouncementReaderBoard />} />
         </Routes>
       </Wrapper>
     </Router>

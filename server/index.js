@@ -6,6 +6,7 @@ const port = 8000;
 const { modifyTaskBoard, getWeeklyTasks } = require("./handlers/taskBoardHandlers");
 const { login } = require("./handlers/loginHandlers");
 const { getUsers, getUser, addUser, editUser, deleteUser } = require("./handlers/userHandlers");
+const { getAnnouncements, getUserAnnouncements, addAnnouncement } = require("./handlers/announcementHandlers");
 
 express()
   // This line will allow our server to auto-parse the body, which arrives as as a JSON string, to an object that we can use. (The same as JSON.parse())
@@ -33,11 +34,11 @@ express()
   // Create, Update, Delete any of the board tasks
   .patch("/api/tasks", modifyTaskBoard)
 
-  //Login endpoints
+  // LOGIN ENDPOINTS
   // Login user based on username in body
   .post("/api/login", login)
 
-  // User endpoints
+  // USER ENDPOINTS
   // Get all users
   .get("/api/users", getUsers)
 
@@ -49,6 +50,15 @@ express()
   .patch("/api/user", editUser)
   // Delete a user
   .delete("/api/user/:userId", deleteUser)
+
+  // ANNOUNCEMENT ENDPOINTS
+  // Get all announcements
+  .get("/api/announcements", getAnnouncements)
+  // Get single user announcements
+  .get("/api/announcements/:userId", getUserAnnouncements)
+  // Create a new announcement
+  .post("/api/announcement", addAnnouncement)
+
   //-------------------
 
   // Must be below all the endpoints
