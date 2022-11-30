@@ -42,10 +42,13 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
       .then((data) => {
         if (data.status === 400) alert(data.error);
         else console.log(data);
+        // TODO replace with modifying the state local to the parent component
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
         alert("An unknown error has occurred");
+        // Used to get the latest state on failed POST
         // TODO replace with parent component refresh not not page reload
         window.location.reload();
       });
