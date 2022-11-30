@@ -9,12 +9,12 @@ const TeacherAnnouncements = () => {
   const [myAnnouncements, setMyAnnouncements] = useState();
   const userId = getUserId();
 
-  // useEffect(() => {
-  //   fetch(`api/announcements/${userId}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setMyAnnouncements(data.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    fetch(`/api/announcements/${userId}`)
+      .then((res) => res.json())
+      .then((data) => setMyAnnouncements(data.data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Wrapper>
       <h1>My Announcements</h1>
