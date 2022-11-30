@@ -94,7 +94,7 @@ const deleteAnnouncement = async (req, res) => {
     const db = client.db("TaskBoard");
     const result = await db.collection("announcements").deleteOne({ announcementId: announcementId });
 
-    return res.status(200).json({ status: 200, data: "Announcement has been deleted" });
+    return res.status(200).json({ status: 200, message: "Announcement has been deleted" });
   } catch (err) {
     return res.status(500).json({ status: 500, error: err });
   } finally {

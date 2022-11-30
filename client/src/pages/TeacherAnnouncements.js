@@ -16,12 +16,41 @@ const TeacherAnnouncements = () => {
       .then((data) => setMyAnnouncements(data.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDeleteAnnouncement = (announcementId) => {
+    setMyAnnouncements(
+      [...myAnnouncements].filter((announcement) => {
+        return announcement.announcementId !== announcementId;
+      })
+    );
+
+    fetch("/api/announcement", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ announcementId: announcementId })
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => {
+        console.log(err);
+        alert("An unknown error has occured");
+        window.location.reload(0);
+      });
+  };
   return (
     <Wrapper>
+      {console.log(myAnnouncements)}
       <h1>My Announcements</h1>
       {myAnnouncements
         ? myAnnouncements.map((announcement) => {
-            return <Announcement key={announcement.announcementId} announcement={announcement} />;
+            return (
+              <div key={announcement.announcementId}>
+                <Announcement announcement={announcement} />
+                <button onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</button>
+              </div>
+            );
           })
         : "Loading..."}
       <button onClick={() => setIsModalOpen(true)}>Create Announcement</button>
