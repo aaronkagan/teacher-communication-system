@@ -5,12 +5,12 @@ import Announcement from "../components/Announcement";
 const AnnouncementReaderBoard = () => {
   const [announcements, setAnnouncements] = useState();
 
-  // useEffect(() => {
-  //   fetch("/api/announcements")
-  //     .then((res) => res.json())
-  //     .then((data) => setAnnouncements(data.data))
-  //     .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    fetch("/api/announcements")
+      .then((res) => res.json())
+      .then((data) => setAnnouncements(data.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Wrapper>
@@ -24,3 +24,5 @@ const AnnouncementReaderBoard = () => {
 };
 
 const Wrapper = styled.div``;
+
+export default AnnouncementReaderBoard;

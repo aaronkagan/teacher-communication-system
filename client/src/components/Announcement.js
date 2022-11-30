@@ -1,14 +1,10 @@
-import { useContext } from "react";
-// import UserContext from "../contexts/UserContext";
-
 import styled from "styled-components";
-const Announcement = () => {
-  // const { userState } = useContext(UserContext);
-
+const Announcement = ({ announcement }) => {
   return (
     <Wrapper>
-      {/* {console.log(userState)} */}
-      <h3></h3>
+      {console.log(announcement)}
+      <h3>Teacher: {announcement.createdByName}</h3>
+      <p>{announcement.message}</p>
     </Wrapper>
   );
 };

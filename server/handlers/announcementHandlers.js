@@ -22,7 +22,7 @@ const getAnnouncements = async (req, res) => {
 
     const data = result.map((announcement) => {
       return {
-        announcementId: announcement.userId,
+        announcementId: announcement.announcementId,
         createdById: announcement.createdById,
         createdByName: announcement.createdByName,
         message: announcement.message
