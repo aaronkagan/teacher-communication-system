@@ -39,15 +39,34 @@ const getAnnouncements = async (req, res) => {
 };
 
 // Get announcements from specific user
-const getUserAnnouncements = async (req, res) => {};
+const getUserAnnouncements = async (req, res) => {
+  const userId = req.params.userId;
+
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("TaskBoard");
+    const result = await db.collection("announcements").find({ createdById: userId }).toArray();
+
+    return res.status(200).json({ status: 200, data: result });
+  } catch (err) {
+    return res.status(500).json({ status: 500, error: err });
+  } finally {
+    await client.close();
+    console.log("disconnected");
+  }
+};
 
 // Create a new announcement
 const addAnnouncement = async (req, res) => {
-  const client = new MongoClient(MONGO_URI, options);
   const announcement = req.body;
 
   // This might be unnecessary once the page is protected but i like it ;-)
   if (req.body.createdById === null) return res.status(400).json({ status: 400, error: "Please log in to be able to create an announcement" });
+
+  const client = new MongoClient(MONGO_URI, options);
 
   try {
     await client.connect();
