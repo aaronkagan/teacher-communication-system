@@ -83,4 +83,24 @@ const addAnnouncement = async (req, res) => {
   }
 };
 
-module.exports = { getAnnouncements, getUserAnnouncements, addAnnouncement };
+// Delete an announcement
+const deleteAnnouncement = async (req, res) => {
+  const announcementId = req.body.announcementId;
+  const client = new MongoClient(MONGO_URI, options);
+
+  try {
+    await client.connect();
+    console.log("connected");
+    const db = client.db("TaskBoard");
+    const result = await db.collection("announcements").deleteOne({ announcementId: announcementId });
+
+    return res.status(200).json({ status: 200, data: "Announcement has been deleted" });
+  } catch (err) {
+    return res.status(500).json({ status: 500, error: err });
+  } finally {
+    await client.close();
+    console.log("disconnected");
+  }
+};
+
+module.exports = { getAnnouncements, getUserAnnouncements, addAnnouncement, deleteAnnouncement };
