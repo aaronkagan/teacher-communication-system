@@ -15,10 +15,11 @@ const AnnouncementReaderBoard = () => {
   return (
     <Wrapper>
       <h1>Announcement Board</h1>
-      {announcements &&
-        announcements.map((announcement) => {
-          return <Announcement key={announcement.announcementId} announcement={announcement} />;
-        })}
+      {announcements
+        ? announcements.map((announcement) => {
+            return <Announcement key={announcement.announcementId} announcement={announcement} />;
+          })
+        : "Loading..."}
     </Wrapper>
   );
 };

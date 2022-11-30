@@ -5,7 +5,7 @@ import getUserId from "../functions/getUserId";
 import useUserFullName from "../hooks/useUserFullName";
 const { v4: uuidv4 } = require("uuid");
 
-const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
+const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements, setMyAnnouncements }) => {
   const initialFormState = {
     // title: "",
     message: ""
@@ -31,6 +31,14 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
       createdByName: userName
     };
 
+    // Setting the myAnnouncements array locally in the parent component in order to render the announcement without waiting for the POST to happen and the a refetch to occur. In the case that the patch fails, the actions in  .catch will cause the refetch of the announcements that exist in the DB
+    setMyAnnouncements([...myAnnouncements, enrichedFormData]);
+    // Resetting the form inputs
+    setFormData(initialFormState);
+    // Closing this modal
+    setIsModalOpen(false);
+
+    // Adding the announcement to the DB
     fetch("/api/announcement", {
       method: "POST",
       headers: {
@@ -42,8 +50,6 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
       .then((data) => {
         if (data.status === 400) alert(data.error);
         else console.log(data);
-        // TODO replace with modifying the state local to the parent component
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -52,9 +58,6 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen }) => {
         // TODO replace with parent component refresh not not page reload
         window.location.reload();
       });
-
-    setFormData(initialFormState);
-    setIsModalOpen(false);
   };
 
   return (

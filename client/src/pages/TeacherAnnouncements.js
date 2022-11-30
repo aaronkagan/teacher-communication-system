@@ -7,6 +7,7 @@ import getUserId from "../functions/getUserId";
 const TeacherAnnouncements = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [myAnnouncements, setMyAnnouncements] = useState();
+
   const userId = getUserId();
 
   useEffect(() => {
@@ -18,16 +19,19 @@ const TeacherAnnouncements = () => {
   return (
     <Wrapper>
       <h1>My Announcements</h1>
-      {myAnnouncements &&
-        myAnnouncements.map((announcement) => {
-          return <Announcement key={announcement.announcementId} announcement={announcement} />;
-        })}
+      {myAnnouncements
+        ? myAnnouncements.map((announcement) => {
+            return <Announcement key={announcement.announcementId} announcement={announcement} />;
+          })
+        : "Loading..."}
       <button onClick={() => setIsModalOpen(true)}>Create Announcement</button>
-      <CreateAnnouncementModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <CreateAnnouncementModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} myAnnouncements={myAnnouncements} setMyAnnouncements={setMyAnnouncements} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding-bottom: 50px;
+`;
 
 export default TeacherAnnouncements;
