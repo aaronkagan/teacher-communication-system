@@ -1,11 +1,11 @@
 import { Dialog } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
-import capitalize from "../functions/capitalize";
-
-const roles = ["admin", "teacher", "student", "reader"];
+import useRoles from "../hooks/useRoles";
 
 const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
+  const roles = useRoles();
+
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     userId: user.userId,
