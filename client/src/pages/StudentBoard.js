@@ -36,20 +36,22 @@ const StudentBoard = () => {
 };
 
 const Wrapper = styled.div`
-  background: url(${background});
+  background: url(${background}) no-repeat;
+  background-size: 100vw 100vh;
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 `;
 
 const H2 = styled.h2`
+  margin-top: 60px;
   margin-bottom: 20px;
   font-size: 50px;
   font-weight: bold;
   font-family: "Comic Sans MS";
-  margin-bottom: 0;
 `;
 
 const H3 = styled.h3`
