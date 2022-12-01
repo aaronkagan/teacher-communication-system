@@ -23,9 +23,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/board/teacher" element={getUserRole() === "teacher" || getUserRole() === "admin" ? <TeacherBoard /> : <NotAuthorized />} />
-        <Route path="/board/student" element={getUserRole() === "student" || getUserRole() === "admin" ? <StudentBoard /> : <NotAuthorized />} />
-        <Route path="/users" element={getUserRole() === "admin" ? <UserAdminPanel /> : <NotAuthorized />} />
+        <Route path="/board/teacher" element={<TeacherBoard />} />
+        <Route path="/board/student" element={<StudentBoard />} />
+        <Route path="/users" element={<UserAdminPanel />} />
         <Route path="/announcements/teacher" element={<TeacherAnnouncements />} />
         <Route path="/announcements/reader" element={<AnnouncementReaderBoard />} />
       </Routes>
