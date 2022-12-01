@@ -30,9 +30,10 @@ const Nav = () => {
 const Navbar = styled.nav`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 50px;
   padding-right: 40px;
-  padding-top: 20px;
+  height: 40px;
 `;
 
 const StyledLink = styled(Link)`

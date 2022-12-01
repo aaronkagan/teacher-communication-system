@@ -154,7 +154,7 @@ const Wrapper = styled.div``;
 
 const Container = styled.div`
   display: flex;
-  gap: 2px;
+  gap: 5px;
 `;
 
 export default TeacherBoard;

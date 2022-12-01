@@ -16,16 +16,19 @@ const StudentBoardColumn = ({ column, tasks, boardState, setBoardState }) => {
 };
 
 const Wrapper = styled.div`
-  width: 10vw;
+  width: 11vw;
   height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const ColumnTitle = styled.h2`
   text-align: center;
+  margin-bottom: 30px;
 `;
 
 const ColumnWrapper = styled.div`
-  background: #f0f5fd;
   height: 100%;
   border-radius: 5px;
 `;

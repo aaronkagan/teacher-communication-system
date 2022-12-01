@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import capitalize from "../functions/capitalize";
 import TeacherBoardTask from "./TeacherBoardTask";
-// import addNewTaskToBoard from "../functions/addNewTaskToBoard";
 
 const TeacherBoardColumn = ({ columnName, boardState, setBoardState, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
   // Getting an array of task objects that are associated to the taskIds array for each column (ie getting an array of task objects for that column). These task object will be passed down to the column component to render the tasks for the columns.
@@ -52,10 +51,11 @@ const Wrapper = styled.div`
 `;
 
 const DroppableContainer = styled.div`
-  background: lightgray;
+  background: #f0f5fd;
   min-height: 50vh;
   height: 100%;
   margin-bottom: 20px;
+  border-radius: 5px;
 `;
 
 const TaskList = styled.div`

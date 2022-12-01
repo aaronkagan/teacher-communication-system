@@ -3,8 +3,9 @@ import { Draggable } from "react-beautiful-dnd";
 import TeacherBoardTaskModal from "../modals/TeacherBoardTaskModal";
 import ConfirmTaskDeleteModal from "../modals/ConfirmTaskDeleteModal";
 import { useState } from "react";
-import { spacing } from "@mui/system";
-import { Dialog } from "@mui/material";
+import StickyNote from "./StickyNote";
+import getRandomStickyColor from "../functions/getRandomStickyColor";
+import getRandomStickyDirection from "../functions/getRandomStickyDirection";
 
 const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,12 +14,11 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
-        <Container {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
-          <TaskCard {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
+        <TaskCard {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
+          <div {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
             <p>{task.title}</p>
             {task.comments.length > 0 && <span>Comments...</span>}
-          </TaskCard>
-
+          </div>
           <p onClick={() => setIsTaskDeleteModalOpen(true)}>Delete</p>
           <ConfirmTaskDeleteModal
             isTaskDeleteModalOpen={isTaskDeleteModalOpen}
@@ -29,13 +29,11 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
             setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
           />
           <TeacherBoardTaskModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} task={task} boardState={boardState} />
-        </Container>
+        </TaskCard>
       )}
     </Draggable>
   );
 };
-
-const Container = styled.div``;
 
 const TaskCard = styled.div``;
 
