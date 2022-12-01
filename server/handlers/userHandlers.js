@@ -101,13 +101,16 @@ const editUser = async (req, res) => {
 
   const client = new MongoClient(MONGO_URI, options);
 
+  // If password is not updated
   const payload = {
     firstName: firstName,
     lastName: lastName,
     email: email,
-    password: generateHashedPassword(password),
     role: role
   };
+
+  // If password is updated
+  if (req.body.password) payload.password = generateHashedPassword(password);
 
   try {
     await client.connect();
