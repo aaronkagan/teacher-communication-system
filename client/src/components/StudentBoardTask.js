@@ -13,7 +13,7 @@ const StudentBoardTask = ({ task, boardState, setBoardState }) => {
           <StickyNote task={task} stickyColor={getRandomStickyColor()} stickyDirection={getRandomStickyDirection()} />
           {/* <h3>{task.title}</h3>
           {task.comments.length > 0 && <span>Comments...</span>} */}
-          <StudentBoardTaskModal task={task} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} />
+          <StudentBoardTaskModal stickyColor={getRandomStickyColor()} task={task} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} />
         </div>
       )}
     </>
