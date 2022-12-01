@@ -13,8 +13,8 @@ const Nav = () => {
       <StyledLink to={isUserLoggedIn() ? "/dashboard" : "/"}>Home</StyledLink>
       {getUserRole() === "admin" || getUserRole() === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
       {getUserRole() === "admin" || getUserRole() === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
-      <StyledLink to="/announcements/teacher">Submit Announcements</StyledLink>
-      <StyledLink to="/announcements/reader">Read Announcements</StyledLink>
+      {getUserRole() === "admin" || getUserRole() === "teacher" ? <StyledLink to="/announcements/teacher">Submit Announcements</StyledLink> : null}
+      {getUserRole() === "admin" || getUserRole() === "reader" ? <StyledLink to="/announcements/reader">Read Announcements</StyledLink> : null}
       {getUserRole() === "admin" && <StyledLink to="/users">Users</StyledLink>}
       {isUserLoggedIn() ? (
         <StyledLink to="/login" onClick={() => handleLogout(setUserState)}>
