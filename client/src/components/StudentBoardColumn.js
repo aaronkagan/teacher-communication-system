@@ -26,6 +26,10 @@ const Wrapper = styled.div`
 const ColumnTitle = styled.h2`
   text-align: center;
   margin-bottom: 30px;
+  background: #f5deb394;
+  line-height: 1;
+  padding: 2px;
+  border-radius: 2px;
 `;
 
 const ColumnWrapper = styled.div`
