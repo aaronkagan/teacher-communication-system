@@ -78,7 +78,8 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
             <option>Select a role</option>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
-            <option value="admin">Admin</option>
+            <option value="admin">Reader</option>
+            <option value="reader">Admin</option>
           </select>
           <ButtonsContainer>
             <SubmitButton type="submit" id="submit">

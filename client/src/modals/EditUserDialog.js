@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import capitalize from "../functions/capitalize";
 
-const roles = ["admin", "teacher", "student"];
+const roles = ["admin", "teacher", "student", "reader"];
 
 const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
   const [isOpen, setIsOpen] = useState(false);
