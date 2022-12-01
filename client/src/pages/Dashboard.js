@@ -14,6 +14,9 @@ const DashBoard = () => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  text-align: center;
+  margin-top: 20vh;
+`;
 
 export default DashBoard;
