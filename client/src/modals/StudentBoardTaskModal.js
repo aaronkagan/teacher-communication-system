@@ -100,8 +100,15 @@ const Wrapper = styled.div`
   padding: 20px;
   background-color: ${getRandomStickyColor()};
   max-width: 500px;
+  min-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
   * {
     font-family: "Comic Sans MS";
+  }
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: wheat;
   }
 `;
 
