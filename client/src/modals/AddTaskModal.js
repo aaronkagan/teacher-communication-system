@@ -120,7 +120,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  background: lightblue;
+  background: var(--success-color);
   border: 0;
   color: white;
   padding: 5px 10px;
@@ -133,7 +133,7 @@ const SubmitButton = styled.button`
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: lightpink;
+  background: var(--cancel-color);
 `;
 
 export default AddTaskModal;

@@ -3,7 +3,11 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
     :root {
       --primary-color: #5f5f5f;
+      --secondary-color: lightGray;
       --disabled-color: lightGray;
+      --success-color: lightGreen;
+      --cancel-color: lightPink;
+      --edit-color: #0000ffab;
       --page-horizontal-padding: 20px;
       --header-height: 50px;
       --max-content-width: 1200px;
@@ -17,10 +21,15 @@ export default createGlobalStyle`
     *::after {
       box-sizing: border-box;
     }
+
+    * {
+      font-family: sans-serif
+    }
+    
     
     html, body, div, span,
     h1, h2, h3, h4, h5, h6, p,  img, 
-     ol, ul, li, form, label, input, textArea,
+     ol, ul, li, form, label,
     footer, header,
     menu, nav,  section
      {
@@ -68,6 +77,7 @@ export default createGlobalStyle`
     
     button {
       border: 0;
+      border-radius: 2px;
       &:hover {
         cursor: pointer;
       }

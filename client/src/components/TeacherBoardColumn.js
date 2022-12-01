@@ -64,18 +64,12 @@ const TaskList = styled.div`
 `;
 
 const AddNoteButton = styled.button`
-  background: lightblue;
+  background: var(--edit-color);
   color: white;
   border: 0;
   padding: 5px;
   width: 100%;
   margin-bottom: 30px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 export default TeacherBoardColumn;

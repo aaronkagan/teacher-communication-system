@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Dialog } from "@mui/material";
 const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
-const COLOR_PRIMARY = "#727272";
 
 const initialFormData = {
   firstName: "",
@@ -117,7 +116,6 @@ const Form = styled.form`
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    color: ${COLOR_PRIMARY};
   }
   display: flex;
   flex-direction: column;
@@ -127,8 +125,6 @@ const Form = styled.form`
   input,
   select {
     width: 200px;
-  }
-  button {
   }
 `;
 
@@ -143,23 +139,14 @@ const SubmitButton = styled.button`
   width: 100px;
   margin-top: 8px;
   color: white;
-  background: blue;
+  background: var(--success-color);
   border: 0;
   padding: 3px 0;
   border-radius: 2px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-  &:disabled {
-    background: grey;
-  }
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: red;
+  background: var(--cancel-color);
 `;
 
 export default AddUser;

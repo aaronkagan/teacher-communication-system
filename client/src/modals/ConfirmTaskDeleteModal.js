@@ -74,12 +74,12 @@ const ButtonsContainer = styled.div`
 `;
 
 const ConfirmButton = styled.button`
-  background: white;
-  &:disabled {
-    background: lightgray;
-  }
+  background: var(--success-color);
+  color: white;
 `;
 
-const CancelButton = styled(ConfirmButton)``;
+const CancelButton = styled(ConfirmButton)`
+  background: var(--cancel-color);
+`;
 
 export default ConfirmTaskDeleteModal;

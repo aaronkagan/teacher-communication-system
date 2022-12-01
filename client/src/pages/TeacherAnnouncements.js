@@ -48,12 +48,12 @@ const TeacherAnnouncements = () => {
             return (
               <div key={announcement.announcementId}>
                 <Announcement announcement={announcement} />
-                <button onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</button>
+                <DeleteAnnouncementButton onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</DeleteAnnouncementButton>
               </div>
             );
           })
         : "Loading..."}
-      <button onClick={() => setIsModalOpen(true)}>Create Announcement</button>
+      <CreateAnnouncementButton onClick={() => setIsModalOpen(true)}>Create Announcement</CreateAnnouncementButton>
       <CreateAnnouncementModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} myAnnouncements={myAnnouncements} setMyAnnouncements={setMyAnnouncements} />
     </Wrapper>
   );
@@ -61,6 +61,15 @@ const TeacherAnnouncements = () => {
 
 const Wrapper = styled.div`
   padding-bottom: 50px;
+`;
+
+const CreateAnnouncementButton = styled.button`
+  background: var(--success-color);
+  color: white;
+`;
+
+const DeleteAnnouncementButton = styled(CreateAnnouncementButton)`
+  background: var(--cancel-color);
 `;
 
 export default TeacherAnnouncements;

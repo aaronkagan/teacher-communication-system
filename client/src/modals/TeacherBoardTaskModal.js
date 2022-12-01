@@ -113,9 +113,9 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
         </CommentsContainer>
         <form onSubmit={handleAddComment}>
           <input type="text" placeholder="What's on your mind?" value={comment} onChange={(event) => setComment(event.target.value)} />
-          <button type="submit">Add Comment</button>
+          <AddCommentButton type="submit">Add Comment</AddCommentButton>
         </form>
-        <button
+        <CloseButton
           type="button"
           onClick={(event) => {
             // This is needed because both the modal and the task card that opens the modal have opposite setting of the modal's open state
@@ -124,7 +124,7 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
           }}
         >
           Close
-        </button>
+        </CloseButton>
       </Wrapper>
     </Dialog>
   );
@@ -141,5 +141,14 @@ const CommentsContainer = styled.div`
 `;
 
 const CommentContainer = styled.div``;
+
+const AddCommentButton = styled.button`
+  background: var(--success-color);
+  color: white;
+`;
+
+const CloseButton = styled(AddCommentButton)`
+  background: var(--cancel-color);
+`;
 
 export default TeacherBoardTaskModal;

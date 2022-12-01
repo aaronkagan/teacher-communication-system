@@ -92,22 +92,14 @@ const Form = styled.form`
 
 const SubmitButton = styled.button`
   width: 100px;
-  background: lightgreen;
+  background: var(--success-color);
   border: 0;
   border-radius: 2px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-  &:disabled {
-    background: lightgray;
-  }
+  color: white;
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: lightpink;
+  background: var(--cancel-color);
 `;
 
 export default CreateAnnouncementModal;

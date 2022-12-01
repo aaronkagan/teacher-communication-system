@@ -49,7 +49,7 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
 };
 
 const DeleteUserButton = styled.button`
-  background: #ff0000ba;
+  background: var(--cancel-color);
   color: white;
   border: 0;
   border-radius: 2px;
@@ -58,15 +58,11 @@ const DeleteUserButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 const Wrapper = styled.div`
   padding: 20px;
   font-family: sans-serif;
-  background: #f3fff3b0;
 `;
 
 const DialogButtonsContainer = styled.div`
@@ -81,20 +77,14 @@ const ConfirmDeleteButton = styled.button`
   border: 0;
   border-radius: 2px;
   padding: 5px 10px;
-  background: #008000c2;
+  background: var(--success-color);
   &:hover {
     cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-  &:disabled {
-    background: lightgray;
   }
 `;
 
 const CancelButton = styled(ConfirmDeleteButton)`
-  background: #ff0000c0;
+  background: var(--cancel-color);
 `;
 
 export default DeleteUser;
