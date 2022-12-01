@@ -37,6 +37,7 @@ const Wrapper = styled.div``;
 
 const BoardContainer = styled.div`
   display: flex;
+  gap: 5px;
 `;
 
 export default StudentBoard;

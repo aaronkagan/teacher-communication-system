@@ -46,7 +46,6 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
     <Dialog open={isModalOpen}>
       <Wrapper>
         <TaskContent>
-          {console.log(task)}
           <Title>{task.title}</Title>
           <Message>{task.message}</Message>
           {/* Showing only if due date was added to the task */}
