@@ -21,6 +21,8 @@ const Nav = () => {
       ) : (
         <StyledLink to="/login">Login</StyledLink>
       )}
+      <StyledLink to="/announcements/teacher">Submit Announcements</StyledLink>
+      <StyledLink to="/announcements/reader">Read Announcements</StyledLink>
     </Navbar>
   );
 };
