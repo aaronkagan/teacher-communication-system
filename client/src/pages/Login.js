@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import persistUserLogin from "../functions/persistUserLogin";
 import getUserRole from "../functions/getUserRole";
 
-const COLOR_PRIMARY = "#727272";
-const COLOR_SECONDARY = "lightblue";
-
 const initialLoginFormData = { username: "", password: "" };
 
 const Login = () => {
@@ -92,7 +89,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <Wrapper>
       <Form id="form" onSubmit={handleSubmit} autoComplete="off">
         <FormTitle>Sign In</FormTitle>
         <label htmlFor="username">Username</label>
@@ -101,9 +98,15 @@ const Login = () => {
         <input type="password" id="password" value={loginFormData.password} onChange={handleChange} required />
         <SignInButton>Sign In</SignInButton>
       </Form>
-    </section>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+`;
 
 const Form = styled.form`
   * {
@@ -111,14 +114,14 @@ const Form = styled.form`
     padding: 0;
     font-size: 16px;
     font-family: sans-serif;
-    color: ${COLOR_PRIMARY};
+    color: var(--primary-color);
     letter-spacing: 1px;
   }
-  /* border: 1px solid ${COLOR_SECONDARY}; */
   display: flex;
   flex-direction: column;
   gap: 5px;
   border-radius: 2px;
+  width: 17vw;
 `;
 
 const FormTitle = styled.h2`
@@ -126,9 +129,10 @@ const FormTitle = styled.h2`
 `;
 
 const SignInButton = styled.button`
-  background: blue;
+  background: var(--edit-color);
   color: white;
   padding: 3px 0;
+  border: 1px solid var(--primary-color);
   margin-top: 20px;
   border-radius: 2px;
   &:hover {
@@ -138,7 +142,8 @@ const SignInButton = styled.button`
     transform: scale(0.95);
   }
   &:disabled {
-    background: grey;
+    background: var(--disabled-color);
+    border: 0;
   }
 `;
 

@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     :root {
-      --primary-color: #5f5f5f;
+      --primary-color: #727272;
       --secondary-color: lightGray;
       --disabled-color: lightGray;
       --success-color: lightGreen;
