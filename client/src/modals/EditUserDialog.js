@@ -83,7 +83,7 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
 const StyledDialog = styled(Dialog)`
   font-family: sans-serif;
   * {
-    padding: 0 35px;
+    padding: 10px 35px 0 35px;
   }
 `;
 
