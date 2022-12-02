@@ -54,10 +54,6 @@ const DeleteUserButton = styled.button`
   border: 0;
   border-radius: 2px;
   padding: 5px 10px;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const Wrapper = styled.div`
@@ -69,7 +65,7 @@ const DialogButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 10px;
+  margin: 20px 0 10px;
 `;
 
 const ConfirmDeleteButton = styled.button`
@@ -78,9 +74,6 @@ const ConfirmDeleteButton = styled.button`
   border-radius: 2px;
   padding: 5px 10px;
   background: var(--success-color);
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const CancelButton = styled(ConfirmDeleteButton)`
