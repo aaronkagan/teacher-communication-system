@@ -41,15 +41,14 @@ const TeacherAnnouncements = () => {
   };
   return (
     <Wrapper>
-      {console.log(myAnnouncements)}
-      <h1>My Announcements</h1>
+      <H1>My Announcements</H1>
       {myAnnouncements
         ? myAnnouncements.map((announcement) => {
             return (
-              <div key={announcement.announcementId}>
+              <Container key={announcement.announcementId}>
                 <Announcement announcement={announcement} />
                 <DeleteAnnouncementButton onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</DeleteAnnouncementButton>
-              </div>
+              </Container>
             );
           })
         : "Loading..."}
@@ -61,15 +60,33 @@ const TeacherAnnouncements = () => {
 
 const Wrapper = styled.div`
   padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5vh;
+`;
+
+const H1 = styled.h1`
+  margin-bottom: 20px;
+  font-size: 25px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 `;
 
 const CreateAnnouncementButton = styled.button`
   background: var(--success-color);
   color: white;
+  margin-top: 10px;
 `;
-
-const DeleteAnnouncementButton = styled(CreateAnnouncementButton)`
-  background: var(--cancel-color);
+const DeleteAnnouncementButton = styled.button`
+  background: 0;
+  color: blue;
+  margin-bottom: 20px;
 `;
 
 export default TeacherAnnouncements;
