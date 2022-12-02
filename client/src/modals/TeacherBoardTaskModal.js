@@ -82,8 +82,8 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
   return (
     <Dialog open={isModalOpen}>
       <Wrapper>
-        <h3>{task.title}</h3>
-        <p>{task.message}</p>
+        <Title>{task.title}</Title>
+        <Message>{task.message}</Message>
         {/* Showing only if due date was added to the task */}
         {task.dueDate !== "" && <DueDate>Due: {task.dueDate}</DueDate>}
         {/* Showing name of attached file if exists */}
@@ -100,13 +100,13 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
         ) : null}
         <CommentsContainer>
           {/* TODO : create separate comment component to render here instead on rendering inline */}
+          {task.comments.length > 0 && <p>Comments:</p>}
           {task.comments.map((comment) => {
             return (
               <CommentContainer key={uuidv4()}>
-                {console.log(comment)}
                 <h3>{comment.createdBy}</h3>
                 <p>{comment.comment}</p>
-                <span onClick={() => handleDeleteComment(comment)}>Delete</span>
+                <DeleteCommentButton onClick={() => handleDeleteComment(comment)}>Delete</DeleteCommentButton>
               </CommentContainer>
             );
           })}
@@ -132,23 +132,58 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
 
 const Wrapper = styled.div`
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fbe1e5;
+  gap: 20px;
 `;
 
-const DueDate = styled.p``;
+const Title = styled.h3`
+  font-size: 25px;
+`;
+
+const Message = styled.p`
+  font-size: 20px;
+`;
+
+const DueDate = styled.p`
+  font-weight: bold;
+`;
 
 const CommentsContainer = styled.div`
-  box-shadow: 0 0 10px gray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
-const CommentContainer = styled.div``;
+const CommentContainer = styled.div`
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 10px 30px 5px 15px;
+  background: #fff7ea;
+  width: 300px;
+`;
 
 const AddCommentButton = styled.button`
   background: var(--success-color);
   color: white;
+  margin-left: 10px;
+  height: 30px;
+`;
+
+const DeleteCommentButton = styled.button`
+  background: 0;
+  border: 0;
+  color: blue;
+  padding: 0;
+  margin-top: 5px;
+  font-size: 12px;
 `;
 
 const CloseButton = styled(AddCommentButton)`
   background: var(--cancel-color);
+  margin-left: 0;
 `;
 
 export default TeacherBoardTaskModal;
