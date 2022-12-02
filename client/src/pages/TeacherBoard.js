@@ -161,7 +161,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 0 0 3px var(--primary-color);
+  box-shadow: 0 0 4px var(--primary-color);
   border-radius: 10px;
   gap: 5px;
   margin-top: 3vh;
