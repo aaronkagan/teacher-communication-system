@@ -150,11 +150,23 @@ const TeacherBoard = () => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 3vh;
+`;
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-evenly;
+  box-shadow: 0 0 3px var(--primary-color);
+  border-radius: 10px;
   gap: 5px;
+  margin-top: 3vh;
+  padding: 20px;
+  width: 90vw;
 `;
 
 export default TeacherBoard;

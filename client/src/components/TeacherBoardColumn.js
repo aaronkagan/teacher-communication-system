@@ -51,7 +51,6 @@ const Wrapper = styled.div`
 `;
 
 const DroppableContainer = styled.div`
-  background: #f0f5fd;
   min-height: 50vh;
   height: 100%;
   margin-bottom: 20px;
