@@ -34,7 +34,7 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
           // Reloading the window in case of bad PATCH to get the latest data
           window.location.reload();
         } else {
-          alert("Task has been deleted");
+          // alert("Task has been deleted");
           setIsTaskDeleteModalOpen(false);
           setForceRefreshTeacherBoard(!forceRefreshTeacherBoard);
           setIsButtonDisabled(false);
