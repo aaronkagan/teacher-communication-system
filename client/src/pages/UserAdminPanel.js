@@ -46,12 +46,12 @@ const UserAdminPanel = () => {
   );
 };
 
-// const Row = styled.div``;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
+  align-items: center;
+  padding-top: 5vh;
 `;
 
 const Title = styled.h1``;
@@ -61,13 +61,12 @@ const Table = styled.table`
   padding: 10px;
   width: 80vw;
   text-align: justify;
+  margin-top: 30px;
 `;
 
 const Thead = styled.thead``;
 const Tbody = styled.tbody``;
-const Tr = styled.tr`
-  border-bottom: 1px solid lightgray;
-`;
+const Tr = styled.tr``;
 const Th = styled.th`
   padding: 10px;
 `;

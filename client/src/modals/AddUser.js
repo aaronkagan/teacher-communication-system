@@ -104,12 +104,6 @@ const AddUserButton = styled.button`
   border-radius: 2px;
   margin-top: 20px;
   font-weight: bold;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 const Form = styled.form`
