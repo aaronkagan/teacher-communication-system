@@ -16,7 +16,6 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
       {(provided, snapshot) => (
         <TaskCard {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           <div {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
-            <SideBar></SideBar>
             <ContentContainer>
               <Title>{task.title}</Title>
               <Message>{task.message}</Message>
@@ -44,25 +43,17 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
 
 const TaskCard = styled.div`
   box-shadow: 0 0 3px var(--primary-color);
-  /* border-radius: 5px; */
-  padding: 10px 0 20px 8px;
-  /* background: #f6e1ba; */
-  background: white;
+  border-radius: 5px;
+  color: black;
+  padding: 10px 0 20px 12px;
+  background: #fef2db;
   text-align: start;
-  -webkit-margin-top-collapse: 10px;
   margin-bottom: 15px;
   position: relative;
   &:hover {
     transform: scale(1.5);
     z-index: 1;
   }
-`;
-
-const SideBar = styled.div`
-  height: 20px;
-  width: 5px;
-  background: blue;
-  display: inline;
 `;
 
 const ContentContainer = styled.div``;

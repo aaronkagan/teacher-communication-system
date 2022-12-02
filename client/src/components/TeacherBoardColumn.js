@@ -51,9 +51,8 @@ const Wrapper = styled.div`
 `;
 
 const DroppableContainer = styled.div`
-  min-height: 50vh;
+  min-height: 67vh;
   height: 100%;
-  margin-bottom: 20px;
   border-radius: 5px;
 `;
 
@@ -68,7 +67,6 @@ const AddNoteButton = styled.button`
   border: 0;
   padding: 5px;
   width: 100%;
-  margin-bottom: 30px;
 `;
 
 export default TeacherBoardColumn;

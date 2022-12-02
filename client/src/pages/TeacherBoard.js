@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { UserContext } from "../contexts/UserContext";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
-const background = require("../style/assets/images/teacher-board-background.jpeg");
+const background = require("../style/assets/images/teacher-board-background.jpg");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);
@@ -123,7 +123,7 @@ const TeacherBoard = () => {
   return (
     <Wrapper>
       {/* {console.log(boardState)} */}
-      <h1>Welcome {userState.firstName}</h1>
+      {/* <h1>Welcome {userState.firstName}</h1> */}
       {/* <DragDropContext onDragEnd={onDragEnd}> */}
       <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
         <Container>
@@ -152,19 +152,18 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 3vh;
-  /* background: url(${background}); */
+  padding-top: 4vh;
+  background: url(${background});
   background-size: cover;
-  height: 95vh;
+  background-repeat: no-repeat;
+  height: 100vh;
   color: var(--primary-color);
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 0 0 4px var(--primary-color);
-  border-radius: 10px;
-  gap: 5px;
+  margin-right: 30px;
   margin-top: 3vh;
   padding: 20px;
   width: 90vw;
