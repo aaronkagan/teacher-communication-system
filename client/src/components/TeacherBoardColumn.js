@@ -58,8 +58,8 @@ const DroppableContainer = styled.div`
 `;
 
 const TaskList = styled.div`
-  background-color: ${(props) => (props.isDraggingOver ? " skyblue" : "transparent")};
-  height: 100%;
+  background-color: ${(props) => (props.isDraggingOver ? "#ffe9ec" : "transparent")};
+  height: 99%;
 `;
 
 const AddNoteButton = styled.button`

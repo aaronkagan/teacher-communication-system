@@ -16,10 +16,17 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
       {(provided, snapshot) => (
         <TaskCard {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           <div {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
-            <p>{task.title}</p>
-            {task.comments.length > 0 && <span>Comments...</span>}
+            <SideBar></SideBar>
+            <ContentContainer>
+              <Title>{task.title}</Title>
+              <Message>{task.message}</Message>
+              {task.comments.length > 0 && <SeeComments>See comments...</SeeComments>}
+              {task.file.fileName && <SeeComments>See attached file...</SeeComments>}
+            </ContentContainer>
           </div>
-          <p onClick={() => setIsTaskDeleteModalOpen(true)}>Delete</p>
+          <DeleteButton type="button" onClick={() => setIsTaskDeleteModalOpen(true)}>
+            Delete
+          </DeleteButton>
           <ConfirmTaskDeleteModal
             isTaskDeleteModalOpen={isTaskDeleteModalOpen}
             setIsTaskDeleteModalOpen={setIsTaskDeleteModalOpen}
@@ -35,6 +42,49 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
   );
 };
 
-const TaskCard = styled.div``;
+const TaskCard = styled.div`
+  box-shadow: 0 0 3px var(--primary-color);
+  /* border-radius: 5px; */
+  padding: 10px 0 20px 8px;
+  /* background: #f6e1ba; */
+  background: white;
+  text-align: start;
+  -webkit-margin-top-collapse: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  &:hover {
+    transform: scale(1.5);
+    z-index: 1;
+  }
+`;
+
+const SideBar = styled.div`
+  height: 20px;
+  width: 5px;
+  background: blue;
+  display: inline;
+`;
+
+const ContentContainer = styled.div``;
+
+const Title = styled.h3``;
+
+const Message = styled.p`
+  font-size: 18px;
+`;
+
+const SeeComments = styled.p`
+  font-size: 10px;
+`;
+
+const DeleteButton = styled.button`
+  background: 0;
+  padding: 0;
+  color: var(--edit-color);
+  font-size: 10px;
+  font-weight: bolder;
+  position: absolute;
+  bottom: 3px;
+`;
 
 export default TeacherBoardTask;
