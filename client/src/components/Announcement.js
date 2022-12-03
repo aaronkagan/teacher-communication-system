@@ -2,7 +2,6 @@ import styled from "styled-components";
 const Announcement = ({ announcement }) => {
   return (
     <Wrapper isRead={announcement.isRead}>
-      {console.log(announcement)}
       <h3>{announcement.createdByName}</h3>
       <p>{announcement.message}</p>
     </Wrapper>
