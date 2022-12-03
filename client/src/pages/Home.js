@@ -38,26 +38,35 @@ const Home = () => {
 const Wrapper = styled.div`
   font-family: sans-serif;
   color: #0000008d;
+  color: white;
   display: flex;
   justify-content: center;
   gap: 50px;
+  background: #a8b7fa;
+  height: 90vh;
+  padding: 10vh 0;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 40vw;
-  padding-top: 20vh;
+  padding-top: 12vh;
+  * {
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    line-height: 3rem;
+  }
   h1 {
-    font-size: 30px;
+    font-size: 50px;
     margin-bottom: 10px;
   }
   h2 {
-    font-size: 25px;
+    font-size: 35px;
   }
   h3 {
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 25px;
+    margin-top: 30px;
   }
   h4 {
     margin-top: 10vh;
@@ -68,7 +77,7 @@ const Content = styled.div`
 `;
 
 const Img = styled.img`
-  padding-top: 10vh;
+  padding-top: 5vh;
 `;
 
 export default Home;
