@@ -111,7 +111,7 @@ const Wrapper = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
 `;
 
 const Card = styled.div`
