@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const Announcement = ({ announcement }) => {
   return (
     <Wrapper isRead={announcement.isRead}>

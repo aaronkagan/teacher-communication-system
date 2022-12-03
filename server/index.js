@@ -6,7 +6,7 @@ const port = 8000;
 const { modifyTaskBoard, getWeeklyTasks } = require("./handlers/taskBoardHandlers");
 const { login } = require("./handlers/loginHandlers");
 const { getUsers, getUser, addUser, editUser, deleteUser } = require("./handlers/userHandlers");
-const { getAnnouncements, getUserAnnouncements, addAnnouncement, deleteAnnouncement } = require("./handlers/announcementHandlers");
+const { getAnnouncements, getUserAnnouncements, addAnnouncement, markRead, deleteAnnouncement } = require("./handlers/announcementHandlers");
 
 express()
   // This line will allow our server to auto-parse the body, which arrives as as a JSON string, to an object that we can use. (The same as JSON.parse())
@@ -58,6 +58,8 @@ express()
   .get("/api/announcements/:userId", getUserAnnouncements)
   // Create a new announcement
   .post("/api/announcement", addAnnouncement)
+  // Mark an announcement as read
+  .patch("/api/announcement/markRead", markRead)
   // Delete an announcement
   .delete("/api/announcement", deleteAnnouncement)
 

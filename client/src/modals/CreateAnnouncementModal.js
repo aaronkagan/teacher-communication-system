@@ -47,10 +47,7 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements,
       body: JSON.stringify(enrichedFormData)
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 400) alert(data.error);
-        else console.log(data);
-      })
+      .then((data) => data)
       .catch((err) => {
         console.log(err);
         alert("An unknown error has occurred");
