@@ -62,10 +62,8 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements,
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Create Announcement</h2>
-          {/* <label htmlFor="title">Title</label>
-          <input type="text" value={formData.title} id="title" onChange={handleChange} /> */}
           <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" cols="30" rows="5" value={formData.message} onChange={handleChange} required />
+          <textarea name="message" id="message" cols="30" rows="3" value={formData.message} onChange={handleChange} required />
           <SubmitButton type="submit">Submit</SubmitButton>
         </Form>
         <CancelButton onClick={() => setIsModalOpen(false)}>Cancel</CancelButton>
