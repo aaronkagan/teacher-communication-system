@@ -7,8 +7,8 @@ const { v4: uuidv4 } = require("uuid");
 
 const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements, setMyAnnouncements }) => {
   const initialFormState = {
-    // title: "",
-    message: ""
+    message: "",
+    isRead: false
   };
   const [formData, setFormData] = useState(initialFormState);
 
@@ -47,10 +47,7 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements,
       body: JSON.stringify(enrichedFormData)
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 400) alert(data.error);
-        else console.log(data);
-      })
+      .then((data) => data)
       .catch((err) => {
         console.log(err);
         alert("An unknown error has occurred");

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+
 const Announcement = ({ announcement }) => {
   return (
-    <Wrapper>
+    <Wrapper isRead={announcement.isRead}>
       <h3>{announcement.createdByName}</h3>
       <p>{announcement.message}</p>
     </Wrapper>
@@ -18,6 +19,8 @@ const Wrapper = styled.div`
   p {
     font-size: 25px;
   }
+  background: ${(props) => (props.isRead ? "lightgray" : "white")};
+  color: ${(props) => (props.isRead ? "darkgray" : "black")};
 `;
 
 export default Announcement;

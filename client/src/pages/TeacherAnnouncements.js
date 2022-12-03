@@ -32,7 +32,7 @@ const TeacherAnnouncements = () => {
       body: JSON.stringify({ announcementId: announcementId })
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => data)
       .catch((err) => {
         console.log(err);
         alert("An unknown error has occurred");

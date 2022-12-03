@@ -12,12 +12,46 @@ const AnnouncementReaderBoard = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleMarkRead = (announcement) => {
+    const { announcementId, isRead } = announcement;
+
+    // Would probably do this in a cleaner way in the future instead of having to map over the whole array.
+    // I would created two separate announcement components, one for the teachers and one for the reader. I would have this function in the reader's announcement component. I would also have a state local to that component for the specific announcement and then just call the function and the setState on that specific announcement's state. That way i wouldn't have to map over the whole announcements array.
+    setAnnouncements(
+      announcements.map((elem, index) => {
+        if (index === announcements.indexOf(announcement)) {
+          return { ...announcement, isRead: true };
+        } else {
+          return elem;
+        }
+      })
+    );
+    fetch("/api/announcement/markRead", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ announcementId })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Wrapper>
       <h1>Announcement Board</h1>
       {announcements
         ? announcements.map((announcement) => {
-            return <Announcement key={announcement.announcementId} announcement={announcement} />;
+            return (
+              <Container key={announcement.announcementId}>
+                <Announcement announcement={announcement} />
+
+                {!announcement.isRead ? <MarkAsReadButton onClick={() => handleMarkRead(announcement)}>Mark Read</MarkAsReadButton> : null}
+              </Container>
+            );
           })
         : "Loading..."}
     </Wrapper>
@@ -30,6 +64,20 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 20px;
   padding-top: 5vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+`;
+
+const MarkAsReadButton = styled.button`
+  background-color: var(--success-color);
+  color: white;
+  padding: 0 10px;
+  font-weight: bold;
 `;
 
 export default AnnouncementReaderBoard;
