@@ -1,11 +1,11 @@
 import { Dialog } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
-import capitalize from "../functions/capitalize";
-
-const roles = ["admin", "teacher", "student"];
+import useRoles from "../hooks/useRoles";
 
 const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
+  const roles = useRoles();
+
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     userId: user.userId,
@@ -83,7 +83,7 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
 const StyledDialog = styled(Dialog)`
   font-family: sans-serif;
   * {
-    padding: 0 35px;
+    padding: 10px 35px 0 35px;
   }
 `;
 
@@ -119,7 +119,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  background: #0000ffab;
+  background: var(--success-color);
   border: 0;
   padding: 5px 20px;
   color: white;
@@ -127,30 +127,18 @@ const SubmitButton = styled.button`
   &:hover {
     cursor: pointer;
   }
-  &:active {
-    transform: scale(0.95);
-  }
-  &:disabled {
-    background: lightgray;
-  }
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: #ff0000d0;
+  background: var(--cancel-color);
 `;
 const EditUserButton = styled.button`
-  background: blue;
+  background: var(--edit-color);
   border: 0;
   color: white;
   padding: 5px 10px;
   border-radius: 2px;
   margin: 10px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 export default EditUserDialog;

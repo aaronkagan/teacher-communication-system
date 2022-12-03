@@ -13,6 +13,8 @@ const Nav = () => {
       <StyledLink to={isUserLoggedIn() ? "/dashboard" : "/"}>Home</StyledLink>
       {getUserRole() === "admin" || getUserRole() === "teacher" ? <StyledLink to="/board/teacher">Teacher Board</StyledLink> : null}
       {getUserRole() === "admin" || getUserRole() === "student" ? <StyledLink to="/board/student">Student Board</StyledLink> : null}
+      {getUserRole() === "admin" || getUserRole() === "teacher" ? <StyledLink to="/announcements/teacher">Teacher Announcements</StyledLink> : null}
+      {getUserRole() === "admin" || getUserRole() === "reader" ? <StyledLink to="/announcements/reader">Reader Announcements</StyledLink> : null}
       {getUserRole() === "admin" && <StyledLink to="/users">Users</StyledLink>}
       {isUserLoggedIn() ? (
         <StyledLink to="/login" onClick={() => handleLogout(setUserState)}>
@@ -28,9 +30,10 @@ const Nav = () => {
 const Navbar = styled.nav`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 50px;
   padding-right: 40px;
-  padding-top: 20px;
+  height: 40px;
 `;
 
 const StyledLink = styled(Link)`

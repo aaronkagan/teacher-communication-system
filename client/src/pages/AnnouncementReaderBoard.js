@@ -24,6 +24,12 @@ const AnnouncementReaderBoard = () => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 5vh;
+`;
 
 export default AnnouncementReaderBoard;

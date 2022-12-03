@@ -4,6 +4,7 @@ import { Dialog } from "@mui/material";
 import styled from "styled-components";
 import getUserId from "../functions/getUserId";
 import useUserFullName from "../hooks/useUserFullName";
+import getRandomStickyColor from "../functions/getRandomStickyColor";
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -28,7 +29,7 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 400 || data.status === 500) {
-          window.alert(data.error);
+          window.alert("An unknown error has occurred. Your comment wasn't able to be added. Please try again.");
           // Reloading window on failed PATCH to fetch the latest data
           window.location.reload();
         }
@@ -46,7 +47,6 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
     <Dialog open={isModalOpen}>
       <Wrapper>
         <TaskContent>
-          {console.log(task)}
           <Title>{task.title}</Title>
           <Message>{task.message}</Message>
           {/* Showing only if due date was added to the task */}
@@ -54,34 +54,34 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           {/* Showing name of attached file if exists */}
           {task.file.fileName !== null ? (
             <div>
-              <p>
+              <AttachedFile>
                 Attached File:
                 {/* Link to download attached file */}
                 <a href={task.file.fileString} download={task.file.fileName}>
                   {task.file.fileName}
                 </a>
-              </p>
+              </AttachedFile>
             </div>
           ) : null}
         </TaskContent>
 
         <CommentsContainer>
-          <span>Comments</span>
+          <CommentsTitle>Comments:</CommentsTitle>
           {task.comments.map((comment) => {
             // TODO CREATE COMPONENT FOR THE TASK COMMENTS
             return (
               <CommentContainer key={uuidv4()}>
-                <span>{comment.createdBy}</span>
-                <p>{comment.comment}</p>
+                <CreatedBy>{comment.createdBy}:</CreatedBy>
+                <Comment>{comment.comment}</Comment>
               </CommentContainer>
             );
           })}
         </CommentsContainer>
         <form onSubmit={handleAddComment}>
-          <input type="text" placeholder="What's on your mind?" value={comment} onChange={(event) => setComment(event.target.value)} />
-          <button type="submit">Add Comment</button>
+          <input type="text" maxLength="40" placeholder="What's on your mind?" value={comment} onChange={(event) => setComment(event.target.value)} />
+          <AddCommentButton type="submit">Add Comment</AddCommentButton>
         </form>
-        <button
+        <CloseButton
           type="button"
           onClick={(event) => {
             // This is needed because both the modal and the task card that opens the modal have opposite setting of the modal's open state
@@ -90,7 +90,7 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
           }}
         >
           Close
-        </button>
+        </CloseButton>
       </Wrapper>
     </Dialog>
   );
@@ -98,6 +98,18 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
 
 const Wrapper = styled.div`
   padding: 20px;
+  background-color: ${getRandomStickyColor()};
+  max-width: 500px;
+  min-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  * {
+    font-family: "Comic Sans MS";
+  }
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: wheat;
+  }
 `;
 
 const TaskContent = styled.div`
@@ -106,25 +118,54 @@ const TaskContent = styled.div`
   margin-bottom: 20px;
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  font-size: 25px;
+`;
 
-const Message = styled.p``;
+const Message = styled.p`
+  font-size: 25px;
+  margin-top: 20px;
+`;
 
-const DueDate = styled.p``;
+const DueDate = styled.p`
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+const AttachedFile = styled.p`
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+`;
 
 const CommentsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 `;
 
+const CommentsTitle = styled.h5``;
+
 const CommentContainer = styled.div`
-  border: 1px solid lightgray;
-  span {
-    color: lightblue;
-  }
-  p {
-    font-size: 20px;
-    font-weight: bold;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CreatedBy = styled.h5`
+  font-size: 13px;
+  font-weight: normal;
+`;
+const Comment = styled.p`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const AddCommentButton = styled.button`
+  background: transparent;
+`;
+
+const CloseButton = styled(AddCommentButton)`
+  margin-top: 20px;
 `;
 export default StudentBoardTaskModal;

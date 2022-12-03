@@ -2,10 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { UserContext } from "../contexts/UserContext";
-// import onDragStart from "../functions/dragAndDropFunctions/onDragStart";
-// import onDragUpdate from "../functions/dragAndDropFunctions/onDragUpdate";
-// import onDragEnd from "../functions/dragAndDropFunctions/onDragEnd";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
+const background = require("../style/assets/images/teacher-board-background.jpg");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);
@@ -24,7 +22,7 @@ const TeacherBoard = () => {
   // Defines what happens when you begin dragging
   const onDragStart = () => {
     // Sets the text color on drag start
-    document.body.style.color = "purple";
+    // document.body.style.color = "purple";
   };
 
   // Defines what happens when the task is dragged to a new position, be it withing the same column or to another column
@@ -125,7 +123,7 @@ const TeacherBoard = () => {
   return (
     <Wrapper>
       {/* {console.log(boardState)} */}
-      <h1>Welcome {userState.firstName}</h1>
+      {/* <h1>Welcome {userState.firstName}</h1> */}
       {/* <DragDropContext onDragEnd={onDragEnd}> */}
       <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
         <Container>
@@ -150,11 +148,25 @@ const TeacherBoard = () => {
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 4vh;
+  background: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: var(--primary-color);
+`;
 
 const Container = styled.div`
   display: flex;
-  gap: 2px;
+  justify-content: space-evenly;
+  margin-right: 30px;
+  margin-top: 3vh;
+  padding: 20px;
+  width: 90vw;
 `;
 
 export default TeacherBoard;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Dialog } from "@mui/material";
 const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
+// Formatted for use in the date input to define the min date
+const today = moment().format("YYYY-MM-DD");
 
 // import addNewTaskToBoard from "../functions/addNewTaskToBoard";
 
@@ -88,7 +90,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
           <input type="text" id="title" placeholder="Title" onChange={handleChange} required />
           <textarea name="message" id="message" cols="30" rows="4" placeholder="Message" onChange={handleChange} required />
           <label htmlFor="due">Due:</label>
-          <input type="date" id="dueDate" placeholder="due" onChange={handleChange} />
+          {/* Setting min due date to today and beyond */}
+          <input type="date" id="dueDate" min={today} onChange={handleChange} />
           <input type="file" id="file" onChange={handleAddFile} />
           <ButtonsContainer>
             <SubmitButton type="submit">Submit</SubmitButton>
@@ -120,7 +123,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  background: lightblue;
+  background: var(--success-color);
   border: 0;
   color: white;
   padding: 5px 10px;
@@ -133,7 +136,7 @@ const SubmitButton = styled.button`
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: lightpink;
+  background: var(--cancel-color);
 `;
 
 export default AddTaskModal;

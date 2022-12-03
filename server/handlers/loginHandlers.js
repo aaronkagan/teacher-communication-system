@@ -22,8 +22,10 @@ const login = async (req, res) => {
     console.log("connected");
     const db = client.db("TaskBoard");
     const result = await db.collection("users").findOne({ username });
-    const hash = result.password;
+    // If no user found with that username
+    if (result === null) return res.status(404).json({ status: 404, error: "Can't find a user with that username" });
 
+    const hash = result.password;
     bcrypt.compare(password, hash, function (err, passwordMatch) {
       if (passwordMatch) {
         const response = {
@@ -36,11 +38,11 @@ const login = async (req, res) => {
         };
         return res.status(200).json({ data: response, message: "Login successful" });
       } else {
-        return res.status(400).json({ status: 400, error: "Incorrect Login Information" });
+        return res.status(400).json({ status: 400, error: "Incorrect password" });
       }
     });
   } catch (err) {
-    return res.status(500).json({ error: err });
+    return res.status(500).json({ status: 500, error: "An unknown error has occurred" });
   } finally {
     await client.close();
     console.log("disconnected");

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Dialog } from "@mui/material";
 const moment = require("moment");
 const { v4: uuidv4 } = require("uuid");
-const COLOR_PRIMARY = "#727272";
 
 const initialFormData = {
   firstName: "",
@@ -79,7 +78,8 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
             <option>Select a role</option>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
-            <option value="admin">Admin</option>
+            <option value="admin">Reader</option>
+            <option value="reader">Admin</option>
           </select>
           <ButtonsContainer>
             <SubmitButton type="submit" id="submit">
@@ -104,12 +104,6 @@ const AddUserButton = styled.button`
   border-radius: 2px;
   margin-top: 20px;
   font-weight: bold;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 const Form = styled.form`
@@ -117,7 +111,6 @@ const Form = styled.form`
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    color: ${COLOR_PRIMARY};
   }
   display: flex;
   flex-direction: column;
@@ -127,8 +120,6 @@ const Form = styled.form`
   input,
   select {
     width: 200px;
-  }
-  button {
   }
 `;
 
@@ -143,23 +134,14 @@ const SubmitButton = styled.button`
   width: 100px;
   margin-top: 8px;
   color: white;
-  background: blue;
+  background: var(--success-color);
   border: 0;
   padding: 3px 0;
   border-radius: 2px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
-  &:disabled {
-    background: grey;
-  }
 `;
 
 const CancelButton = styled(SubmitButton)`
-  background: red;
+  background: var(--cancel-color);
 `;
 
 export default AddUser;

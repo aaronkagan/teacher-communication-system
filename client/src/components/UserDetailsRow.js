@@ -20,7 +20,7 @@ const UserDetailsRow = ({ user, forceRefresh, setForceRefresh }) => {
 
 const Tr = styled.tr`
   border-bottom: 1px solid lightgray;
-  background-color: #d3d3d360;
+  background-color: #f4fbfd;
 `;
 const Td = styled.td`
   padding: 10px;

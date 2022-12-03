@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import capitalize from "../functions/capitalize";
 import TeacherBoardTask from "./TeacherBoardTask";
-// import addNewTaskToBoard from "../functions/addNewTaskToBoard";
 
 const TeacherBoardColumn = ({ columnName, boardState, setBoardState, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
   // Getting an array of task objects that are associated to the taskIds array for each column (ie getting an array of task objects for that column). These task object will be passed down to the column component to render the tasks for the columns.
@@ -52,30 +51,22 @@ const Wrapper = styled.div`
 `;
 
 const DroppableContainer = styled.div`
-  background: lightgray;
-  min-height: 50vh;
+  min-height: 67vh;
   height: 100%;
-  margin-bottom: 20px;
+  border-radius: 5px;
 `;
 
 const TaskList = styled.div`
-  background-color: ${(props) => (props.isDraggingOver ? " skyblue" : "transparent")};
-  height: 100%;
+  background-color: ${(props) => (props.isDraggingOver ? "#ffe9ec" : "transparent")};
+  height: 99%;
 `;
 
 const AddNoteButton = styled.button`
-  background: lightblue;
+  background: var(--edit-color);
   color: white;
   border: 0;
   padding: 5px;
   width: 100%;
-  margin-bottom: 30px;
-  &:hover {
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 export default TeacherBoardColumn;

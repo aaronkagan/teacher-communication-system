@@ -31,6 +31,9 @@ const Home = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-top: 20vh;
   font-family: sans-serif;
   padding-right: 10vw;
   color: #0000008d;

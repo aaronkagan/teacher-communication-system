@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import StickyNote from "./StickyNote";
+import getRandomStickyColor from "../functions/getRandomStickyColor";
+import getRandomStickyDirection from "../functions/getRandomStickyDirection";
 import StudentBoardTaskModal from "../modals/StudentBoardTaskModal";
 
 const StudentBoardTask = ({ task, boardState, setBoardState }) => {
@@ -8,9 +10,10 @@ const StudentBoardTask = ({ task, boardState, setBoardState }) => {
     <>
       {task && (
         <div onClick={() => setIsModalOpen(true)}>
-          <h3>{task.title}</h3>
-          {task.comments.length > 0 && <span>Comments...</span>}
-          <StudentBoardTaskModal task={task} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} />
+          <StickyNote task={task} stickyColor={getRandomStickyColor()} stickyDirection={getRandomStickyDirection()} />
+          {/* <h3>{task.title}</h3>
+          {task.comments.length > 0 && <span>Comments...</span>} */}
+          <StudentBoardTaskModal stickyColor={getRandomStickyColor()} task={task} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} />
         </div>
       )}
     </>
