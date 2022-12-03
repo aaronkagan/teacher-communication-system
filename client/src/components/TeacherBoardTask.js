@@ -21,7 +21,7 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
               <Title>{task.title}</Title>
               <Message>{task.message}</Message>
               {task.comments.length > 0 && <SeeComments>See comments...</SeeComments>}
-              {task.file.fileName && <SeeComments>See attached file...</SeeComments>}
+              {task.file.fileName && <SeeFile>See attached file...</SeeFile>}
             </ContentContainer>
           </div>
           <DeleteButton type="button" onClick={() => setIsTaskDeleteModalOpen(true)}>
@@ -47,11 +47,11 @@ const TaskCard = styled.div`
   color: black;
   padding: 10px 0 20px 12px;
   background: white;
-
   text-align: start;
   margin-bottom: 15px;
   position: relative;
-  &:hover {
+  overflow-x: hidden;
+  pa &:hover {
     transform: scale(1.2);
     z-index: 1;
   }
@@ -82,6 +82,10 @@ const Message = styled.p`
 `;
 
 const SeeComments = styled.p`
+  font-size: 10px;
+`;
+
+const SeeFile = styled.p`
   font-size: 10px;
 `;
 
