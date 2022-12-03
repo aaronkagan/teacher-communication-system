@@ -16,6 +16,7 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
       {(provided, snapshot) => (
         <TaskCard {...provided.draggableProps} ref={provided.innerRef} isDragging={snapshot.isDragging}>
           <div {...provided.dragHandleProps} onClick={() => setIsModalOpen(true)}>
+            <ColorBar color={task.color} />
             <ContentContainer>
               <Title>{task.title}</Title>
               <Message>{task.message}</Message>
@@ -43,22 +44,38 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
 
 const TaskCard = styled.div`
   box-shadow: 0 0 3px var(--primary-color);
-  border-radius: 5px;
   color: black;
   padding: 10px 0 20px 12px;
-  background: #fef2db;
+  background: white;
+
   text-align: start;
   margin-bottom: 15px;
   position: relative;
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
     z-index: 1;
   }
 `;
 
-const ContentContainer = styled.div``;
+const ColorBar = styled.div`
+  background: ${(props) => props.color};
+  height: 4px;
+  width: 90%;
+  margin-bottom: 10px;
+`;
 
-const Title = styled.h3``;
+const ContentContainer = styled.div`
+  width: 90%;
+  * {
+    text-align: center;
+    font-family: cursive;
+  }
+`;
+
+const Title = styled.h3`
+  font-weight: bold;
+  font-size: 25px;
+`;
 
 const Message = styled.p`
   font-size: 18px;
