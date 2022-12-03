@@ -7,8 +7,8 @@ const { v4: uuidv4 } = require("uuid");
 
 const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements, setMyAnnouncements }) => {
   const initialFormState = {
-    // title: "",
-    message: ""
+    message: "",
+    isRead: false
   };
   const [formData, setFormData] = useState(initialFormState);
 

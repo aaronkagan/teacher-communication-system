@@ -19,17 +19,7 @@ const getAnnouncements = async (req, res) => {
     console.log("connected");
     const db = client.db("TaskBoard");
     const result = await db.collection("announcements").find().toArray();
-
-    const data = result.map((announcement) => {
-      return {
-        announcementId: announcement.announcementId,
-        createdById: announcement.createdById,
-        createdByName: announcement.createdByName,
-        message: announcement.message
-      };
-    });
-
-    return res.status(200).json({ status: 200, data: data });
+    return res.status(200).json({ status: 200, data: result });
   } catch (err) {
     return res.status(500).json({ status: 500, error: err });
   } finally {
