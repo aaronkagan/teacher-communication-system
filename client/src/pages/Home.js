@@ -26,7 +26,9 @@ const Home = () => {
         <h1>Welcome to ReadMe!</h1>
         <h2>Your premier application for teacher-student communication</h2>
         <h3>Please login to access your profile</h3>
-        <h4>For support please contact support@readme.com</h4>
+        <h4>
+          For support please contact <a href="mailto:support@readme.com">support@readme.com</a>
+        </h4>
       </Content>
       <Img src={image} alt="" />
     </Wrapper>
@@ -59,6 +61,9 @@ const Content = styled.div`
   }
   h4 {
     margin-top: 10vh;
+  }
+  a {
+    text-decoration: none;
   }
 `;
 
