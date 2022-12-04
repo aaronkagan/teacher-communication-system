@@ -27,7 +27,14 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
   };
   return (
     <>
-      <Dialog open={isOpen}>
+      <Dialog
+        PaperProps={{
+          style: {
+            borderRadius: "0"
+          }
+        }}
+        open={isOpen}
+      >
         <Wrapper>
           <h2>
             Confirm Delete of User: {user.firstName} {user.lastName}

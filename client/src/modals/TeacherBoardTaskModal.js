@@ -6,6 +6,7 @@ import getUserId from "../functions/getUserId";
 
 const { v4: uuidv4 } = require("uuid");
 
+const background = require("../style/assets/images/teacher-task-background.jpeg");
 const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }) => {
   // This is the comment state for the new comment being added
   const [comment, setComment] = useState("");
@@ -80,7 +81,15 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          backgroundColor: "transparent",
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <Title>{task.title}</Title>
         <Message>{task.message}</Message>
@@ -135,16 +144,18 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: #fbe1e5;
   gap: 20px;
+  background: #fffffff6;
 `;
 
 const Title = styled.h3`
-  font-size: 25px;
+  font-size: 30px;
+  font-family: cursive;
 `;
 
 const Message = styled.p`
-  font-size: 20px;
+  font-size: 30px;
+  font-family: cursive;
 `;
 
 const DueDate = styled.p`
@@ -159,10 +170,16 @@ const CommentsContainer = styled.div`
 
 const CommentContainer = styled.div`
   border: 1px solid var(--primary-color);
-  border-radius: 5px;
   padding: 10px 30px 5px 15px;
-  background: #fff7ea;
+  background: #1154ff8b;
+  color: white;
   width: 300px;
+  h3 {
+    font-size: 12px;
+  }
+  p {
+    font-size: 20px;
+  }
 `;
 
 const AddCommentButton = styled.button`
@@ -170,6 +187,7 @@ const AddCommentButton = styled.button`
   color: white;
   margin-left: 10px;
   height: 30px;
+  font-weight: bold;
 `;
 
 const DeleteCommentButton = styled.button`

@@ -58,7 +58,14 @@ const CreateAnnouncementModal = ({ isModalOpen, setIsModalOpen, myAnnouncements,
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Create Announcement</h2>

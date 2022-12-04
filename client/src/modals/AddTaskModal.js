@@ -85,7 +85,14 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Add New Task For {column.title}</h2>

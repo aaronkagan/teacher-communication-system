@@ -60,7 +60,14 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
 
   return (
     <>
-      <Dialog open={isOpen}>
+      <Dialog
+        PaperProps={{
+          style: {
+            borderRadius: "0"
+          }
+        }}
+        open={isOpen}
+      >
         <Form id="form" onSubmit={handleSubmit} autoComplete="off">
           <h2>Add User</h2>
           <label htmlFor="firstName">First Name</label>

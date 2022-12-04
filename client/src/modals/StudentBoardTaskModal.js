@@ -44,7 +44,14 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <TaskContent>
           <Title>{task.title}</Title>

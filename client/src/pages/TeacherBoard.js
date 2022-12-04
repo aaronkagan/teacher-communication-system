@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { UserContext } from "../contexts/UserContext";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
-const background = require("../style/assets/images/teacher-board-background.webp");
+const background = require("../style/assets/images/teacher-board-background.jpg");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);
@@ -150,7 +150,6 @@ const TeacherBoard = () => {
 };
 
 const Wrapper = styled.div`
-  /* background: #404042; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -159,7 +158,7 @@ const Wrapper = styled.div`
 
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100%;
 
   h2 {
     color: white;
