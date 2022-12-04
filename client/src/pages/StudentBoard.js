@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../contexts/UserContext";
 import StudentBoardColumn from "../components/StudentBoardColumn";
+import { shadows } from "@mui/system";
 // const background = require("../style/assets/images/corkboard-background.jpeg");
 const background = require("../style/assets/images/corkboard-background-80.png");
 
@@ -54,6 +55,7 @@ const H2 = styled.h2`
   font-weight: bold;
   font-family: "Comic Sans MS";
   color: #ffffffd3;
+  text-shadow: 2px 2px #616161;
 `;
 
 const H3 = styled.h3`
@@ -62,6 +64,7 @@ const H3 = styled.h3`
   font-family: "Comic Sans MS";
   font-size: 30px;
   margin-bottom: 30px;
+  text-shadow: 2px 2px #616161;
 `;
 
 const BoardContainer = styled.div`
