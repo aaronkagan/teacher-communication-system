@@ -5,13 +5,12 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import TeacherBoard from "./pages/TeacherBoard";
 import StudentBoard from "./pages/StudentBoard";
-import NotAuthorized from "./pages/NotAuthorized";
 import UserAdminPanel from "./pages/UserAdminPanel";
 import Login from "./pages/Login";
-import getUserRole from "./functions/getUserRole";
 import DashBoard from "./pages/Dashboard";
 import TeacherAnnouncements from "./pages/TeacherAnnouncements";
 import AnnouncementReaderBoard from "./pages/AnnouncementReaderBoard";
+import NotAuthorized from "./pages/NotAuthorized";
 
 const App = () => {
   return (
@@ -28,6 +27,7 @@ const App = () => {
         <Route path="/users" element={<UserAdminPanel />} />
         <Route path="/announcements/teacher" element={<TeacherAnnouncements />} />
         <Route path="/announcements/reader" element={<AnnouncementReaderBoard />} />
+        <Route path="/not-authorized" element={<NotAuthorized />} />
       </Routes>
       {/* </Wrapper> */}
     </Router>

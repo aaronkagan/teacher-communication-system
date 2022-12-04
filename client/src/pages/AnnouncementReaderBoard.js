@@ -5,7 +5,6 @@ const image = require("../style/assets/images/reader-image.png");
 
 const AnnouncementReaderBoard = () => {
   const [announcements, setAnnouncements] = useState();
-
   useEffect(() => {
     fetch("/api/announcements")
       .then((res) => res.json())
