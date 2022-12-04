@@ -15,37 +15,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // Was used before i had a homepage and might use in future if needed
-  // const navigateTo = (role) => {
-  //   switch (role) {
-  //     case "teacher":
-  //       return "/board/teacher";
-  //       break;
-  //     case "student":
-  //       return "/board/student";
-  //       break;
-  //     case "admin":
-  //       return "/adduser";
-  //     default:
-  //       break;
-  //   }
-  // };
-
-  // For now everyone goes to homepage
-  // might use the commented our version above if i need it for a feature
-  // const navigateTo = (role) => {
-  //   switch (role) {
-  //     case "teacher":
-  //       return "/";
-  //     case "student":
-  //       return "/";
-  //     case "admin":
-  //       return "/";
-  //     default:
-  //       break;
-  //   }
-  // };
-
   const handleChange = (event) => {
     setLoginFormData({ ...loginFormData, [event.target.id]: event.target.value });
   };
