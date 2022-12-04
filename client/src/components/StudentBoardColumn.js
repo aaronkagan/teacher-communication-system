@@ -41,13 +41,13 @@ const ColumnWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-  background-color: #ffffff3b;
-  border-left: 2px solid #505050;
+  background-color: #ffffff47;
+  /* border-left: 2px solid #505050;
   border-top: 2px solid #505050;
   border-bottom: 2px solid #505050;
   &:last-child {
     border-right: 2px solid #505050;
-  }
+  } */
 `;
 
 export default StudentBoardColumn;
