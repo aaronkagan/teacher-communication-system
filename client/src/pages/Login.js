@@ -1,14 +1,19 @@
 import styled from "styled-components";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import persistUserLogin from "../functions/persistUserLogin";
-import getUserRole from "../functions/getUserRole";
 const initialLoginFormData = { username: "", password: "" };
 const image = require("../style/assets/images/login-image.png");
 const background = require("../style/assets//images/login-background.jpeg");
 
 const Login = () => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   const { userId, setUserId, userState, setUserState } = useContext(UserContext);
 
   const [loginFormData, setLoginFormData] = useState({ ...initialLoginFormData });
@@ -64,7 +69,9 @@ const Login = () => {
         <Img src={image} />
         <Form id="form" onSubmit={handleSubmit} autoComplete="off">
           <FormTitle>Sign In</FormTitle>
-          <label htmlFor="username">Username</label>
+          <label ref={inputRef} htmlFor="username">
+            Username
+          </label>
           <input type="text" id="username" value={loginFormData.username} onChange={handleChange} required />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" value={loginFormData.password} onChange={handleChange} required />
