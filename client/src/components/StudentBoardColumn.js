@@ -24,18 +24,30 @@ const Wrapper = styled.div`
 `;
 
 const ColumnTitle = styled.h2`
+  font-family: "Comic Sans MS";
   text-align: center;
   margin-bottom: 30px;
-  background: #f5deb394;
+  background: #ffffff3b;
   line-height: 1;
-  padding: 2px;
+  padding: 2px 5px;
   border-radius: 2px;
   font-size: 20px;
 `;
 
 const ColumnWrapper = styled.div`
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 5px;
+  background-color: #ffffff3b;
+  border-left: 2px solid #505050;
+  border-top: 2px solid #505050;
+  border-bottom: 2px solid #505050;
+  &:last-child {
+    border-right: 2px solid #505050;
+  }
 `;
 
 export default StudentBoardColumn;
