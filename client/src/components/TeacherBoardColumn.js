@@ -50,22 +50,27 @@ const Wrapper = styled.div`
   text-align: center;
   color: white;
   h4 {
-    padding-bottom: 20px;
-    border-bottom: 3px solid white;
-    font-family: "Comic Sans MS";
-    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 1px solid #c3c3c3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
     font-size: 25px;
-    color: hotpink;
-
+    color: #bababa;
     &:hover {
       cursor: pointer;
     }
   }
 
-  border-right: 3px solid white;
+  border-right: 1px solid #c3c3c3;
   &:first-child {
-    border-left: 3px solid white;
+    border-left: 1px solid #c3c3c3;
+    border-radius: 5px 0 0px 5px;
   }
+  &:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+  border-top: 1px solid #c3c3c3;
+  border-bottom: 1px solid #c3c3c3;
 `;
 
 const DroppableContainer = styled.div`

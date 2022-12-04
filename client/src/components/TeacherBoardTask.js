@@ -44,15 +44,19 @@ const TeacherBoardTask = ({ task, index, boardState, forceRefreshTeacherBoard, s
 
 const TaskCard = styled.div`
   box-shadow: 0 0 3px var(--primary-color);
-  color: black;
+  color: #51565d;
   padding: 10px 0 20px 12px;
   background: white;
   text-align: start;
-  margin-bottom: 15px;
   position: relative;
   overflow-x: hidden;
-  pa &:hover {
-    transform: scale(1.2);
+
+  margin: 10px 0 20px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  &:hover {
+    transform: scale(1.1);
     z-index: 1;
   }
 `;

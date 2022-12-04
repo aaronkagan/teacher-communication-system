@@ -5,6 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
 
 const background = require("../style/assets/images/teacher-board-background-80.png");
+const calendarIcon = require("../style/assets/icons/calendar_icon.png");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);
@@ -123,29 +124,34 @@ const TeacherBoard = () => {
 
   return (
     <Wrapper>
-      {/* {console.log(boardState)} */}
-      {/* <h1>Welcome {userState.firstName}</h1> */}
-      {/* <DragDropContext onDragEnd={onDragEnd}> */}
-      <h2>Click on the day's title to add a task</h2>
-      {/* Creating the columns */}
-      <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
-        <Container>
-          {boardState &&
-            boardState.columnOrder.map((columnName) => {
-              // Rendering the columns
-              return (
-                <TeacherBoardColumn
-                  key={columnName}
-                  columnName={columnName}
-                  boardState={boardState}
-                  setBoardState={setBoardState}
-                  forceRefreshTeacherBoard={forceRefreshTeacherBoard}
-                  setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
-                />
-              );
-            })}
-        </Container>
-      </DragDropContext>
+      <Calendar>
+        {/* {console.log(boardState)} */}
+        {/* <h1>Welcome {userState.firstName}</h1> */}
+        {/* <DragDropContext onDragEnd={onDragEnd}> */}
+        <Title>
+          <img src={calendarIcon} />
+          <h2>Click on the day's title to add a task</h2>
+        </Title>
+        {/* Creating the columns */}
+        <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+          <Container>
+            {boardState &&
+              boardState.columnOrder.map((columnName) => {
+                // Rendering the columns
+                return (
+                  <TeacherBoardColumn
+                    key={columnName}
+                    columnName={columnName}
+                    boardState={boardState}
+                    setBoardState={setBoardState}
+                    forceRefreshTeacherBoard={forceRefreshTeacherBoard}
+                    setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
+                  />
+                );
+              })}
+          </Container>
+        </DragDropContext>
+      </Calendar>
     </Wrapper>
   );
 };
@@ -154,18 +160,37 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 4vh;
-  background: url(${background});
-
+  padding: 4vh 0;
+  /* background: url(${background}); */
+  background: #ddeaff;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+`;
+
+const Calendar = styled.div`
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
 
   h2 {
-    color: white;
-    font-weight: 300;
+    color: #51565d;
+    font-weight: 600;
     font-size: 30px;
-    font-family: "Comic Sans MS";
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  img {
+    height: 50px;
+    width: auto;
   }
 `;
 
