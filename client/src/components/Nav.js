@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import isUserLoggedIn from "../functions/isUserLoggedIn";
 import handleLogout from "../functions/handleLogout";
 import getUserRole from "../functions/getUserRole";
-const image = require("../style/assets/images/readme-small.png");
+const image = require("../style/assets/images/readme-large.png");
 const Nav = () => {
   const { userState, setUserState } = useContext(UserContext);
 
