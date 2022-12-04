@@ -52,7 +52,7 @@ const H2 = styled.h2`
   font-size: 30px;
   font-weight: bold;
   font-family: "Comic Sans MS";
-  background: #fef2d4a1;
+  background: #ffffff5f;
   margin-bottom: 50px;
   margin-top: 20px;
   border-radius: 10px;
