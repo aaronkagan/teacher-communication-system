@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   box-shadow: 5px 5px 10px var(--primary-color);
   transform: ${(props) => props.stickyDirection};
   text-align: center;
-  /* text-overflow: ellipsis; */
   overflow: hidden;
 
   &:hover {
@@ -39,15 +38,6 @@ const Text = styled.h3`
   font-size: 12px;
   font-family: "Comic Sans Ms";
 `;
-
-// const SeeComments = styled.span`
-//   font-size: 8px;
-//   display: inline-block;
-//   margin-top: 10px;
-//   font-family: "Comic Sans Ms";
-//   position: relative;
-//   bottom: 20px;
-// `;
 
 const SeeComments = styled.p`
   font-family: "Comic Sans Ms";

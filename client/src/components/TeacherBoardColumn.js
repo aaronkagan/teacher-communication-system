@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   h4 {
     padding-bottom: 20px;
     border-bottom: 3px solid white;
-    font-family: cursive;
+    font-family: "Comic Sans MS";
     font-weight: bold;
     font-size: 25px;
     color: hotpink;
@@ -82,13 +82,5 @@ const TaskList = styled.div`
   margin-top: 2px;
   margin-left: 2.5%;
 `;
-
-// const AddNoteButton = styled.button`
-//   background: var(--edit-color);
-//   color: white;
-//   border: 0;
-//   padding: 5px;
-//   width: 100%;
-// `;
 
 export default TeacherBoardColumn;

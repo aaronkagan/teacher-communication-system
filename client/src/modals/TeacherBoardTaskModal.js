@@ -113,8 +113,11 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
           {task.comments.map((comment) => {
             return (
               <CommentContainer key={uuidv4()}>
-                <h3>{comment.createdBy}</h3>
-                <p>{comment.comment}</p>
+                <Div>
+                  <h3>{comment.createdBy}:</h3>
+                  <p>{comment.comment}</p>
+                </Div>
+
                 <DeleteCommentButton onClick={() => handleDeleteComment(comment)}>Delete</DeleteCommentButton>
               </CommentContainer>
             );
@@ -145,17 +148,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
-  background: #fffffff6;
+  background: #ffffff;
+  * {
+    font-family: "Comic Sans MS";
+  }
 `;
 
 const Title = styled.h3`
   font-size: 30px;
-  font-family: cursive;
 `;
 
 const Message = styled.p`
   font-size: 30px;
-  font-family: cursive;
 `;
 
 const DueDate = styled.p`
@@ -169,16 +173,22 @@ const CommentsContainer = styled.div`
 `;
 
 const CommentContainer = styled.div`
-  border: 1px solid var(--primary-color);
-  padding: 10px 30px 5px 15px;
-  background: #1154ff8b;
-  color: white;
+  padding: 0 30px 5px 15px;
   width: 300px;
   h3 {
     font-size: 12px;
   }
   p {
     font-size: 20px;
+  }
+`;
+
+const Div = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-weight: bold;
   }
 `;
 
@@ -193,10 +203,9 @@ const AddCommentButton = styled.button`
 const DeleteCommentButton = styled.button`
   background: 0;
   border: 0;
-  color: blue;
   padding: 0;
-  margin-top: 5px;
   font-size: 12px;
+  color: blue;
 `;
 
 const CloseButton = styled(AddCommentButton)`

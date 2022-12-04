@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { UserContext } from "../contexts/UserContext";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
-const background = require("../style/assets/images/teacher-board-background.jpg");
+
+const background = require("../style/assets/images/teacher-board-background-80.png");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);

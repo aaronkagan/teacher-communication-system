@@ -68,7 +68,7 @@ const ContentContainer = styled.div`
   width: 90%;
   * {
     text-align: center;
-    font-family: cursive;
+    font-family: "Comic Sans MS";
   }
 `;
 
