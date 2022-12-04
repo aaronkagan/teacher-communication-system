@@ -68,6 +68,7 @@ const Wrapper = styled.div`
   gap: 10vw;
   width: 90vw;
   padding-top: 10vh;
+  padding-bottom: 5vh;
   * {
     font-family: "Courier New", Courier, monospace;
   }
