@@ -6,6 +6,7 @@ import getUserId from "../functions/getUserId";
 
 const { v4: uuidv4 } = require("uuid");
 
+const background = require("../style/assets/images/teacher-task-background.jpeg");
 const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }) => {
   // This is the comment state for the new comment being added
   const [comment, setComment] = useState("");
@@ -80,7 +81,15 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          backgroundColor: "transparent",
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <Title>{task.title}</Title>
         <Message>{task.message}</Message>
@@ -104,8 +113,11 @@ const TeacherBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState }
           {task.comments.map((comment) => {
             return (
               <CommentContainer key={uuidv4()}>
-                <h3>{comment.createdBy}</h3>
-                <p>{comment.comment}</p>
+                <Div>
+                  <h3>{comment.createdBy}:</h3>
+                  <p>{comment.comment}</p>
+                </Div>
+
                 <DeleteCommentButton onClick={() => handleDeleteComment(comment)}>Delete</DeleteCommentButton>
               </CommentContainer>
             );
@@ -135,16 +147,19 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: #fbe1e5;
   gap: 20px;
+  background: #ffffff;
+  * {
+    font-family: "Comic Sans MS";
+  }
 `;
 
 const Title = styled.h3`
-  font-size: 25px;
+  font-size: 30px;
 `;
 
 const Message = styled.p`
-  font-size: 20px;
+  font-size: 30px;
 `;
 
 const DueDate = styled.p`
@@ -158,11 +173,23 @@ const CommentsContainer = styled.div`
 `;
 
 const CommentContainer = styled.div`
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  padding: 10px 30px 5px 15px;
-  background: #fff7ea;
+  padding: 0 30px 5px 15px;
   width: 300px;
+  h3 {
+    font-size: 12px;
+  }
+  p {
+    font-size: 20px;
+  }
+`;
+
+const Div = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-weight: bold;
+  }
 `;
 
 const AddCommentButton = styled.button`
@@ -170,15 +197,15 @@ const AddCommentButton = styled.button`
   color: white;
   margin-left: 10px;
   height: 30px;
+  font-weight: bold;
 `;
 
 const DeleteCommentButton = styled.button`
   background: 0;
   border: 0;
-  color: blue;
   padding: 0;
-  margin-top: 5px;
   font-size: 12px;
+  color: blue;
 `;
 
 const CloseButton = styled(AddCommentButton)`

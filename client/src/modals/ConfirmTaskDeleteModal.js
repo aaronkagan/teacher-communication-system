@@ -44,7 +44,14 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
   };
 
   return (
-    <Dialog open={isTaskDeleteModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isTaskDeleteModalOpen}
+    >
       <Wrapper>
         {isButtonDisabled ? (
           "Processing Deletion"

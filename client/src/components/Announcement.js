@@ -12,8 +12,9 @@ const Announcement = ({ announcement }) => {
 const Wrapper = styled.div`
   box-shadow: 0 0 10px lightgray;
   border-radius: 5px;
-  padding: 20px;
-  width: 200px;
+  padding: 5px 20px;
+  width: 600px;
+
   font-family: monospace;
   overflow-wrap: break-word;
   p {

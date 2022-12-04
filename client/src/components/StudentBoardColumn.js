@@ -30,6 +30,7 @@ const ColumnTitle = styled.h2`
   line-height: 1;
   padding: 2px;
   border-radius: 2px;
+  font-size: 20px;
 `;
 
 const ColumnWrapper = styled.div`

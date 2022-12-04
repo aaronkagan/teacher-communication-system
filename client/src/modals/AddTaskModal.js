@@ -31,6 +31,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     const enrichedFormData = { ...formData };
     enrichedFormData.id = uniqueTaskId;
     enrichedFormData.created = todaysDate;
+    // TODO " currently the color bar on the card is random but in the future the user will be able to select a color"
+    enrichedFormData.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
     if (formData.dueDate !== "") enrichedFormData.dueDate = moment(formData.dueDate).format("ll");
 
     // Adding the file object to the task only if there is a file uploaded
@@ -83,7 +85,14 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           <h2>Add New Task For {column.title}</h2>

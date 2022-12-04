@@ -24,6 +24,7 @@ const Tr = styled.tr`
 `;
 const Td = styled.td`
   padding: 10px;
+  font-size: 19px;
 `;
 
 export default UserDetailsRow;

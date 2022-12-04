@@ -44,7 +44,14 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
   };
 
   return (
-    <Dialog open={isModalOpen}>
+    <Dialog
+      PaperProps={{
+        style: {
+          borderRadius: "0"
+        }
+      }}
+      open={isModalOpen}
+    >
       <Wrapper>
         <TaskContent>
           <Title>{task.title}</Title>
@@ -64,19 +71,21 @@ const StudentBoardTaskModal = ({ isModalOpen, setIsModalOpen, task, boardState, 
             </div>
           ) : null}
         </TaskContent>
+        {task.comments.length > 0 ? (
+          <CommentsContainer>
+            <CommentsTitle>Comments:</CommentsTitle>
+            {task.comments.map((comment) => {
+              // TODO CREATE COMPONENT FOR THE TASK COMMENTS
+              return (
+                <CommentContainer key={uuidv4()}>
+                  <CreatedBy>{comment.createdBy}:</CreatedBy>
+                  <Comment>{comment.comment}</Comment>
+                </CommentContainer>
+              );
+            })}
+          </CommentsContainer>
+        ) : null}
 
-        <CommentsContainer>
-          <CommentsTitle>Comments:</CommentsTitle>
-          {task.comments.map((comment) => {
-            // TODO CREATE COMPONENT FOR THE TASK COMMENTS
-            return (
-              <CommentContainer key={uuidv4()}>
-                <CreatedBy>{comment.createdBy}:</CreatedBy>
-                <Comment>{comment.comment}</Comment>
-              </CommentContainer>
-            );
-          })}
-        </CommentsContainer>
         <form onSubmit={handleAddComment}>
           <input type="text" maxLength="40" placeholder="What's on your mind?" value={comment} onChange={(event) => setComment(event.target.value)} />
           <AddCommentButton type="submit">Add Comment</AddCommentButton>

@@ -46,7 +46,14 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
 
   return (
     <>
-      <StyledDialog open={isOpen}>
+      <StyledDialog
+        PaperProps={{
+          style: {
+            borderRadius: "0"
+          }
+        }}
+        open={isOpen}
+      >
         <Form onSubmit={handleSubmitChanges}>
           <h2>Edit User Details</h2>
           <Label htmlFor="firstName">First Name</Label>

@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import { UserContext } from "../contexts/UserContext";
 import TeacherBoardColumn from "../components/TeacherBoardColumn";
-const background = require("../style/assets/images/teacher-board-background.jpg");
+
+const background = require("../style/assets/images/teacher-board-background-80.png");
 
 const TeacherBoard = () => {
   const { userState } = useContext(UserContext);
@@ -125,9 +126,10 @@ const TeacherBoard = () => {
       {/* {console.log(boardState)} */}
       {/* <h1>Welcome {userState.firstName}</h1> */}
       {/* <DragDropContext onDragEnd={onDragEnd}> */}
+      <h2>Click on the day's title to add a task</h2>
+      {/* Creating the columns */}
       <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
         <Container>
-          {/* Creating the columns */}
           {boardState &&
             boardState.columnOrder.map((columnName) => {
               // Rendering the columns
@@ -154,19 +156,25 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding-top: 4vh;
   background: url(${background});
+
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
-  color: var(--primary-color);
+  height: 100%;
+
+  h2 {
+    color: white;
+    font-weight: 300;
+    font-size: 30px;
+    font-family: "Comic Sans MS";
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-right: 30px;
-  margin-top: 3vh;
   padding: 20px;
-  width: 90vw;
+  margin-bottom: 0;
 `;
 
 export default TeacherBoard;

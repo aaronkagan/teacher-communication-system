@@ -16,7 +16,7 @@ const TeacherBoardColumn = ({ columnName, boardState, setBoardState, forceRefres
   return (
     <Wrapper>
       {/* {console.log(column)} */}
-      <h4>{capitalize(columnName)}</h4>
+      <h4 onClick={() => setIsModalOpen(true)}>{capitalize(columnName)}</h4>
       {/* Most of this below is the boilerplate from the react-beautiful-dnd documentation except for the mapping of the individual tasks */}
       <DroppableContainer>
         <Droppable droppableId={columnName}>
@@ -39,15 +39,33 @@ const TeacherBoardColumn = ({ columnName, boardState, setBoardState, forceRefres
           )}
         </Droppable>
       </DroppableContainer>
-      <AddNoteButton onClick={() => setIsModalOpen(true)}>Add Task +</AddNoteButton>
+      {/* <AddNoteButton onClick={() => setIsModalOpen(true)}>Add Task +</AddNoteButton> */}
       <AddTaskModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} boardState={boardState} setBoardState={setBoardState} column={column} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 10vw;
+  width: 12vw;
   text-align: center;
+  color: white;
+  h4 {
+    padding-bottom: 20px;
+    border-bottom: 3px solid white;
+    font-family: "Comic Sans MS";
+    font-weight: bold;
+    font-size: 25px;
+    color: hotpink;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  border-right: 3px solid white;
+  &:first-child {
+    border-left: 3px solid white;
+  }
 `;
 
 const DroppableContainer = styled.div`
@@ -58,15 +76,11 @@ const DroppableContainer = styled.div`
 
 const TaskList = styled.div`
   background-color: ${(props) => (props.isDraggingOver ? "#ffe9ec" : "transparent")};
-  height: 99%;
-`;
-
-const AddNoteButton = styled.button`
-  background: var(--edit-color);
-  color: white;
-  border: 0;
-  padding: 5px;
-  width: 100%;
+  height: 90%;
+  width: 95%;
+  padding-top: 10px;
+  margin-top: 2px;
+  margin-left: 2.5%;
 `;
 
 export default TeacherBoardColumn;
