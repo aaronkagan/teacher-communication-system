@@ -99,7 +99,7 @@ const Content = styled.div`
 
 const H1 = styled.h1`
   margin-bottom: 20px;
-  font-size: 25px;
+  font-size: 30px;
 `;
 
 const Container = styled.div`
