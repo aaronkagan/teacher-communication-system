@@ -24,8 +24,8 @@ const StudentBoard = () => {
   return (
     boardState && (
       <Wrapper>
-        <H2>Welcome {userState.firstName}</H2>
-        <H3>Here's your homework for the week</H3>
+        <H2>Welcome {userState.firstName}! Here's your homework for the week.</H2>
+
         <BoardContainer>
           {/* Creating the columns from the board state */}
           {Object.values(boardState.columns).map((column) => {
@@ -49,28 +49,19 @@ const Wrapper = styled.div`
 `;
 
 const H2 = styled.h2`
-  margin-top: 60px;
-  margin-bottom: 20px;
-  font-size: 50px;
-  font-weight: bold;
-  font-family: "Comic Sans MS";
-  color: #ffffffd3;
-  text-shadow: 2px 2px #616161;
-`;
-
-const H3 = styled.h3`
-  color: #ffffffd3;
-  font-weight: bold;
-  font-family: "Comic Sans MS";
   font-size: 30px;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px #616161;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+  background: #fef2d4a1;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px 20px;
 `;
 
 const BoardContainer = styled.div`
   display: flex;
   gap: 5px;
-  /* background: #0000ffb6; */
 `;
 
 export default StudentBoard;
