@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import UserDetailsRow from "../components/UserDetailsRow";
 import AddUser from "../modals/AddUser";
-const background = require("../style/assets/images/admin-panel-background-80.png");
+const background = require("../style/assets/images/admin-panel-background-40.png");
 
 const UserAdminPanel = () => {
   const [userAccounts, setUserAccounts] = useState();
@@ -50,9 +50,8 @@ const UserAdminPanel = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
   align-items: center;
-  padding-top: 5vh;
+  padding-top: 3vh;
   background: #a8eac8;
   background: url(${background});
   min-height: 100vh;
