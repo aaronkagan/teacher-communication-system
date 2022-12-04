@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
+const image = require("../style/assets/images/reader-image.png");
 
 const AnnouncementReaderBoard = () => {
   const [announcements, setAnnouncements] = useState();
@@ -42,28 +43,49 @@ const AnnouncementReaderBoard = () => {
 
   return (
     <Wrapper>
-      <h1>Announcement Board</h1>
-      {announcements
-        ? announcements.map((announcement) => {
-            return (
-              <Container key={announcement.announcementId}>
-                <Announcement announcement={announcement} />
+      <Img src={image} />
+      <Content>
+        <h1>Announcements</h1>
+        {announcements
+          ? announcements.map((announcement) => {
+              return (
+                <Container key={announcement.announcementId}>
+                  <Announcement announcement={announcement} />
 
-                {!announcement.isRead ? <MarkAsReadButton onClick={() => handleMarkRead(announcement)}>Mark Read</MarkAsReadButton> : null}
-              </Container>
-            );
-          })
-        : "Loading..."}
+                  {!announcement.isRead ? <MarkAsReadButton onClick={() => handleMarkRead(announcement)}>Mark Read</MarkAsReadButton> : null}
+                </Container>
+              );
+            })
+          : "Loading..."}
+      </Content>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 20px;
   padding-top: 5vh;
+  justify-content: center;
+  * {
+    font-family: "Courier New", Courier, monospace;
+  }
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+`;
+
+const Content = styled.div`
+  width: 600px;
+  margin-top: 10vh;
+  margin-left: 5vw;
+`;
+
+const Img = styled.img`
+  width: 350px;
+  height: 350px;
+  margin-top: 5vh;
 `;
 
 const Container = styled.div`

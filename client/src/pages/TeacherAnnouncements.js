@@ -76,6 +76,7 @@ const Wrapper = styled.div`
 const Img = styled.img`
   width: 350px;
   height: 350px;
+  margin-left: 6vw;
 `;
 const Content = styled.div`
   padding-top: 5vh;
@@ -102,7 +103,6 @@ const CreateAnnouncementButton = styled.button`
   color: white;
   margin-top: 0px;
   font-weight: bold;
-  color: black;
   padding: 0 10px;
 `;
 const DeleteAnnouncementButton = styled.button`
