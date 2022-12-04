@@ -3,10 +3,20 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import DashboardCard from "../components/dashboard-cards/DashboardCard";
 import DashboardData from "../data/DashboardCardData";
+import getUserRole from "../functions/getUserRole";
 const background = require("../style/assets/images/dashboard-background-50.png");
 
 const DashBoard = () => {
   const { userState } = useContext(UserContext);
+
+  // const dashboard
+
+  // switch(getUserRole()) {
+  //   case ''
+  // }
+
+  // useEffect(() => {}, []);
+
   return (
     <Wrapper>
       <Content>
@@ -14,7 +24,7 @@ const DashBoard = () => {
         <h3>Role: {userState.role}</h3>
       </Content>
       <Cards>
-        {Object.values(DashboardData).map((card) => {
+        {DashboardData.map((card) => {
           return <DashboardCard key={card.id} image={card.image} text={card.text} linkTo={card.linkTo} />;
         })}
       </Cards>
