@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import CreateAnnouncementModal from "../modals/CreateAnnouncementModal";
 import getUserId from "../functions/getUserId";
+const image = require("../style/assets/images/teacher-announcements-image.png");
 
 const TeacherAnnouncements = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,29 +42,46 @@ const TeacherAnnouncements = () => {
   };
   return (
     <Wrapper>
-      <H1>My Announcements</H1>
-      {myAnnouncements
-        ? myAnnouncements.map((announcement) => {
-            return (
-              <Container key={announcement.announcementId}>
-                <Announcement announcement={announcement} />
-                <DeleteAnnouncementButton onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</DeleteAnnouncementButton>
-              </Container>
-            );
-          })
-        : "Loading..."}
-      <CreateAnnouncementButton onClick={() => setIsModalOpen(true)}>Create Announcement</CreateAnnouncementButton>
-      <CreateAnnouncementModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} myAnnouncements={myAnnouncements} setMyAnnouncements={setMyAnnouncements} />
+      <Img src={image} />
+      <Content>
+        <H1>My Announcements</H1>
+        {myAnnouncements
+          ? myAnnouncements.map((announcement) => {
+              return (
+                <Container key={announcement.announcementId}>
+                  <Announcement announcement={announcement} />
+                  <DeleteAnnouncementButton onClick={() => handleDeleteAnnouncement(announcement.announcementId)}>Delete Announcement</DeleteAnnouncementButton>
+                </Container>
+              );
+            })
+          : "Loading..."}
+        <CreateAnnouncementButton onClick={() => setIsModalOpen(true)}>Create Announcement</CreateAnnouncementButton>
+        <CreateAnnouncementModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} myAnnouncements={myAnnouncements} setMyAnnouncements={setMyAnnouncements} />
+      </Content>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+  width: 90vw;
+  padding-top: 10vh;
+  * {
+    font-family: "Courier New", Courier, monospace;
+  }
+`;
+
+const Img = styled.img`
+  width: 350px;
+  height: 350px;
+`;
+const Content = styled.div`
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 5vh;
+  align-items: flex-start;
 `;
 
 const H1 = styled.h1`
@@ -81,7 +99,10 @@ const Container = styled.div`
 const CreateAnnouncementButton = styled.button`
   background: var(--success-color);
   color: white;
-  margin-top: 10px;
+  margin-top: 0px;
+  font-weight: bold;
+  color: black;
+  padding: 0 10px;
 `;
 const DeleteAnnouncementButton = styled.button`
   background: 0;
