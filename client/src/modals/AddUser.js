@@ -104,13 +104,14 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
 };
 
 const AddUserButton = styled.button`
-  background: #d3d3d344;
   border: 2px solid lightgray;
   padding: 5px 20px;
   width: max-content;
-  border-radius: 2px;
+  border-radius: 5px;
   margin-top: 20px;
   font-weight: bold;
+  background: white;
+  margin-bottom: 5vh;
 `;
 
 const Form = styled.form`

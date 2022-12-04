@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import UserDetailsRow from "../components/UserDetailsRow";
 import AddUser from "../modals/AddUser";
+const background = require("../style/assets/images/admin-panel-background-80.png");
 
 const UserAdminPanel = () => {
   const [userAccounts, setUserAccounts] = useState();
@@ -19,9 +20,9 @@ const UserAdminPanel = () => {
     <>
       {userAccounts ? (
         <Wrapper>
-          <Title>User Accounts</Title>
           <Table>
             <Thead>
+              <Title>User Admin</Title>
               <Tr>
                 <Th>First Name</Th>
                 <Th>Last Name</Th>
@@ -49,12 +50,16 @@ const UserAdminPanel = () => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: sans-serif;
+
   align-items: center;
   padding-top: 5vh;
+  background: #a8eac8;
+  background: url(${background});
+  min-height: 100vh;
+  * {
+    font-family: "Courier New", Courier, monospace;
+  }
 `;
-
-const Title = styled.h1``;
 
 const Table = styled.table`
   border: 1px solid lightgray;
@@ -62,13 +67,24 @@ const Table = styled.table`
   width: 80vw;
   text-align: justify;
   margin-top: 30px;
+  background: #ffffffb7;
+  border-radius: 10px;
+  overflow-y: scroll;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 20px;
+  font-size: 30px;
 `;
 
 const Thead = styled.thead``;
-const Tbody = styled.tbody``;
-const Tr = styled.tr``;
+
 const Th = styled.th`
   padding: 10px;
+  font-size: 25px;
 `;
+
+const Tbody = styled.tbody``;
+const Tr = styled.tr``;
 
 export default UserAdminPanel;
