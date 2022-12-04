@@ -97,6 +97,7 @@ const DeleteButton = styled.button`
   font-weight: bolder;
   position: absolute;
   bottom: 3px;
+  margin-top: 5px;
 `;
 
 export default TeacherBoardTask;
