@@ -174,6 +174,7 @@ const Container = styled.div`
   justify-content: space-evenly;
   margin-right: 30px;
   padding: 20px;
+  margin-bottom: 0;
 `;
 
 export default TeacherBoard;

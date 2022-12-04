@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../contexts/UserContext";
 import StudentBoardColumn from "../components/StudentBoardColumn";
-const background = require("../style/assets/images/corkboard-background.jpeg");
+// const background = require("../style/assets/images/corkboard-background.jpeg");
+const background = require("../style/assets/images/corkboard-background-80.png");
 
 const StudentBoard = () => {
   const { userState } = useContext(UserContext);
