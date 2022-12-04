@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import DashboardCard from "../components/dashboard-cards/DashboardCard";
 import DashboardData from "../data/DashboardCardData";
+const background = require("../style/assets/images/dashboard-background-50.png");
 
 const DashBoard = () => {
   const { userState } = useContext(UserContext);
@@ -22,6 +23,10 @@ const DashBoard = () => {
 };
 
 const Wrapper = styled.div`
+  background: url(${background});
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
   text-align: center;
   padding-top: 10vh;
   display: flex;
@@ -35,6 +40,10 @@ const Content = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   margin-top: 5vh;
+  background: #ffffff;
+  height: max-content;
+  padding: 20px;
+  border-radius: 15px;
   h1 {
     font-size: 50px;
     font-family: "Courier New", Courier, monospace;

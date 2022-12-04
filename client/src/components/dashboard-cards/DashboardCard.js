@@ -22,6 +22,7 @@ const Card = styled.div`
   border-radius: 15px;
   width: 200px;
   padding: 10px;
+  background: white;
 `;
 
 const Img = styled.img``;
