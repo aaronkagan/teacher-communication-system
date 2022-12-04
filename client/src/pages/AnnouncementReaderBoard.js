@@ -45,7 +45,7 @@ const AnnouncementReaderBoard = () => {
     <Wrapper>
       <Img src={image} />
       <Content>
-        <h1>Announcements</h1>
+        <h1>School Announcements</h1>
         {announcements
           ? announcements.map((announcement) => {
               return (
