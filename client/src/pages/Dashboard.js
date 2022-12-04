@@ -9,14 +9,6 @@ const background = require("../style/assets/images/dashboard-background-50.png")
 const DashBoard = () => {
   const { userState } = useContext(UserContext);
 
-  // const dashboard
-
-  // switch(getUserRole()) {
-  //   case ''
-  // }
-
-  // useEffect(() => {}, []);
-
   return (
     <Wrapper>
       <Content>
@@ -25,7 +17,7 @@ const DashBoard = () => {
       </Content>
       <Cards>
         {DashboardData.map((card) => {
-          return <DashboardCard key={card.id} image={card.image} text={card.text} linkTo={card.linkTo} />;
+          if (card.rolesCanAccess.includes(getUserRole())) return <DashboardCard key={card.id} image={card.image} text={card.text} linkTo={card.linkTo} />;
         })}
       </Cards>
     </Wrapper>
