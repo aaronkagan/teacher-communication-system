@@ -52,9 +52,11 @@ const H2 = styled.h2`
   font-size: 50px;
   font-weight: bold;
   font-family: "Comic Sans MS";
+  color: #ffffffd3;
 `;
 
 const H3 = styled.h3`
+  color: #ffffffd3;
   font-weight: bold;
   font-family: "Comic Sans MS";
   font-size: 30px;
