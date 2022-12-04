@@ -63,12 +63,16 @@ const TeacherAnnouncements = () => {
 };
 
 const Wrapper = styled.div`
+  background: #89cff0;
   display: flex;
   justify-content: center;
-  gap: 10vw;
-  width: 90vw;
+  gap: 5vw;
+  width: 100vw;
+  min-height: 100vh;
   padding-top: 10vh;
+  padding-right: 10vw;
   padding-bottom: 5vh;
+  padding-left: 5vw;
   * {
     font-family: "Courier New", Courier, monospace;
   }
@@ -78,13 +82,18 @@ const Img = styled.img`
   width: 350px;
   height: 350px;
   margin-left: 6vw;
+  background: #ffffffc2;
+  border-radius: 10px;
 `;
 const Content = styled.div`
   padding-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 600px;
+  border-radius: 10px;
+  padding: 5vh 5vh 4vh 5vh;
+  height: max-content;
+  background: #ffffffc2;
 `;
 
 const H1 = styled.h1`
@@ -101,14 +110,15 @@ const Container = styled.div`
 
 const CreateAnnouncementButton = styled.button`
   background: var(--success-color);
-  color: white;
+  color: #ffffff;
   margin-top: 0px;
   font-weight: bold;
   padding: 0 10px;
 `;
 const DeleteAnnouncementButton = styled.button`
   background: 0;
-  color: blue;
+  color: #0000ff84;
+  font-weight: bold;
   margin-bottom: 20px;
   margin-right: auto;
 `;

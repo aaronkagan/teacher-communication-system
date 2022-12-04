@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 const image = require("../style/assets/images/reader-image.png");
-const background = require("../style/assets/images/output-onlinepngtools.png");
 
 const AnnouncementReaderBoard = () => {
   const [announcements, setAnnouncements] = useState();
@@ -64,10 +63,10 @@ const AnnouncementReaderBoard = () => {
 };
 
 const Wrapper = styled.div`
-  background: url(${background});
+  background: pink;
   background-repeat: no-repeat;
   background-size: cover;
-  /* height: 100vh; */
+  min-height: 100vh;
   display: flex;
   gap: 20px;
   padding: 5vh 0;
