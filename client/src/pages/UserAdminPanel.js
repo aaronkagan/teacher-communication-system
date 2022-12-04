@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 3vh;
-  background: #2d00f76b;
+  background: #2d00f74f;
   /* background: url(${background}); */
   min-height: 100vh;
   * {

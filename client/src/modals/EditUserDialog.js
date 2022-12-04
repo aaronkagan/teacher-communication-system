@@ -145,7 +145,7 @@ const EditUserButton = styled.button`
   color: white;
   padding: 5px 10px;
   border-radius: 2px;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
 `;
 
 export default EditUserDialog;
