@@ -7,19 +7,20 @@ const DashboardData = [
     id: 1
   },
   {
-    image: require("../style/assets/images/student-board-card-image.png"),
-    text: "Student Task Board",
-    linkTo: "/board/student",
-    rolesCanAccess: ["admin", "student"],
-    id: 2
-  },
-  {
     image: require("../style/assets/images/teacher-announcements-image.png"),
     text: "Teacher Announcements",
     linkTo: "/announcements/teacher",
     rolesCanAccess: ["admin", "teacher"],
+    id: 2
+  },
+  {
+    image: require("../style/assets/images/student-board-card-image.png"),
+    text: "Student Task Board",
+    linkTo: "/board/student",
+    rolesCanAccess: ["admin", "student"],
     id: 3
   },
+
   {
     image: require("../style/assets/images/reader-image.png"),
     text: "Reader Announcements",
