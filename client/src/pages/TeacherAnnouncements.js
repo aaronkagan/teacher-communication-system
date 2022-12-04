@@ -88,6 +88,7 @@ const Img = styled.img`
 const Content = styled.div`
   padding-top: 5vh;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 10px;
