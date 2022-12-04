@@ -58,6 +58,7 @@ const Cards = styled.div`
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(3, 1fr);
+  height: 7vh;
 `;
 
 export default DashBoard;
