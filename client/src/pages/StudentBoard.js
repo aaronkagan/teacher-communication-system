@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import StudentBoardColumn from "../components/StudentBoardColumn";
 import { shadows } from "@mui/system";
 // const background = require("../style/assets/images/corkboard-background.jpeg");
-const background = require("../style/assets/images/corkboard-background-80.png");
+const background = require("../style/assets/images/corkboard-background-80-cropped.png");
 
 const StudentBoard = () => {
   const { userState } = useContext(UserContext);

@@ -1,8 +1,10 @@
 import styled from "styled-components";
+const thumbtack = require("../style/assets/icons/thumbtack.png");
 
 const StickyNote = ({ task, stickyColor, stickyDirection }) => {
   return (
     <Wrapper stickyColor={stickyColor} stickyDirection={stickyDirection}>
+      <Img src={thumbtack} />
       <Title>{task.title}</Title>
       <Text>{task.message}</Text>
       {task.comments.length > 0 && <SeeComments>See comments...</SeeComments>}
@@ -27,6 +29,11 @@ const Wrapper = styled.div`
     z-index: 1;
     cursor: pointer;
   }
+`;
+
+const Img = styled.img`
+  width: 30px;
+  margin-left: 30px;
 `;
 
 const Title = styled.h2`
