@@ -63,7 +63,7 @@ const TeacherAnnouncements = () => {
 };
 
 const Wrapper = styled.div`
-  background: #89cff0;
+  background: #89cff0a2;
   display: flex;
   justify-content: center;
   gap: 5vw;

@@ -52,8 +52,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 3vh;
-  background: #a8eac8;
-  background: url(${background});
+  background: #2d00f76b;
+  /* background: url(${background}); */
   min-height: 100vh;
   * {
     font-family: "Courier New", Courier, monospace;

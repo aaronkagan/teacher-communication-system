@@ -123,36 +123,39 @@ const TeacherBoard = () => {
   };
 
   return (
-    <Wrapper>
-      <Calendar>
-        {/* {console.log(boardState)} */}
-        {/* <h1>Welcome {userState.firstName}</h1> */}
-        {/* <DragDropContext onDragEnd={onDragEnd}> */}
-        <Title>
-          <img src={calendarIcon} />
-          <h2>Click on the day's title to add a task</h2>
-        </Title>
-        {/* Creating the columns */}
-        <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
-          <Container>
-            {boardState &&
-              boardState.columnOrder.map((columnName) => {
-                // Rendering the columns
-                return (
-                  <TeacherBoardColumn
-                    key={columnName}
-                    columnName={columnName}
-                    boardState={boardState}
-                    setBoardState={setBoardState}
-                    forceRefreshTeacherBoard={forceRefreshTeacherBoard}
-                    setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
-                  />
-                );
-              })}
-          </Container>
-        </DragDropContext>
-      </Calendar>
-    </Wrapper>
+    <>
+      {boardState ? (
+        <Wrapper>
+          <Calendar>
+            {/* {console.log(boardState)} */}
+            {/* <h1>Welcome {userState.firstName}</h1> */}
+            {/* <DragDropContext onDragEnd={onDragEnd}> */}
+            <Title>
+              <img src={calendarIcon} />
+              <h2>Click on the day's title to add a task</h2>
+            </Title>
+            {/* Creating the columns */}
+            <DragDropContext onDragStart={onDragStart} onDragUpdate={onDragUpdate} onDragEnd={onDragEnd}>
+              <Container>
+                {boardState.columnOrder.map((columnName) => {
+                  // Rendering the columns
+                  return (
+                    <TeacherBoardColumn
+                      key={columnName}
+                      columnName={columnName}
+                      boardState={boardState}
+                      setBoardState={setBoardState}
+                      forceRefreshTeacherBoard={forceRefreshTeacherBoard}
+                      setForceRefreshTeacherBoard={setForceRefreshTeacherBoard}
+                    />
+                  );
+                })}
+              </Container>
+            </DragDropContext>
+          </Calendar>
+        </Wrapper>
+      ) : null}
+    </>
   );
 };
 

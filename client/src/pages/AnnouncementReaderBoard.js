@@ -62,7 +62,7 @@ const AnnouncementReaderBoard = () => {
 };
 
 const Wrapper = styled.div`
-  background: pink;
+  background: #ffa7b587;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
