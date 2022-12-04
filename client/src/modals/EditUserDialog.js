@@ -81,7 +81,7 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
         </Form>
       </StyledDialog>
       <EditUserButton onClick={() => setIsOpen(true)} disabled={isDisabled}>
-        Edit
+        Edit User
       </EditUserButton>
     </>
   );
