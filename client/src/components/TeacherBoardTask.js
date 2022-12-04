@@ -93,8 +93,8 @@ const DeleteButton = styled.button`
   background: 0;
   padding: 0;
   color: var(--edit-color);
-  font-size: 10px;
-  font-weight: bolder;
+  font-size: 12px;
+  font-family: "Comic Sans MS";
   position: absolute;
   bottom: 3px;
   margin-top: 5px;
