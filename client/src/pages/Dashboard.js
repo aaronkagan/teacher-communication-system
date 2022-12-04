@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import DashboardCard from "../components/dashboard-cards/DashboardCard";
 import DashboardData from "../data/DashboardCardData";
+
 const DashBoard = () => {
   const { userState } = useContext(UserContext);
   return (
@@ -24,17 +25,23 @@ const Wrapper = styled.div`
   text-align: center;
   padding-top: 10vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 150px;
 `;
 
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 5vh;
   h1 {
-    font-size: 30px;
+    font-size: 50px;
+    font-family: "Courier New", Courier, monospace;
   }
   h3 {
-    font-size: 20px;
+    font-size: 30px;
+    font-family: "Courier New", Courier, monospace;
   }
 `;
 
