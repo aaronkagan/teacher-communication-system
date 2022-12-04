@@ -19,7 +19,7 @@ const DashboardData = {
   },
   ReaderAnnouncements: {
     image: require("../style/assets/images/reader-image.png"),
-    text: "Reader Announcement",
+    text: "Reader Announcements",
     linkTo: "/announcements/reader",
     id: 4
   },
