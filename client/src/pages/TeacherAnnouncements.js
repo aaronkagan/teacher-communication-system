@@ -78,10 +78,11 @@ const Img = styled.img`
   height: 350px;
 `;
 const Content = styled.div`
-  padding-top: 10vh;
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 600px;
 `;
 
 const H1 = styled.h1`
@@ -108,6 +109,7 @@ const DeleteAnnouncementButton = styled.button`
   background: 0;
   color: blue;
   margin-bottom: 20px;
+  margin-right: auto;
 `;
 
 export default TeacherAnnouncements;
