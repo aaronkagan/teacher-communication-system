@@ -9,6 +9,8 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
   const handleDelete = (event) => {
     event.preventDefault();
     setIsDisabled(true);
+
+    // Delete the user
     fetch(`/api/user/${user.userId}`, {
       method: "DELETE"
     })
