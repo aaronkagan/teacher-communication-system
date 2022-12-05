@@ -76,6 +76,7 @@ const Table = styled.table`
 
 const Title = styled.h1`
   font-size: 30px;
+  margin-left: 6px;
 `;
 
 const Thead = styled.thead``;
