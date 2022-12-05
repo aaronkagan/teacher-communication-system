@@ -136,7 +136,11 @@ const deleteUser = async (req, res) => {
     await client.connect();
     console.log("connected");
     const db = client.db("TaskBoard");
-    const result = await db.collection("users").deleteOne({ userId: userId });
+    // DELETE the user
+    const deleteUserResult = await db.collection("users").deleteOne({ userId: userId });
+    // DELETE the user's announcements
+    const deleteUserAnnoucementsResult = await db.collection("announcements").deleteMany({ createdById: userId });
+
     return res.status(200).json({ status: 200, message: "User has been deleted" });
   } catch (err) {
     return res.status(500).json({ status: 500, error: err });

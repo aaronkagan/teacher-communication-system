@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import UserDetailsRow from "../components/UserDetailsRow";
 import AddUser from "../modals/AddUser";
-const background = require("../style/assets/images/admin-panel-background-40.png");
 
 const UserAdminPanel = () => {
   const [userAccounts, setUserAccounts] = useState();
@@ -22,7 +21,11 @@ const UserAdminPanel = () => {
         <Wrapper>
           <Table>
             <Thead>
-              <Title>User Admin</Title>
+              <tr>
+                <td>
+                  <Title>User Admin</Title>
+                </td>
+              </tr>
               <Tr>
                 <Th>First Name</Th>
                 <Th>Last Name</Th>
@@ -32,10 +35,11 @@ const UserAdminPanel = () => {
             </Thead>
 
             <Tbody>
-              {userAccounts &&
-                userAccounts.map((user) => {
-                  return <UserDetailsRow key={user.userId} user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />;
-                })}
+              {userAccounts
+                ? userAccounts.map((user) => {
+                    return <UserDetailsRow key={user.userId} user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />;
+                  })
+                : null}
             </Tbody>
           </Table>
           <AddUser forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
@@ -53,7 +57,6 @@ const Wrapper = styled.div`
   align-items: center;
   padding-top: 3vh;
   background: #2d00f74f;
-  /* background: url(${background}); */
   min-height: 100vh;
   * {
     font-family: "Courier New", Courier, monospace;
@@ -72,8 +75,8 @@ const Table = styled.table`
 `;
 
 const Title = styled.h1`
-  margin-bottom: 20px;
   font-size: 30px;
+  margin-left: 6px;
 `;
 
 const Thead = styled.thead``;
