@@ -12,7 +12,9 @@ const DashBoard = () => {
   return (
     <Wrapper>
       <Content>
-        <h1>Welcome {userState.firstName}</h1>
+        <h1>
+          Welcome {userState.firstName} {userState.lastName}
+        </h1>
         <h3>Role: {userState.role}</h3>
       </Content>
       <Cards>
@@ -30,10 +32,11 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   height: 100vh;
   text-align: center;
+  padding-left: 2vw;
   padding-top: 10vh;
   display: flex;
   justify-content: center;
-  gap: 150px;
+  gap: 90px;
 `;
 
 const Content = styled.div`
