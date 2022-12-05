@@ -21,7 +21,11 @@ const UserAdminPanel = () => {
         <Wrapper>
           <Table>
             <Thead>
-              <Title>User Admin</Title>
+              <tr>
+                <td>
+                  <Title>User Admin</Title>
+                </td>
+              </tr>
               <Tr>
                 <Th>First Name</Th>
                 <Th>Last Name</Th>
@@ -71,7 +75,6 @@ const Table = styled.table`
 `;
 
 const Title = styled.h1`
-  margin-bottom: 20px;
   font-size: 30px;
 `;
 
