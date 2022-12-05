@@ -12,8 +12,12 @@ const UserDetailsRow = ({ user, forceRefresh, setForceRefresh }) => {
         <Td>{user.email}</Td>
         <Td>{capitalize(user.role)}</Td>
       </Tr>
-      <EditUserDialog user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
-      <DeleteUser user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
+      <tr>
+        <td>
+          <EditUserDialog user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
+          <DeleteUser user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
+        </td>
+      </tr>
     </>
   );
 };
