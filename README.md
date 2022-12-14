@@ -2,6 +2,8 @@
 
 Your premier application for teacher student communication.
 
+[Video demo of ReadMe!] (https://vimeo.com/780022696)
+
 # Installation instructions
 
 ## MongoDB setup
