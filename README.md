@@ -2,7 +2,7 @@
 
 Your premier application for teacher student communication.
 
-[Video demo of ReadMe!](https://vimeo.com/780022696)
+<a href="https://vimeo.com/780022696/" target="_blank">Video demo of ReadMe!</a>
 
 # Installation instructions
 
