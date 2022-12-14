@@ -1,8 +1,10 @@
+<base target="_blank">
+
 # Welcome to ReadMe!
 
 Your premier application for teacher student communication.
 
-<a href="https://vimeo.com/780022696/" target="_blank">Video demo of ReadMe!</a>
+[Video demo of ReadMe!](https://vimeo.com/780022696/)
 
 # Installation instructions
 
