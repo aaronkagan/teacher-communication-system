@@ -7,6 +7,9 @@ import getUserRole from '../functions/getUserRole';
 const background = require('../style/assets/images/dashboard-background-50.png');
 
 const DashBoard = () => {
+  // Getting the user information from the UserContext
+  // UserContext contains the following user information:
+  // firstName, lastName, email, username, role, userId
   const { userState } = useContext(UserContext);
 
   return (
