@@ -16,6 +16,7 @@ const App = () => {
     <Router>
       <GlobalStyles />
       <Nav />
+      {/* Routes for the different application features */}
       <Routes>
         <Route
           path="/"
