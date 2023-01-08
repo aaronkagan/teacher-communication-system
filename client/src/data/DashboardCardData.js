@@ -1,5 +1,4 @@
 // This is the array used to create the dashboard features cards
-
 const DashboardData = [
   {
     image: require('../style/assets/images/teacher-board-card-image.png'),
