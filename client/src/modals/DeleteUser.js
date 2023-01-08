@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Dialog } from "@mui/material";
-import { useState } from "react";
+import styled from 'styled-components';
+import { Dialog } from '@mui/material';
+import { useState } from 'react';
 
 const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
 
     // Delete the user
     fetch(`/api/user/${user.userId}`, {
-      method: "DELETE"
+      method: 'DELETE'
     })
       .then((res) => res.json())
       .then((data) => {
@@ -30,9 +30,10 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
   return (
     <>
       <Dialog
+        // Removing border radius from modal
         PaperProps={{
           style: {
-            borderRadius: "0"
+            borderRadius: '0'
           }
         }}
         open={isOpen}
@@ -42,10 +43,16 @@ const DeleteUser = ({ user, forceRefresh, setForceRefresh }) => {
             Confirm Delete of User: {user.firstName} {user.lastName}
           </h2>
           <DialogButtonsContainer>
-            <ConfirmDeleteButton onClick={handleDelete} disabled={isDisabled}>
+            <ConfirmDeleteButton
+              onClick={handleDelete}
+              disabled={isDisabled}
+            >
               Confirm
             </ConfirmDeleteButton>
-            <CancelButton onClick={() => setIsOpen(false)} disabled={isDisabled}>
+            <CancelButton
+              onClick={() => setIsOpen(false)}
+              disabled={isDisabled}
+            >
               Cancel
             </CancelButton>
           </DialogButtonsContainer>
