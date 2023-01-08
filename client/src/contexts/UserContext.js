@@ -6,7 +6,7 @@ export const UserProvider = ({ children }) => {
   const [userState, setUserState] = useState({});
 
   // using this useEffect to reload the component every time the userState variable is modified to make sure I don't have stale data
-  // The reason i'm using this here and not just adding the userState variable to the dependency array of the next useEffect is that i want to reload the component even in the case that the userState variable is set to an empty string on logout and not just when the other useEffect fetches new data
+  // The reason i'm using this here and not just adding the userState variable to the dependency array of the next useEffect is that i want to reload the component even in the case that the userState variable is set to an empty object on logout and not just when the other useEffect fetches new data
   useEffect(() => {}, [userState]);
 
   // fetching the user data from the backend as soon as the component loads
