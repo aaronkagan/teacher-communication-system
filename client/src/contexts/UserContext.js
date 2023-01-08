@@ -1,14 +1,11 @@
-import { createContext, useEffect, useState } from "react";
-import getUserId from "../functions/getUserId";
-
+import { createContext, useEffect, useState } from 'react';
+import getUserId from '../functions/getUserId';
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
   const [userState, setUserState] = useState({});
 
-  useEffect(() => {
-    // console.log("Current user state: ", userState);
-  }, [userState]);
+  useEffect(() => {}, [userState]);
 
   useEffect(() => {
     getUserId() &&
