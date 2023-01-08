@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { useContext, useEffect } from "react";
-import { UserContext } from "../contexts/UserContext";
-import DashboardCard from "../components/dashboard-cards/DashboardCard";
-import DashboardData from "../data/DashboardCardData";
-import getUserRole from "../functions/getUserRole";
-const background = require("../style/assets/images/dashboard-background-50.png");
+import styled from 'styled-components';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import DashboardCard from '../components/dashboard-cards/DashboardCard';
+import DashboardData from '../data/DashboardCardData';
+import getUserRole from '../functions/getUserRole';
+const background = require('../style/assets/images/dashboard-background-50.png');
 
 const DashBoard = () => {
   const { userState } = useContext(UserContext);
@@ -19,7 +19,15 @@ const DashBoard = () => {
       </Content>
       <Cards>
         {DashboardData.map((card) => {
-          if (card.rolesCanAccess.includes(getUserRole())) return <DashboardCard key={card.id} image={card.image} text={card.text} linkTo={card.linkTo} />;
+          if (card.rolesCanAccess.includes(getUserRole()))
+            return (
+              <DashboardCard
+                key={card.id}
+                image={card.image}
+                text={card.text}
+                linkTo={card.linkTo}
+              />
+            );
         })}
       </Cards>
     </Wrapper>
@@ -51,11 +59,11 @@ const Content = styled.div`
   border-radius: 15px;
   h1 {
     font-size: 50px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
   h3 {
     font-size: 30px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
 `;
 
