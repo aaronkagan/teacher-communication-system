@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import StudentBoardTask from './StudentBoardTask';
 import { capitalize } from '@mui/material';
 
+// This is the column component that is rendered for each day of the week on the student board
 const StudentBoardColumn = ({ column, tasks, boardState, setBoardState }) => {
   return (
     <Wrapper>
       <ColumnTitle>{capitalize(column.title)}</ColumnTitle>
       <ColumnWrapper>
+        {/* The tasks for that day's column being mapped for each day of the week */}
         {column.taskIds.map((taskId) => {
           return (
             <StudentBoardTask
               key={taskId}
               task={tasks[taskId]}
+              // The board state and setState are needed to be able to add comments to each individual task (on each task there is a modal that opens with the ability to add comments to each task and we need to modify the boardState object with the comments that are being added)
               boardState={boardState}
               setBoardState={setBoardState}
             />
