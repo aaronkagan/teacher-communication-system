@@ -9,18 +9,21 @@ const StudentBoardTask = ({ task, boardState, setBoardState }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      {/* Opening the modal to see details and and add new comments to the student task*/}
+      {/* Opening the modal by clicking on the note to see details and and add new comments to the student task*/}
       <div onClick={() => setIsModalOpen(true)}>
+        {/* The note itself */}
         <StickyNote
           task={task}
           stickyColor={getRandomStickyColor()}
           stickyDirection={getRandomStickyDirection()}
         />
+        {/* The details and add comments modal */}
         <StudentBoardTaskModal
           stickyColor={getRandomStickyColor()}
           task={task}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          // Used to set the board state with the new comments
           boardState={boardState}
           setBoardState={setBoardState}
         />
