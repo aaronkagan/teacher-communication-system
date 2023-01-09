@@ -94,14 +94,15 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     // Creating an instance of the FileReader() object. The file reader object is used to read the contents of a file that was selected via drag&drop or file input
     const reader = new FileReader();
 
-    // performs this action once the file read has completed
+    // It sets the onloadend event handler for the reader object. This event is triggered when the file reading operation is completed
     reader.onloadend = () => {
       // console.log("RESULT", reader.result);
+
       // setting the file string state with the result of the reader reading the file. This result will be the base64 string that represents the file.
       setFileString(reader.result);
     };
 
-    // TODO : I wasn't able to figure out the set this plays in the process but the file upload doesn't work without this. I don't understand why this is necessary since i'm already setting the filString with the reader.result in the reader.onLoadEnd function
+    // It starts the process of reading the file's contents by calling the readAsDataURL method on the reader object and passing the file object as an argument. This causes the reader object to start reading the file's contents, and when it is finished, the onloadend event is triggered and the file's contents are passed to the setFileString function.
     reader.readAsDataURL(file);
   };
 
