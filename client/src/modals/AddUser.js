@@ -25,10 +25,11 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
     setIsOpen(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const form = document.getElementById('form');
 
+    // Getting the form for the next step
+    const form = document.getElementById('form');
     // Grabbing all the from elements. This is a quick way to add the disabled attribute to all the form elements using the forEach loop on the line below.
     // I'm using it to disable the form inputs while the form is being submitted. Below in the fetch result i'm using a similar technique to enable them. Much more clean than disabling and enabling each form element separately
     const formElements = Array.from(form.elements);
@@ -53,6 +54,7 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
         formElements.forEach((elem) => {
           elem.removeAttribute('disabled');
         });
+        // Resetting the form data on success
         setFormData(initialFormData);
       })
       .catch((err) => {
@@ -66,6 +68,7 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
 
   const handleChange = (event) => {
     // Setting the form state on input change
+    // TODO : I know there has to be a more efficient way than to set the date and userId on each change but i tried a few other things and they didn't work. Adding the userId in the initialFormState doesn't work because it uses the same value for multiple users created without refreshing the page so i have to find another way. Also i might deprecate the UUIDV4 library usage in favor of crypto.randomUUID()
     setFormData({ ...formData, [event.target.id]: event.target.value, userId: uuidv4(), dateCreated: moment().format('ll') });
   };
 
