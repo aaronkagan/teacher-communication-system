@@ -1,6 +1,8 @@
-import { Dialog } from "@mui/material";
-import { useState } from "react";
-import styled from "styled-components";
+import { Dialog } from '@mui/material';
+import { useState } from 'react';
+import styled from 'styled-components';
+
+// Modal to delete task from teacher board
 
 const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpen, boardState, task, forceRefreshTeacherBoard, setForceRefreshTeacherBoard }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -19,17 +21,17 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
     delete boardState.tasks[task.id];
 
     // Send the new board state to the DB
-    fetch("/api/tasks", {
-      method: "PATCH",
+    fetch('/api/tasks', {
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(boardState)
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 400 || data.status === 500) {
-          alert("An unknown error has occurred");
+          alert('An unknown error has occurred');
           setIsButtonDisabled(false);
           // Reloading the window in case of bad PATCH to get the latest data
           window.location.reload();
@@ -47,22 +49,28 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
     <Dialog
       PaperProps={{
         style: {
-          borderRadius: "0"
+          borderRadius: '0'
         }
       }}
       open={isTaskDeleteModalOpen}
     >
       <Wrapper>
         {isButtonDisabled ? (
-          "Processing Deletion"
+          'Processing Deletion'
         ) : (
           <Container>
             <h3>Are you sure you want to delete?</h3>
             <ButtonsContainer>
-              <ConfirmButton disabled={isButtonDisabled} onClick={handleDeleteTask}>
+              <ConfirmButton
+                disabled={isButtonDisabled}
+                onClick={handleDeleteTask}
+              >
                 Confirm
               </ConfirmButton>
-              <CancelButton disabled={isButtonDisabled} onClick={() => setIsTaskDeleteModalOpen(false)}>
+              <CancelButton
+                disabled={isButtonDisabled}
+                onClick={() => setIsTaskDeleteModalOpen(false)}
+              >
                 Cancel
               </CancelButton>
             </ButtonsContainer>
