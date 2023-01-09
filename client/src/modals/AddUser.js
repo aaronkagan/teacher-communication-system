@@ -1,21 +1,25 @@
-import styled from "styled-components";
-import { useState } from "react";
-import { Dialog } from "@mui/material";
-const moment = require("moment");
-const { v4: uuidv4 } = require("uuid");
+import styled from 'styled-components';
+import { useState } from 'react';
+import { Dialog } from '@mui/material';
+const moment = require('moment');
+const { v4: uuidv4 } = require('uuid');
+
+// Component used for adding a new user in the admin panel
 
 const initialFormData = {
-  firstName: "",
-  lastName: "",
-  username: "",
-  email: "",
-  role: ""
+  firstName: '',
+  lastName: '',
+  username: '',
+  email: '',
+  role: ''
 };
 
 const AddUser = ({ forceRefresh, setForceRefresh }) => {
   const [formData, setFormData] = useState({ ...initialFormData });
+  // used for opening and closing the modal
   const [isOpen, setIsOpen] = useState(false);
 
+  // Handling the cancel button on the modal
   const handleCancel = () => {
     setFormData(initialFormData);
     setIsOpen(false);
@@ -23,39 +27,46 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const form = document.getElementById("form");
+    const form = document.getElementById('form');
+
+    // Grabbing all the from elements. This is a quick way to add the disabled attribute to all the form elements using the forEach loop on the line below.
+    // I'm using it to disable the form inputs while the form is being submitted. Below in the fetch result i'm using a similar technique to enable them. Much more clean than disabling and enabling each form element separately
     const formElements = Array.from(form.elements);
     formElements.forEach((elem) => {
-      elem.setAttribute("disabled", "");
+      elem.setAttribute('disabled', '');
     });
 
-    fetch("/api/user", {
-      method: "POST",
+    fetch('/api/user', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
     })
       .then((res) => res.json())
       .then((data) => {
+        // forceRefresh, setForceRefresh is used to refresh the parent component (the admin panel) when a user is added (: TODO : probably could have done it in a less brute force way)
         setForceRefresh(!forceRefresh);
         alert(data.message);
         setIsOpen(false);
+        // Removing the disabled attribute from all the from elements at once
         formElements.forEach((elem) => {
-          elem.removeAttribute("disabled");
+          elem.removeAttribute('disabled');
         });
         setFormData(initialFormData);
       })
       .catch((err) => {
+        // Removing the disabled attribute from all the from elements at once
         formElements.forEach((elem) => {
-          elem.removeAttribute("disabled");
+          elem.removeAttribute('disabled');
         });
         alert(err);
       });
   };
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.id]: event.target.value, userId: uuidv4(), dateCreated: moment().format("ll") });
+    // Setting the form state on input change
+    setFormData({ ...formData, [event.target.id]: event.target.value, userId: uuidv4(), dateCreated: moment().format('ll') });
   };
 
   return (
@@ -63,25 +74,65 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
       <Dialog
         PaperProps={{
           style: {
-            borderRadius: "0"
+            borderRadius: '0'
           }
         }}
         open={isOpen}
       >
-        <Form id="form" onSubmit={handleSubmit} autoComplete="off">
+        <Form
+          id="form"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
           <h2>Add User</h2>
           <label htmlFor="firstName">First Name</label>
-          <input type="text" id="firstName" value={formData.firstName} onChange={handleChange} required />
+          <input
+            type="text"
+            id="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="lastName">Last Name</label>
-          <input type="text" id="lastName" value={formData.lastName} onChange={handleChange} required />
+          <input
+            type="text"
+            id="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" value={formData.username} onChange={handleChange} required />
+          <input
+            type="text"
+            id="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={formData.email} onChange={handleChange} required />
+          <input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="password">Initial Password</label>
-          <input type="password" id="password" defaultValue="" onChange={handleChange} required />
+          <input
+            type="password"
+            id="password"
+            defaultValue=""
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="role">Role</label>
-          <select name="role" id="role" value={formData.role} onChange={handleChange} required>
+          <select
+            name="role"
+            id="role"
+            value={formData.role}
+            onChange={handleChange}
+            required
+          >
             <option>Select a role</option>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
@@ -89,10 +140,16 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
             <option value="reader">Admin</option>
           </select>
           <ButtonsContainer>
-            <SubmitButton type="submit" id="submit">
+            <SubmitButton
+              type="submit"
+              id="submit"
+            >
               Submit
             </SubmitButton>
-            <CancelButton type="button" onClick={handleCancel}>
+            <CancelButton
+              type="button"
+              onClick={handleCancel}
+            >
               Cancel
             </CancelButton>
           </ButtonsContainer>
