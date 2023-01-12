@@ -1,12 +1,15 @@
-import { Dialog } from "@mui/material";
-import { useState } from "react";
-import styled from "styled-components";
-import useRoles from "../hooks/useRoles";
+import { Dialog } from '@mui/material';
+import { useState } from 'react';
+import styled from 'styled-components';
+import useRoles from '../hooks/useRoles';
 
 const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
   const roles = useRoles();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  // I'm passing the user data from the parent component to populate the fields because when the admin edits the user details the fields will be pre-populated (except for the password field)
+
   const [formData, setFormData] = useState({
     userId: user.userId,
     firstName: user.firstName,
@@ -20,10 +23,10 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
   const handleSubmitChanges = (event) => {
     event.preventDefault();
     setIsDisabled(true);
-    fetch("/api/user", {
-      method: "PATCH",
+    fetch('/api/user', {
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
     })
@@ -49,7 +52,7 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
       <StyledDialog
         PaperProps={{
           style: {
-            borderRadius: "0"
+            borderRadius: '0'
           }
         }}
         open={isOpen}
@@ -57,30 +60,70 @@ const EditUserDialog = ({ user, forceRefresh, setForceRefresh }) => {
         <Form onSubmit={handleSubmitChanges}>
           <h2>Edit User Details</h2>
           <Label htmlFor="firstName">First Name</Label>
-          <Input type="text" id="firstName" defaultValue={user.firstName} onChange={handleChange} disabled={isDisabled} />
+          <Input
+            type="text"
+            id="firstName"
+            defaultValue={user.firstName}
+            onChange={handleChange}
+            disabled={isDisabled}
+          />
           <Label htmlFor="lastName">Last Name</Label>
-          <Input type="text" id="lastName" defaultValue={user.lastName} onChange={handleChange} disabled={isDisabled} />
+          <Input
+            type="text"
+            id="lastName"
+            defaultValue={user.lastName}
+            onChange={handleChange}
+            disabled={isDisabled}
+          />
           <Label htmlFor="email">Email</Label>
-          <Input type="email" id="email" defaultValue={user.email} onChange={handleChange} disabled={isDisabled} />
+          <Input
+            type="email"
+            id="email"
+            defaultValue={user.email}
+            onChange={handleChange}
+            disabled={isDisabled}
+          />
           <Label htmlFor="email">Password</Label>
-          <Input type="password" id="password" defaultValue="" onChange={handleChange} disabled={isDisabled} />
+          <Input
+            type="password"
+            id="password"
+            defaultValue=""
+            onChange={handleChange}
+            disabled={isDisabled}
+          />
           <Label htmlFor="role">Role</Label>
-          <Select name="role" id="role" defaultValue={user.role} onChange={handleChange} disabled={isDisabled}>
+          <Select
+            name="role"
+            id="role"
+            defaultValue={user.role}
+            onChange={handleChange}
+            disabled={isDisabled}
+          >
             {roles.map((role) => {
               return <option key={role}>{role}</option>;
             })}
           </Select>
           <ButtonsWrapper>
-            <SubmitButton type="submit" disabled={isDisabled}>
+            <SubmitButton
+              type="submit"
+              disabled={isDisabled}
+            >
               Submit
             </SubmitButton>
-            <CancelButton type="button" onClick={() => setIsOpen(false)} disabled={isDisabled}>
+            <CancelButton
+              type="button"
+              onClick={() => setIsOpen(false)}
+              disabled={isDisabled}
+            >
               Cancel
             </CancelButton>
           </ButtonsWrapper>
         </Form>
       </StyledDialog>
-      <EditUserButton onClick={() => setIsOpen(true)} disabled={isDisabled}>
+      <EditUserButton
+        onClick={() => setIsOpen(true)}
+        disabled={isDisabled}
+      >
         Edit User
       </EditUserButton>
     </>
