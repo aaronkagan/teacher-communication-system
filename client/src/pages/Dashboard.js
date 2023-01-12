@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
-import DashboardCard from '../components/dashboard-cards/DashboardCard';
+import DashboardCard from '../components/DashboardCard';
 import DashboardData from '../data/DashboardCardData';
 import getUserRole from '../functions/getUserRole';
 const background = require('../style/assets/images/dashboard-background-50.png');

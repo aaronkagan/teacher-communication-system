@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Announcement = ({ announcement }) => {
   return (
     // The read status of the announcement
+    // isRead attribute that i'm using to style the announcement conditionally in style components
     <Wrapper isRead={announcement.isRead}>
       {/* The announcement author */}
       <h3>{announcement.createdByName}</h3>
