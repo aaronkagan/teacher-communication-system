@@ -28,6 +28,7 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
   const handleSubmit = (event) => {
     // Preventing page refresh on submit
     event.preventDefault();
+    // In the future i would look into the built in crypto library crypto.randomUUID() to replace UUIDV4
     const uniqueTaskId = uuidv4();
     const todaysDate = moment().format('ll');
 
