@@ -33,6 +33,7 @@ const AddUser = ({ forceRefresh, setForceRefresh }) => {
     // Grabbing all the from elements. This is a quick way to add the disabled attribute to all the form elements using the forEach loop on the line below.
     // I'm using it to disable the form inputs while the form is being submitted. Below in the fetch result i'm using a similar technique to enable them. Much more clean than disabling and enabling each form element separately
     const formElements = Array.from(form.elements);
+
     formElements.forEach((elem) => {
       elem.setAttribute('disabled', '');
     });
