@@ -1,12 +1,15 @@
-import styled from "styled-components";
-import { useContext, useEffect } from "react";
-import { UserContext } from "../contexts/UserContext";
-import DashboardCard from "../components/dashboard-cards/DashboardCard";
-import DashboardData from "../data/DashboardCardData";
-import getUserRole from "../functions/getUserRole";
-const background = require("../style/assets/images/dashboard-background-50.png");
+import styled from 'styled-components';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import DashboardCard from '../components/DashboardCard';
+import DashboardData from '../data/DashboardCardData';
+import getUserRole from '../functions/getUserRole';
+const background = require('../style/assets/images/dashboard-background-50.png');
 
 const DashBoard = () => {
+  // Getting the user information from the UserContext
+  // UserContext contains the following user information:
+  // firstName, lastName, email, username, role, userId
   const { userState } = useContext(UserContext);
 
   return (
@@ -18,8 +21,18 @@ const DashBoard = () => {
         <h3>Role: {userState.role}</h3>
       </Content>
       <Cards>
+        {/* Mapping the feature cards to be displayed on the dashboard */}
         {DashboardData.map((card) => {
-          if (card.rolesCanAccess.includes(getUserRole())) return <DashboardCard key={card.id} image={card.image} text={card.text} linkTo={card.linkTo} />;
+          // only returning the dashboard card if the role on the card is one of the features the current user can access (doing this instead of filtering the DashboardData card array. No specific reason as to why i'm doing it this way)
+          if (card.rolesCanAccess.includes(getUserRole()))
+            return (
+              <DashboardCard
+                key={card.id}
+                image={card.image}
+                text={card.text}
+                linkTo={card.linkTo}
+              />
+            );
         })}
       </Cards>
     </Wrapper>
@@ -51,11 +64,11 @@ const Content = styled.div`
   border-radius: 15px;
   h1 {
     font-size: 50px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
   h3 {
     font-size: 30px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
 `;
 

@@ -1,8 +1,11 @@
-import styled from "styled-components";
-import capitalize from "../functions/capitalize";
-import EditUserDialog from "../modals/EditUserDialog";
-import DeleteUser from "../modals/DeleteUser";
+import styled from 'styled-components';
+import capitalize from '../functions/capitalize';
+import EditUserDialog from '../modals/EditUserDialog';
+import DeleteUser from '../modals/DeleteUser';
 
+// This is the row component for the admin user panel
+
+// forceRefresh, setForceRefresh is used to refresh the parent component (the admin panel) when a user is edited or deleted (: TODO : probably could have done it in a less brute force way)
 const UserDetailsRow = ({ user, forceRefresh, setForceRefresh }) => {
   return (
     <>
@@ -14,8 +17,22 @@ const UserDetailsRow = ({ user, forceRefresh, setForceRefresh }) => {
       </Tr>
       <tr>
         <td>
-          <EditUserDialog user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
-          <DeleteUser user={user} forceRefresh={forceRefresh} setForceRefresh={setForceRefresh} />
+          {/* Imported Modal for editing user (see modal component for full modal) */}
+          <EditUserDialog
+            // User Data
+            user={user}
+            // used to refresh the parent component
+            forceRefresh={forceRefresh}
+            setForceRefresh={setForceRefresh}
+          />
+          {/* Imported Modal for deleting user (see modal component for full modal)*/}
+          <DeleteUser
+            // User data
+            user={user}
+            // used to refresh the parent component
+            forceRefresh={forceRefresh}
+            setForceRefresh={setForceRefresh}
+          />
         </td>
       </tr>
     </>

@@ -1,3 +1,5 @@
+// NOT IN USE AT THE MOMENT (Might deprecate)
+
 // const moment = require("moment");
 
 // const addNewTaskToBoard = (boardState, setBoardState, newTaskFormData) => {
