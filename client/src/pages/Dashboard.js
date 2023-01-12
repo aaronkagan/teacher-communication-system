@@ -24,7 +24,7 @@ const DashBoard = () => {
         {/* Mapping the feature cards to be displayed on the dashboard */}
         {DashboardData.map((card) => {
           // only returning the dashboard card if the role on the card is one of the features the current user can access (doing this instead of filtering the DashboardData card array. No specific reason as to why i'm doing it this way)
-          if (card.rolesCanAccess.includes(getUserRole()))
+          if (card.rolesCanAccess.includes(getUserRole())) {
             return (
               <DashboardCard
                 key={card.id}
@@ -33,6 +33,9 @@ const DashBoard = () => {
                 linkTo={card.linkTo}
               />
             );
+          } else {
+            return null;
+          }
         })}
       </Cards>
     </Wrapper>
