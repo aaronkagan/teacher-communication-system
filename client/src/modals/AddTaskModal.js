@@ -50,6 +50,8 @@ const AddTaskModal = ({ isModalOpen, setIsModalOpen, boardState, setBoardState, 
     }
 
     // Adding a new task
+
+    // In the future i want to change this to using the setBoardState function instead of adding it the JS way.
     // 1. Add the enriched task to the task list
     boardState.tasks[uniqueTaskId] = { ...enrichedFormData };
 
