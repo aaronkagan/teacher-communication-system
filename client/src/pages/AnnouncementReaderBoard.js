@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import Announcement from "../components/Announcement";
-const image = require("../style/assets/images/reader-image.png");
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Announcement from '../components/Announcement';
+const image = require('../style/assets/images/reader-image.png');
 
 const AnnouncementReaderBoard = () => {
   const [announcements, setAnnouncements] = useState();
   useEffect(() => {
-    fetch("/api/announcements")
+    fetch('/api/announcements')
       .then((res) => res.json())
       .then((data) => setAnnouncements(data.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handleMarkRead = (announcement) => {
-    const { announcementId, isRead } = announcement;
+    const { announcementId } = announcement;
 
     // Would probably do this in a cleaner way in the future instead of having to map over the whole array.
     // I would created two separate announcement components, one for the teachers and one for the reader. I would have this function in the reader's announcement component. I would also have a state local to that component for the specific announcement and then just call the function and the setState on that specific announcement's state. That way i wouldn't have to map over the whole announcements array.
@@ -26,10 +26,10 @@ const AnnouncementReaderBoard = () => {
         }
       })
     );
-    fetch("/api/announcement/markRead", {
-      method: "PATCH",
+    fetch('/api/announcement/markRead', {
+      method: 'PATCH',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ announcementId })
     })
@@ -55,7 +55,7 @@ const AnnouncementReaderBoard = () => {
                 </Container>
               );
             })
-          : "Loading..."}
+          : 'Loading...'}
       </Content>
     </Wrapper>
   );
@@ -72,7 +72,7 @@ const Wrapper = styled.div`
 
   justify-content: center;
   * {
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
   }
 
   h1 {
