@@ -16,6 +16,7 @@ const StudentBoardColumn = ({ column, tasks, boardState, setBoardState }) => {
               task={tasks[taskId]}
               // The board state and setState are needed to be able to add comments to each individual task (on each task there is a modal that opens with the ability to add comments to each task and we need to modify the boardState object with the comments that are being added)
               boardState={boardState}
+              // Set board state is used for the student to be able to add comments via the comments input.
               setBoardState={setBoardState}
             />
           );
