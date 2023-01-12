@@ -12,11 +12,17 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
     setIsButtonDisabled(true);
 
     // 1. Delete the taskID from the current column's taskIds array
+
+    // Iterating over the values from the columns object, which is another object that holds the taskIds to associate the task to the correct column.
     Object.values(boardState.columns).forEach((column) => {
+      // If the columns taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
       if (column.taskIds.includes(task.id)) {
+        // How we do that is by splicing 1 element from taskIds array at the index of the task we are deleting.
         column.taskIds.splice(column.taskIds.indexOf(task.id), 1);
       }
     });
+
+    console.log(Object.values(boardState.columns));
     // 2. Delete the task from the tasks object
     delete boardState.tasks[task.id];
 
