@@ -31,7 +31,7 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
       const columnTaskIds = column.taskIds;
       // If the column's taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
       if (columnTaskIds.includes(taskToDelete)) {
-        columnTaskIds.splice(columnTaskIds.indexOf(task.id), 1);
+        columnTaskIds.splice(columnTaskIds.indexOf(taskToDelete), 1);
       }
     });
 
