@@ -27,7 +27,7 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
     const columns = Object.values(boardState.columns);
     const taskToDelete = task.id;
     columns.forEach((column) => {
-      // Tasks for column (day of the week)
+      // Tasks for column from taskIds array (day of the week)
       const columnTasks = column.taskIds;
       // If the column's taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
       if (columnTasks.includes(taskToDelete)) {
