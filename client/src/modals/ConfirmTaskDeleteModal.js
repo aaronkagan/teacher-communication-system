@@ -13,12 +13,25 @@ const ConfirmTaskDeleteModal = ({ isTaskDeleteModalOpen, setIsTaskDeleteModalOpe
 
     // 1. Delete the taskID from the current column's taskIds array
 
-    // Iterating over the values from the columns object, which is another object that holds the taskIds to associate the task to the correct column.
-    Object.values(boardState.columns).forEach((column) => {
-      // If the columns taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
-      if (column.taskIds.includes(task.id)) {
-        // How we do that is by splicing 1 element from taskIds array at the index of the task we are deleting.
-        column.taskIds.splice(column.taskIds.indexOf(task.id), 1);
+    // // Iterating over the values from the columns object, which is another object that holds the taskIds to associate the task to the correct column.
+    // Object.values(boardState.columns).forEach((column) => {
+    //   // If the columns taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
+    //   if (column.taskIds.includes(task.id)) {
+    //     // How we do that is by splicing 1 element from taskIds array at the index of the task we are deleting.
+    //     column.taskIds.splice(column.taskIds.indexOf(task.id), 1);
+    //   }
+    // });
+
+    // 1. Delete the taskID from the current column's taskIds array
+    // Columns === day of the week
+    const columns = Object.values(boardState.columns);
+    const taskToDelete = task.id;
+    columns.forEach((column) => {
+      // Tasks for column (day of the week)
+      const columnTasks = column.taskIds;
+      // If the column's taskIds array includes the taskId of the task we want to delete, then splice the taskId from that column.
+      if (columnTasks.includes(taskToDelete)) {
+        columnTasks.splice(columnTasks.indexOf(task.id), 1);
       }
     });
 
