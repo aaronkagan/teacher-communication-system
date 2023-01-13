@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
-import { UserContext } from "../contexts/UserContext";
-import StudentBoardColumn from "../components/StudentBoardColumn";
-import { shadows } from "@mui/system";
+import { useContext, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { UserContext } from '../contexts/UserContext';
+import StudentBoardColumn from '../components/StudentBoardColumn';
 // const background = require("../style/assets/images/corkboard-background.jpeg");
-const background = require("../style/assets/images/corkboard-background-80-cropped.png");
+const background = require('../style/assets/images/corkboard-background-80-cropped.png');
 
 const StudentBoard = () => {
   const { userState } = useContext(UserContext);
@@ -12,7 +11,7 @@ const StudentBoard = () => {
   const [boardState, setBoardState] = useState();
 
   useEffect(() => {
-    fetch("/api/tasks")
+    fetch('/api/tasks')
       .then((res) => res.json())
       .then((data) => {
         setBoardState(data.data);
@@ -29,7 +28,15 @@ const StudentBoard = () => {
         <BoardContainer>
           {/* Creating the columns from the board state */}
           {Object.values(boardState.columns).map((column) => {
-            return <StudentBoardColumn key={column.id} column={column} tasks={boardState.tasks} boardState={boardState} setBoardState={setBoardState} />;
+            return (
+              <StudentBoardColumn
+                key={column.id}
+                column={column}
+                tasks={boardState.tasks}
+                boardState={boardState}
+                setBoardState={setBoardState}
+              />
+            );
           })}
         </BoardContainer>
       </Wrapper>
@@ -51,7 +58,7 @@ const Wrapper = styled.div`
 const H2 = styled.h2`
   font-size: 30px;
   font-weight: bold;
-  font-family: "Comic Sans MS";
+  font-family: 'Comic Sans MS';
   background: #ffffff5f;
   margin-bottom: 50px;
   margin-top: 20px;
