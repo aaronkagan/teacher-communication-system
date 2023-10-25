@@ -4,6 +4,9 @@ Your premier application for teacher student communication.
 
 ## Screenshots
 
+Main Feature: Tasks are drag and drop.
+![Drag and drop](/screenshots/drag-and-drop.gif)
+
 Home Screen.
 ![Home screen](/screenshots/home-screen.png)
 
