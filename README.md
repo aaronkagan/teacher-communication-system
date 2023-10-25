@@ -1,6 +1,45 @@
-# Welcome to ReadMe!
+# Welcome to ReadMe!&trade;
 
 Your premier application for teacher student communication.
+
+## Screenshots
+
+Home Screen.
+![Home screen](/screenshots/home-screen.png)
+
+Login Screen.
+![Login screen](/screenshots/login-screen.png)
+
+Project Features.
+![Project features](/screenshots/admin-dash.png)
+
+Teacher Taskboard.
+![Teacher taskboard](/screenshots/teacher-taskboard.png)
+
+Teacher can add new task with optional file upload.
+![Teacher add new task](/screenshots/teacher-add-new-task.png)
+
+Teacher can leave comments.
+![Teacher comments](/screenshots/teacher-task-with-comments.png)
+
+Student sees tasks and can leave comments.
+![Student task](/screenshots/student-task-with-comments.png)
+
+Teacher can create announcements.
+![Teacher create announcement](/screenshots/teacher-create-announcement.png)
+![Teacher announcements](/screenshots/teacher-annoucements.png)
+
+Announcement Reader sees all the teachers' announcements aggregated.
+![Reader announcement](/screenshots/reader-announcements.png)
+
+Reader can mark announcements as read.
+![Marked as read](/screenshots/reader-mark-read.png)
+
+Teacher sees announcements as read and can delete the announcements.
+![Teacher read announcements](/screenshots/teacher-announcement-marked-read.png)
+
+Admin can manage users. Create, edit delete.
+![Admin user management](/screenshots/admin-manage-users.png)
 
 [Video demo of ReadMe!](https://vimeo.com/780022696/)
 
